@@ -10,7 +10,27 @@
     <p>姓</p>
       <%= f.text_field :last_name %>
     <p>名</p>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name %><br>
+  </div>
+  <div class="field">
+    <p>フリガナ</p>
+    <p>セイ</p>
+      <%= f.text_field :ruby_last_name %>
+    <p>メイ</p>
+      <%= f.text_field :ruby_first_name %>
+  </div>
+  <div class="field">
+    <p>郵便番号（ハイフンなし）</p>
+      <%= f.text_field :postcode %>
+  </div>
+  <div class="field">
+    <p>住所</p>
+      <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <p>電話番号（ハイフンなし）</p>
+      <%= f.text_field :phone %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
