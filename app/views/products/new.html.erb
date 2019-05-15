@@ -1,0 +1,55 @@
+<h2>商品新規登録</h2>
+
+<%= form_for (@product) do |f| %>
+
+  <div class="field">
+    <%= f.label :product_name, "商品名" %>
+    <%= f.text_field :product_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist_id, "アーティスト" %>
+    <%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :genre_id, "ジャンル" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :label_id, "レーベル" %>
+    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :product_category, "カテゴリ" %>
+    <%= f.select :product_category, Product.product_categories.keys.to_a, {} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :jacket_image_id, "ジャケット画像" %>
+    <%= f.attachment_field :jacket_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price, "税抜き価格" %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :stock, "在庫数" %>
+    <%= f.number_field :stock, min: 0 %>
+  </div>
+  <div class="recorded_musics">
+    <%= f.fields_for :recorded_musics do |recorded_music| %>
+      <%= render 'recorded_music_fields', f: recorded_music %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association '収録曲を追加', f, :recorded_musics %>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  </div>
+<% end %>

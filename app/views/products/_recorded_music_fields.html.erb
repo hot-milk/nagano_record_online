@@ -1,0 +1,6 @@
+  <tr class="nested-fields">
+    <td><%= f.text_field :recorded_music_name, placeholder:"曲名" %></td>
+    <td><%= f.number_field :recorded_disk_number, min: 0, placeholder:"ディスク番号" %></td>
+    <td><%= f.number_field :recorded_music_number, min: 0, placeholder:"曲順" %></td>
+    <td><%= link_to_remove_association "remove music", f %></td>
+ </tr>

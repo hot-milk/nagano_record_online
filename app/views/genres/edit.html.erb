@@ -1,12 +1,13 @@
-<div class="container">
-	<div class="row">
-		<div class="">
-			<h2>ジャンル名編集</h2>
-			<%= form_for(@genre) do |f| %>
-				<h4>ジャンル名</h4><br>
-					<%= f.text_field :genre_name, class: "" %>
-				<%= f.submit '更新' %>
-			<% end %>
-		</div>
-	</div>
-</div>
+<h2>ジャンル編集</h2>
+
+<%= form_for(@genre) do |f| %>
+
+  <div class="field">
+    <%= f.label :genre_name, "レーベル名" %>
+    <%= f.text_field :genre_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
