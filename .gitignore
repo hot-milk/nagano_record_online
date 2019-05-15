@@ -32,8 +32,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-<<<<<<< HEAD
 .DS_Store
-=======
-.DS_Store
->>>>>>> 2669416cee22a8640bd1880d74d684a86e92afa8
