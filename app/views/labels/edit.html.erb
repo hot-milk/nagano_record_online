@@ -1,2 +1,13 @@
-<h1>Labels#edit</h1>
-<p>Find me in app/views/labels/edit.html.erb</p>
+<h2>レーベル編集</h2>
+
+<%= form_for(@label) do |f| %>
+
+  <div class="field">
+    <%= f.label :label_name, "レーベル名" %>
+    <%= f.text_field :label_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
