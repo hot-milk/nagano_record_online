@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3">
-		   <h1>レーベル一覧</h1>
+		<div class="col-xs-4">
+		   <h1>アーティスト一覧</h1>
 	    </div>
-	    <div class="col-xs-6">
-		  <%= link_to '新規登録', '/labels/new', class:"btn btn-default" %>
+	    <div class="col-xs-8">
+		  <%= link_to '新規登録', '/artists/new', class:"btn btn-default" %>
 		</div>
 	</div>
 	<div class="row">
@@ -19,13 +19,13 @@
               </tr>
             </thead>
             <tbody>
-              <% @labels.each do |label| %>
+              <% @artists.each do |artist| %>
                 <tr>
-                  <td> <%= label.id %></td>
-                  <td> <%= label.label_name %></td>
-                  <td> <%= link_to "編集", edit_label_path(label.id) %>
+                  <td> <%= artist.id %></td>
+                  <td> <%= artist.artist_name %></td>
+                  <td> <%= link_to "編集", edit_artist_path(artist.id) %>
                   </td>
-                  <td> <%= link_to '削除', label_path(label.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm" %></td>
+                  <td> <%= link_to '削除', artist_path(artist.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm" %></td>
                 </tr>
               <% end %>
             </tbody>
