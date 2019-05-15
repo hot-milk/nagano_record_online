@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h2>アーティスト一覧</h2>
+            <%= link_to '新規登録', '/new', class: "" %>
+
+            <table>
+                <tr>
+                    <th>アーティストID</th>
+                    <th>アーティスト名前</th>
+                    <th><%#編集%></th>
+                    <th><%#削除%></th>
+                </tr>
+                <%= @artists.each do |artist| %>
+                <tr>
+                    <td><%= artist.id %></td>
+                    <td><%= artist.name %></td>
+                    <td>
+                        <%= link_to '編集', edit_artist_path, class: "btn-sm btn-success edit_artist_#{artist.id}" %>
+                    </td>
+                    <td>
+                        <%= link_to '削除', artist_path, method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm destroy_artist_#{artist.id}" %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="">
+            <%= form_for(@review) do |f| %>
+                <h2>レビュー編集画面</h2>
+                <table>
+                    <tr>
+                        <th>投稿日時</th>
+                        <th>ユーザー名</th>
+                    </tr>
+                    <tr>
+                        <td>#日付</td>
+                        <td><%= @review.user.name %></td>
+                    </tr>
+                </table>
+
+                <div class="row">
+                    <%= f.text_area :review_content, class: "" %>
+                </div>
+                <div class="row">
+                    <%= f.submit '更新', class: "" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
