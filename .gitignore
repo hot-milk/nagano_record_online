@@ -13,6 +13,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/log/development.log
 /tmp/*
 !/log/.keep
 !/tmp/.keep
@@ -32,3 +33,4 @@
 /config/master.key
 
 .DS_Store
+
