@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/admin' => 'static_pages#admin'
   resource :shipment, only:[:create]
-  resources :contacts, only:[:index,:create]
-  resources :users, except:[:new,:create] do
-    resources :contacts, only:[:show, :update]
-  end
+  resources :contacts, only: %i(index create)
+  resources :contacts, only:[:show, :update]
   resources :products do
     resources :recorded_musics, only:[:create,:destroy]
     resources :reviews, except:[:index,:show]
