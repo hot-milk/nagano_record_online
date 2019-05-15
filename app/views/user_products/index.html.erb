@@ -1,0 +1,36 @@
+<h2>ショッピングカート</h2>
+
+<!-- テーブルタグにてカート内容を表示する -->
+<table class="table">
+
+	<tr>
+		<th></th>
+		<th>シングル/アルバム名</th>
+		<th>アーティスト名</th>
+		<th>価格</th>
+		<th>数量</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+    <% @user_product.each do |user_product| %>
+
+	<tr>
+		<td><%= attachment_image_tag user_product.product_id.jacket_image_id, :cd_image, size: "100x100" %></td><!-- モデルからジャケット画像を取得 -->
+		<td><%= user_product.product_id.product_name %></td><!-- モデルからシングル/アルバム名を取得 -->
+		<td><%= user_product.product_id.artist_id.artist_name %></td><!-- モデルからアーティスト名を取得 -->
+		<td><%= user_product.product_id.price %></td><!-- モデルから価格を取得 -->
+		<%= form_for(user_product) do |f| %>
+		    <td><%= f.text_field :user_product_number, autofocus:true %></td><!-- フォーム内にモデルから取得した数量を表示させ、値を変更することで数量の変更を可能とする -->
+		<td><%= f.submit "変更" %></td>
+		<% end %>
+		<td><%= link_to "削除", user_products_path(user_product), method: :delete %></td>
+	</tr>
+
+	<% end %>
+
+</table>
+
+<%= @price_total %>
+<%= link_to "購入手続きへ", new_order_path, class: "btn btn-primary" %>
+
