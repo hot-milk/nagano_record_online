@@ -12,11 +12,12 @@
                 <%= @contacts.each do |contact| %>
                 <tr>
                     <td>日付</td>
-                    <td><%= contact.last_name %><%= contact.first_name %></td>
+                    <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
                     <td><%= contact.title %></td>
                     <td><%= contact_content %></td>
                     <td>
-                        <%= link_to '編集', edit_contact_path, class: "edit_contact_#{contact.id}" %>
+                        <%= link_to '詳細', contact_path(contact.id), class: "contact_#{contact.id}" %>
+
                     </td>
                     <td>
                         <%= link_to '削除', contact_path, method: :delete, "data-confirm" => "削除しますか？", class: "destroy_contact_#{contact.id}" %>
@@ -25,5 +26,6 @@
                 <% end %>
             </table>
         </div>
+        <%= paginate @contacts, class: "paginate" %>
     </div>
 </div>

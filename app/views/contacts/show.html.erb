@@ -1,2 +1,28 @@
-<h1>Contacts#show</h1>
-<p>Find me in app/views/contacts/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="">
+        	<h2>問い合わせ詳細</h2>
+
+        	<table>
+        		<tr>
+        			<th>投稿日時</th>
+        			<th>ユーザー名</th>
+        			<th>件名</th>
+        			<th>内容</th>
+        		</tr>
+        		<tr>
+        			<td>#投稿日時</td>
+        			<td><%= @contact.user.last_name %><%= @contact.user.first_name %></td>
+        			<td><%= @contact.title %></td>
+        			<td><%= @contact.contact_content %></td>
+        		</tr>
+        	</table>
+
+        	<h3>返信フォーム</h3><br>
+        	<%= form_for(@contact) do |f| %>
+				<%= f.text_area :responce, autofocus: true, class: "responce" %><br>
+    			<%= f.submit "返信", class: "" %>
+        	<% end %>
+		</div>
+	</div>
+</div>

@@ -1,2 +1,36 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h2>ユーザー一覧</h2>
+            <table class="table">
+                <tr>
+                    <th>ユーザーID</th>
+                    <th>名前</th>
+                    <th>電話番号</th>
+                    <th>Eメール</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <%= @users.each do |user| %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.last_name %><%= user.first_name %></td>
+                    <td><%= user.phone %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <%= link_to '詳細', user_path(user.id), class: "user_#{user.id}" %>
+                    </td>
+                    <td>
+                        <%= link_to '編集', edit_user_path, class: "edit_user_#{user.id}" %>
+                    </td>
+                    <td>
+                        <%= link_to '削除', user_path, method: :delete, "data-confirm" => "削除しますか？", class: "destroy_user_#{user.id}" %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+        <%= paginate @users, class: "paginate" %>
+    </div>
+</div>
