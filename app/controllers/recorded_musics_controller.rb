@@ -4,6 +4,7 @@ class RecordedMusicsController < ApplicationController
 	    product = Product.find(params[:product_id])
 	    recorded_music = RecordedMusic.new(recorded_music_params)
 	    recorded_music.product_id = Product.id
+	    binding.pry
 	    recorded_music.save
 	    redirect_to products_path
 	end
