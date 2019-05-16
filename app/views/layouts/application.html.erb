@@ -10,6 +10,69 @@
   </head>
 
   <body>
+
+<header>
+  <div class="top_box clearfix">
+      <div class="top_image">
+        <h1 class="top_title tc-white">Nagano Record Online</h1>
+      </div>
+      <div class="top_link">
+        <div class="header_link_item_box">
+            <li class="header_link_item tc-white">
+              <%= link_to "ユーザー様", orders_path, class: "tc-white" %>
+            </li>
+            <li class="header_link_item tc-white">
+              <%= link_to "新規登録/ログイン", new_user_session_path, class: "tc-white" %>
+            </li>
+            <li class="header_link_item tc-white">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "tc-white" %>
+            </li>
+        </div>
+      </div>
+  </div>
+
+  <!-- ここから検索BOXおよびNAVバーの記述 -->
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="テキスト入力欄">
+                      <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">検索</button>
+                      </span>
+                    </div>
+                </div>
+
+               <div class="col-xs-6">
+                    <div class="collapse navbar-collapse pr0" id="navbarEexample1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                            <%= link_to "このサイトについて", about_path %>
+                            </li>
+                            <li>
+                              <%= link_to "マイページ", orders_path %>
+                            </li>
+                            <li>
+                            <%= link_to "カート", user_products_path %>
+                            </li>
+                        </ul>
+                    </div>
+               </div>
+       </div>
+      </div>
+
+  </nav>
+</header>
+
     <%= yield %>
   </body>
+
+  <!-- ここからfooterの記述 -->
+
+<footer>
+     <p class="tc-white">@2019 Hot milk</p>
+</footer>
+
 </html>

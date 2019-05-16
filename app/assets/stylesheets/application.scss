@@ -15,3 +15,91 @@
  */
 	@import "bootstrap-sprockets";
 	@import "bootstrap";
+
+
+/*リセットCSS*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+.clearfix {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/*文字色を白に指定する*/
+.tc-white {
+	color:#ffffff;
+}
+
+.pr0 {
+	padding-right:0px;
+}
+
+/*ここからヘッダーの関する記述*/
+
+.top_box {
+	margin:0 auto;
+	width: 100%;
+	height: 100px;
+	background-color:#4169e1;
+	text-align:center;
+}
+
+.top_image {
+	width: 80%;
+	height: 100px;
+	float: left;
+}
+
+.top_title {
+	line-height:100px;
+	margin:0 auto;
+}
+
+.top_link {
+	width: 15%;
+	height: 100px;
+	float: left;
+}
+
+.header_link_item_box {
+	text-align:right;
+	padding-top:20px;
+	text-align:right;
+}
+
+.header_link_item {
+	list-style:none;
+}
+
+nav {
+	height:50px;
+}
+
+.navbar-nav {
+	float: right;
+}
+
+.nav_link_item {
+	list-style:none;
+}
+
+.input-group {
+	padding-top:6px;
+}
+
+footer {
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	background-color:#4169e1;
+}
+
