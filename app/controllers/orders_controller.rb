@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
 def new
 	@order = Order.new
+	@user = User.find(params[:current_user])
 end
 
 def create

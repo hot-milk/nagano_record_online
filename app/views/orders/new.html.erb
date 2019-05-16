@@ -1,3 +1,23 @@
 <h2>購入手続き</h2>
 <p>購入金額合計</p>
+
 <p>支払方法</p>
+<%= form_for(@order) do |f| %>
+<label>
+	<%= f.radio_button :payment_method, "1" %>クレジットカード</label>
+<label>
+	<%= f.radio_button :payment_method, "2" %>銀行振込</label>
+<label>
+	<%= f.radio_button :payment_method, "3" %>代引き</label>
+
+<p>配送先住所</p>
+<label>
+	<%= f.radio_button :payment_method, "1" %>登録先住所へ配送する</label>
+<label>
+
+<% f.text_field :order_ship_last_name, "#{@user.last_name}" %>
+<% f.text_field :order_ship_first_name, "#{@user.first_name}" %>
+<% f.text_field :order_ship_ruby_last_name, "#{@user.ruby_last_name}" %>
+<% f.text_field :order_ship_ruby_first_name, "#{@user.ruby_first_name}" %>
+<% f.text_field :order_ship_postcode, "#{@user.postcode}" %>
+<% f.text_field :order_ship_adress, "#{@user.address}" %>
