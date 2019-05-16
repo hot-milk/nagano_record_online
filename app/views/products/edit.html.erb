@@ -58,9 +58,9 @@
 		      <%= link_to_add_association '収録曲を追加', f, :recorded_musics %>
 		    </div>
 		  </div>
-		</div>
-		<div class="actions">
+		  <div class="actions">
 		    <%= f.submit "更新" %>
+		</div>
 		</div>
 		<% end %>
 		<div class="col-xs-8">
@@ -79,7 +79,7 @@
 			                  <td> <%= recorded_music.recorded_disk_number %></td>
 			                  <td> <%= recorded_music.recorded_music_number %></td>
 			                  <td> <%= recorded_music.recorded_music_name %></td>
-			                  <td> <%= link_to '削除', product_recorded_music_path(recorded_music), method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm" %></td>
+			                  <td> <%= link_to '削除', product_recorded_music_path(recorded_music.product_id), method: :delete %></td>
 			              </tr>
 			            <% end %>
 			        </tbody>
