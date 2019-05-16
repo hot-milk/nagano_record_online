@@ -25,6 +25,10 @@ class ContactsController < ApplicationController
 	def update
 		@contact = Contact.find(params[:id])
 		@contact.user_id = current_user.admin
+		if @contact.update(contact_params)
+			flash[:success] = '返信しました'
+			redirect_to "/contacts"
+		end
 	end
 
 
