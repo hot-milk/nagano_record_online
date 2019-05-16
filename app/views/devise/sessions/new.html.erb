@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="">
-<h2>ログイン</h2>
+<h4>ログイン</h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -15,8 +15,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
-    <%#= link_to , "" %>
+    <%= f.submit "ログイン", class: "btn btn-default" %>
+    <%#= link_to , "user_products" %>
   </div>
   <%= link_to "新規会員はこちら", "users/sign_up" %>
 <% end %>
