@@ -8,24 +8,29 @@ class ProductsController < ApplicationController
 
   def admin
     @products = Product.all
+    @products.artist_id = 
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @recorded_musics = RecordedMusic.where(product_id: params[:id])
+  end
+
+  def update
+    product = Product.find(params[:id])
+    product.update(product_params)
+    redirect_to products_admin_path
   end
 
   def new
     @product = Product.new
     @product.recorded_musics.build
-    p "================================"
-    p @product
-    p @product.recorded_musics
   end
 
   def create
     product = Product.new(product_params)
     product.save
     redirect_to products_admin_path
-    binding.pry
   end
 
   def destroy
@@ -37,6 +42,15 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:artist_id,:genre_id, recorded_products_attributes: [:id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
+    params.require(:product).permit(:product_name,
+                                    :artist_id,
+                                    :genre_id,
+                                    :label_id,
+                                    :product_category,
+                                    :jacket_image_id,
+                                    :price,
+                                    :stock,
+                                    :status,
+                                    recorded_products_attributes: [:id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
   end
 end
