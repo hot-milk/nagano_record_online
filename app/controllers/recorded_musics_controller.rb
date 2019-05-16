@@ -6,15 +6,22 @@ class RecordedMusicsController < ApplicationController
 	    recorded_music.product_id = Product.id
 	    recorded_music.save
 	    redirect_to products_path
-	    binding.pry
 	end
+
+    def destroy
+	    recorded_music = RecordedMusic.find(params[:id])
+	    recorded_music.destroy
+	    redirect_to edit_product_path
+    end
 
 	private
 
 	def recorded_music_params
 	  params.require(:recorded_music).permit(
-	                      :product_id,
-	                      :recorded_music_name)
+						                      :product_id,
+						                      :recorded_music_name,
+						                      :recorded_music_number,
+						                      :recorded_disk_number)
 	end
 end
 

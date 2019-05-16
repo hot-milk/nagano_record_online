@@ -2,14 +2,16 @@
     <div class="row">
         <div class="">
             <h2>問い合わせ一覧</h2>
-            <table>
+            <table class="table">
                 <tr>
                     <th>投稿日時</th>
                     <th>ユーザー名</th>
                     <th>件名</th>
                     <th>内容</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-                <%= @contacts.each do |contact| %>
+                <% @contacts.each do |contact| %>
                 <tr>
                     <td>日付</td>
                     <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
