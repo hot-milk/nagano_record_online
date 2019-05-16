@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
 
   def admin
     @products = Product.all
-    @products.artist_id = 
   end
 
   def edit
@@ -47,10 +46,10 @@ class ProductsController < ApplicationController
                                     :genre_id,
                                     :label_id,
                                     :product_category,
-                                    :jacket_image_id,
+                                    :jacket_image,
                                     :price,
                                     :stock,
                                     :status,
-                                    recorded_products_attributes: [:id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
+                                    recorded_musics_attributes: [:id, :product_id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
   end
 end
