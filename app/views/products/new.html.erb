@@ -41,6 +41,12 @@
     <%= f.label :stock, "在庫数" %>
     <%= f.number_field :stock, min: 0 %>
   </div>
+
+  <div class="field">
+    <%= f.label :status, "販売状況" %>
+    <%= f.select :status, Product.statuses.keys.to_a, {} %>
+  </div>
+
   <div class="recorded_musics">
     <%= f.fields_for :recorded_musics do |recorded_music| %>
       <%= render 'recorded_music_fields', f: recorded_music %>
@@ -52,4 +58,5 @@
       <%= f.submit "登録" %>
     </div>
   </div>
+
 <% end %>
