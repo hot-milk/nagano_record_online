@@ -13,11 +13,9 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/log/development.log
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/tmp/cache/bootsnap-load-path-cache
 
 # Ignore uploaded files in development
 /storage/*
