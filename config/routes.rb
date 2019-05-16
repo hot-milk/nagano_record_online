@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :contacts, only:[:show, :update]
   end
   resources :products do
+    resources :recorded_musics, only:[:create,:destroy]
     resources :reviews, except:[:index,:show]
     resources :favorites, only:[:create,:destroy]
   end
