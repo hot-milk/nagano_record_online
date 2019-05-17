@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
 	end
 
 	def index
+		@contact = Contact.new #あとで削除
 		@contacts = Contact.page(params[:page]).reverse_order
 	end
 
@@ -34,6 +35,6 @@ class ContactsController < ApplicationController
 
 	private
 	def contact_params
-		params.require(:contact).permit(:user_id, :contact_content, :responce)
+		params.require(:contact).permit(:user_id, :title, :contact_content, :responce)
 	end
 end
