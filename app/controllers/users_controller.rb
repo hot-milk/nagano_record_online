@@ -8,6 +8,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def new
+    
+  end
+
+  def create
+  end
+
   def edit
   	@user = User.find(params[:id])
   	if @user.id != current_user.id || @user.id != current_user.admin
