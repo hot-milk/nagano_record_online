@@ -17,7 +17,11 @@
         			<td><%= @contact.contact_content %></td>
         		</tr>
         	</table>
-
+<!--返信後表示場所-->
+            <%= @contact.each do |contact| %>
+                <%= @contact.responce %>
+            <% end %>
+<!--ここまで-->
         	<h3>返信フォーム</h3><br>
         	<%= form_for(@contact) do |f| %>
 				<%= f.text_area :responce, autofocus: true, class: "responce" %><br>
