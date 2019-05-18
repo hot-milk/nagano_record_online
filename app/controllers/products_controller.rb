@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @search = Product.ransack(params[:q])
+    @results = @search.result
   end
 
   def show
@@ -47,10 +49,10 @@ class ProductsController < ApplicationController
                                     :genre_id,
                                     :label_id,
                                     :product_category,
-                                    :jacket_image_id,
+                                    :jacket_image,
                                     :price,
                                     :stock,
                                     :status,
-                                    recorded_products_attributes: [:id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
+                                    recorded_musics_attributes: [:id, :product_id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
   end
 end

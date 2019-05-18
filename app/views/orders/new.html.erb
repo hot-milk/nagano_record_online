@@ -12,9 +12,14 @@
 
 <p>配送先住所</p>
 <label>
+<<<<<<< HEAD
 	<%= f.radio_button :ship_user, "1" %>登録先住所へ配送する</label>
 <label>
 	<%= f.radio_button :ship_new, "2" %>新たに配送先を設定する</label>
+=======
+	<%= f.radio_button :payment_method, "1" %>登録先住所へ配送する</label>
+<label>
+>>>>>>> 956fc73964b25a71cc1ec659dda45c51f67518a5
 
 <% f.text_field :order_ship_last_name, "#{@user.last_name}" %>
 <% f.text_field :order_ship_first_name, "#{@user.first_name}" %>

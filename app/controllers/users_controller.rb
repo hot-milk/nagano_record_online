@@ -6,6 +6,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+<<<<<<< HEAD
+=======
+  end
+
+  def new
+    
+  end
+
+  def create
+>>>>>>> 956fc73964b25a71cc1ec659dda45c51f67518a5
   end
 
   def edit
@@ -23,6 +33,7 @@ class UsersController < ApplicationController
     else
       render "/users/edit"
     end
+<<<<<<< HEAD
   end
 
   def destroy
@@ -31,6 +42,16 @@ class UsersController < ApplicationController
     redirect_to '/users/index'
   end
 
+=======
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to '/users/index'
+  end
+
+>>>>>>> 956fc73964b25a71cc1ec659dda45c51f67518a5
 
   private
   def user_params
