@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
-  	if @user.id != current_user.id || @user.id != current_user.admin
-  		redirect_to user_path(@user.id)
-  	end
+  	#if @user.id != current_user.id || @user.id != current_user.admin
+  		#redirect_to user_path(@user.id)
+  	#end
   end
 
   def update
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to '/users/index'
+    redirect_to '/users'
   end
 
   private

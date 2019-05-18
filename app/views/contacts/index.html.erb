@@ -25,7 +25,7 @@
                 </tr>
                 <% @contacts.each do |contact| %>
                 <tr>
-                    <td>日付</td>
+                    <td><%= contact.created_at %></td>
                     <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
                     <td><%= contact.title %></td>
                     <td><%= contact.contact_content %></td>

@@ -3,32 +3,26 @@
 		<div class="">
 			<h2>ユーザー情報編集</h2>
 			<%= form_for(@user) do |f| %>
-			<h4>姓名</h4><br>
+			<h4><姓名></h4>
 				<p>姓</p><%= f.text_field :last_name, class: "col-xs-" %>
 				<p>名</p><%= f.text_field :first_name, class: "col-xs-" %>
-			<br>
-			<h4>フリガナ</h4><br>
+			<h4><フリガナ></h4>
 				<P>セイ</P><%= f.text_field :ruby_last_name, class: "col-xs-" %>
 				<P>メイ</P><%= f.text_field :ruby_first_name, class: "col-xs-" %>
-
-			<h4>郵便番号(ハイフンなし)</h4><br>
+			<h4><郵便番号(ハイフンなし)></h4>
 				<%= f.text_field :postcode, class: "col-xs-" %>
-			<br>
-			<h4>住所</h4><br>
+			<h4><住所></h4>
 				<%= f.text_field :address, class: "col-xs-" %>
-			<br>
-			<h4>電話番号(ハイフンなし)</h4>
+			<h4><電話番号(ハイフンなし)></h4>
 				<%= f.text_field :phone, class: "col-xs-" %>
-			<br>
-			<h4>メールアドレス</h4><br>
+			<h4><メールアドレス></h4>
 				<%= f.text_field :email, class: "col-xs-" %>
-			<br>
-			<h4>パスワード</h4><br>
+			<h4><パスワード></h4>
 				<%= f.text_field :password, class: "col-xs-" %>
 			<br>
 			<br>
 			<div class="row">
-				<%= f.submit "更新する" class: "" %>
+				<%= f.submit "更新する", class: "" %>
 			</div>
 			<% end %>
 		</div>
