@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @search = Product.ransack(params[:q])
+    @results = @search.result
   end
 
   def show
