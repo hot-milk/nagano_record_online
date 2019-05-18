@@ -1,5 +1,30 @@
-<% if @results.any? %>
- <% @results.each do |result| %>
-   <p><%= result.itemname %></p>
- <% end %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<table class="table table-hover">
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>アーティスト名</th>
+                <th>税込価格</th>
+                <th>在庫数</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <% @products.each do |product| %>
+                <tr>
+                  <td> <%= product.product_name %></td>
+                  <td> <%= product.artist.artist_name %></td>
+                  <td>¥<%= product.price %></td>
+                  <td> <%= product.stock %></td>
+                  <td> <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+		</div>
+	</div>
+</div>
