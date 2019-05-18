@@ -12,8 +12,11 @@
 
 <p>配送先住所</p>
 <label>
-	<%= f.radio_button :payment_method, "1" %>登録先住所へ配送する</label>
+	<input type="radio" name="button1" value="1" />登録先住所へ配送する</label>
 <label>
+	<input type="radio" name="button2" value="2" />新たに配送先を設定する</label>
+
+<% if params[:button1] %>
 
 <% f.text_field :order_ship_last_name, "#{@user.last_name}" %>
 <% f.text_field :order_ship_first_name, "#{@user.first_name}" %>
@@ -21,3 +24,60 @@
 <% f.text_field :order_ship_ruby_first_name, "#{@user.ruby_first_name}" %>
 <% f.text_field :order_ship_postcode, "#{@user.postcode}" %>
 <% f.text_field :order_ship_adress, "#{@user.address}" %>
+
+<% else params[:button2] %>
+
+<div class="field">
+<%= f.label :order_ship_last_name, "姓" %>
+<%= f.text_field :order_ship_last_name %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_last_name %>
+    <% end %>
+</div>
+
+<div class="field">
+<%= f.label :order_ship_first_name, "名" %>
+<%= f.text_field :order_ship_first_name %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_first_name %>
+    <% end %>
+</div>
+
+<div class="field">
+<%= f.label :order_ship_ruby_last_name, "セイ" %>
+<%= f.text_field :order_ship_ruby_last_name %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_ruby_last_name %>
+    <% end %>
+</div>
+
+<div class="field">
+<%= f.label :order_ship_ruby_first_name, "メイ" %>
+<%= f.text_field :order_ship_ruby_first_name %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_ruby_first_name %>
+    <% end %>
+</div>
+
+<div class="field">
+<%= f.label :order_hip_postcode, "郵便番号" %>
+<%= f.text_field :order_ship_postcode %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_postcode %>
+    <% end %>
+</div>
+
+<div class="field">
+<%= f.label :order_ship_adress, "住所" %>
+<%= f.text_field :order_ship_adress %>
+    <%= fields_for(@shipment) do |ship| %>
+    <%= ship.text_field :ship_adress %>
+    <% end %>
+
+</div>
+
+<% end %>
+
+<%= f.submit "購入する"%>
+
+<% end %>

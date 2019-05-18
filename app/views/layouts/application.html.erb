@@ -25,7 +25,7 @@
               <%= link_to "新規登録/ログイン", new_user_session_path, class: "tc-white" %>
             </li>
             <li class="header_link_item tc-white">
-              <%= link_to "ログアウト", destroy_user_session_path, class: "tc-white" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "tc-white" %>
             </li>
         </div>
       </div>
@@ -37,29 +37,28 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6">
-                  <div class="input-group">
-                      <input type="text" class="form-control" placeholder="テキスト入力欄">
-                      <span class="input-group-btn">
-                    <button type="button" class="btn btn-default">検索</button>
-                      </span>
-                    </div>
-                </div>
-
-               <div class="col-xs-6">
-                    <div class="collapse navbar-collapse pr0" id="navbarEexample1">
-                        <ul class="nav navbar-nav">
-                            <li>
-                            <%= link_to "このサイトについて", about_path %>
-                            </li>
-                            <li>
-                              <%= link_to "マイページ", orders_path %>
-                            </li>
-                            <li>
-                            <%= link_to "カート", user_products_path %>
-                            </li>
-                        </ul>
-                    </div>
-               </div>
+              <dl class="searchbox">
+                <%= search_form_for @search, url: products_search_path do |f| %>
+                  <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+                  <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+                <% end %>
+              </dl>
+        </div>
+        <div class="col-xs-6">
+            <div class="collapse navbar-collapse pr0" id="navbarEexample1">
+                <ul class="nav navbar-nav">
+                    <li>
+                      <%= link_to "このサイトについて", about_path %>
+                    </li>
+                    <li>
+                      <%= link_to "マイページ", orders_path %>
+                    </li>
+                    <li>
+                      <%= link_to "カート", user_products_path %>
+                    </li>
+                </ul>
+            </div>
+        </div>
        </div>
       </div>
 
@@ -67,12 +66,11 @@
 </header>
 
     <%= yield %>
-  </body>
-
   <!-- ここからfooterの記述 -->
 
-<footer>
-     <p class="tc-white">@2019 Hot milk</p>
-</footer>
+  <footer>
+       <p class="tc-white">@2019 Hot milk</p>
+  </footer>
+  </body>
 
 </html>

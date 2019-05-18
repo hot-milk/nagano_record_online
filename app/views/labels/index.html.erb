@@ -22,10 +22,10 @@
               <% @labels.each do |label| %>
                 <tr>
                   <td> <%= label.id %></td>
-                  <td> <%= label.name %></td>
-                  <td> <%= link_to "Edit", edit_label_path(label.id) %>
+                  <td> <%= label.label_name %></td>
+                  <td> <%= link_to "編集", edit_label_path(label.id) %>
                   </td>
-                  <td> <%= link_to '削除', label_path, method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm" %></td>
+                  <td> <%= link_to '削除', label_path(label.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn-sm" %></td>
                 </tr>
               <% end %>
             </tbody>

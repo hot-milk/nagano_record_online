@@ -1,0 +1,2 @@
+module RecordedMusicsHelper
+end

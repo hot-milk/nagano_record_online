@@ -1,2 +1,45 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="">
+<!-- 仮の問い合わせ投稿 -->
+            <h4>店舗への問い合わせ</h4>
+            <%= form_for(@contact) do |f| %>
+                <h4>件名</h4><br>
+                    <%= f.text_field :title, class: "" %>
+                <h4>内容</h4><br>
+                    <%= f.text_area :contact_content, class: "" %><br>
+            <%= f.submit '送信' %>
+            <% end %>
+<!-- ここまで -->
+
+
+            <h2>問い合わせ一覧</h2>
+            <table class="table">
+                <tr>
+                    <th>投稿日時</th>
+                    <th>ユーザー名</th>
+                    <th>件名</th>
+                    <th>内容</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <% @contacts.each do |contact| %>
+                <tr>
+                    <td>日付</td>
+                    <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
+                    <td><%= contact.title %></td>
+                    <td><%= contact.contact_content %></td>
+                    <td>
+                        <%= link_to '詳細', user_contact_path(contact.user,contact.id) %>
+
+                    </td>
+                    <td>
+                        <%= link_to '削除', contact_path(contact), method: :delete, "data-confirm" => "削除しますか？", class: "destroy_contact_#{contact.id}" %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+        <%= paginate @contacts, class: "paginate" %>
+    </div>
+</div>

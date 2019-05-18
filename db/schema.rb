@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_204220) do
+ActiveRecord::Schema.define(version: 2019_05_17_025000) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_204220) do
     t.text "responce"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
   end
 
   create_table "favorites", force: :cascade do |t|
