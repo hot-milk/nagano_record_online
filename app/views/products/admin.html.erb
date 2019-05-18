@@ -19,6 +19,7 @@
                 <th>販売ステータス</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +34,8 @@
 >>>>>>> 956fc73964b25a71cc1ec659dda45c51f67518a5
                   <td> <%= product.stock %></td>
                   <td> <%= product.status %></td>
+                  <td> <%= link_to "詳細", product_path(product.id) %>
+                  </td>
                   <td> <%= link_to "編集", edit_product_path(product.id) %>
                   </td>
                   <td> <%= link_to '削除', product_path(product.id), method: :delete, "data-confirm" => "削除しますか？" %></td>

@@ -18,7 +18,7 @@
                 <tr>
                   <td> <%= product.product_name %></td>
                   <td> <%= product.artist.artist_name %></td>
-                  <td>¥<%= product.price %></td>
+                  <td>¥<%= product.price.to_i * 1.08 %></td>
                   <td> <%= product.stock %></td>
                   <td> <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg' %></td>
                 </tr>
