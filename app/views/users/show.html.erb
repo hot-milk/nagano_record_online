@@ -1,28 +1,28 @@
 <div class="container">
 	<div class="row">
-		<div class="">
+		<div class="col">
 			<h2>ユーザー情報</h2>
 			<%= form_for(@user) do |f| %>
 			<h4>姓名</h4><br>
-				<%= user.last_name %><%= user.first_name %>
+				<%= @user.last_name %><%= @user.first_name %>
 			<br>
 			<h4>フリガナ</h4><br>
-				<%= user.ruby_last_name %><%= user.ruby_first_name %>
+				<%= @user.ruby_last_name %><%= @user.ruby_first_name %>
 			<br>
 			<h4>郵便番号(ハイフンなし)</h4><br>
-				<%= user.postcode %>
+				<%= @user.postcode %>
 			<br>
 			<h4>住所</h4><br>
-				<%= user.address %>
+				<%= @user.address %>
 			<br>
 			<h4>電話番号(ハイフンなし)</h4>
-				<%= user.phone %>
+				<%= @user.phone %>
 			<br>
 			<h4>メールアドレス</h4><br>
-				<%= user.email %>
+				<%= @user.email %>
 			<br>
 			<h4>パスワード</h4><br>
-				<%= user.password %>
+				<%= @user.password %>
 			<br>
 			<br>
 
