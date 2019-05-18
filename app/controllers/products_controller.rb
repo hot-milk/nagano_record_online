@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
 
   def admin
     @products = Product.all
-    @products.artist_id = 
   end
 
   def edit
