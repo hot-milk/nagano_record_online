@@ -1307,3 +1307,482 @@ Completed 404 Not Found in 78ms (ActiveRecord: 20.0ms)
 ActiveRecord::RecordNotFound (Couldn't find User without an ID):
   
 app/controllers/orders_controller.rb:5:in `new'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:21:25 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/vagrant/nagano_record_online/app/controllers/products_controller.rb:14: syntax error, unexpected keyword_end
+  end
+  ^~~
+/vagrant/nagano_record_online/app/controllers/products_controller.rb:58: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/products_controller.rb:14: syntax error, unexpected keyword_end
+app/controllers/products_controller.rb:58: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:23:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (3.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 12025ms (Views: 11952.2ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:23:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:23:44 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:23:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8648.2ms)
+Started GET "/orders" for 10.0.2.2 at 2019-05-18 06:23:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4979.4ms)
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (65.4ms)
+Completed 500 Internal Server Error in 2234ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114589051180'
+Completed 500 Internal Server Error in 7261ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_46970508473040'
+Completed 500 Internal Server Error in 11631ms (ActiveRecord: 10.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114590612080'
+Processing by OrdersController#index as HTML
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:23:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:23:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (78.7ms)
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (40.3ms)
+Completed 500 Internal Server Error in 1395ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_46970513793580'
+Completed 500 Internal Server Error in 1712ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_46970513793580'
+Completed 406 Not Acceptable in 3225ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (OrdersController#index is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:24:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (41.5ms)
+Completed 500 Internal Server Error in 721ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114598953760'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:24:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 784ms (Views: 735.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/orders" for 10.0.2.2 at 2019-05-18 06:24:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by OrdersController#index as HTML
+Completed 406 Not Acceptable in 2129ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (OrdersController#index is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:24:37 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 721ms (Views: 670.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:24:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (41.8ms)
+Completed 500 Internal Server Error in 720ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114598703780'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:24:57 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 749ms (Views: 696.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:25:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (51.1ms)
+Completed 500 Internal Server Error in 917ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114583526960'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:25:27 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 657ms (Views: 622.5ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2019-05-18 06:25:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"LMboyqniYzOS3Ehp2QwwPabjtwzHqoN/wVgGcb0RGHGAHjjD9wiMBaC53tYg802u17UtoAAXa0ecLbwUe0tgzA=="}
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:25:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (40.3ms)
+Completed 500 Internal Server Error in 724ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114589097180'
+Started GET "/orders/new" for 10.0.2.2 at 2019-05-18 06:25:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by OrdersController#new as HTML
+Completed 404 Not Found in 104ms (ActiveRecord: 20.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/orders_controller.rb:6:in `new'
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-05-18 06:25:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (40.4ms)
+Completed 500 Internal Server Error in 713ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No Ransack::Search object was provided to search_form_for!):
+    38:       <div class="row">
+    39:         <div class="col-xs-6">
+    40:               <dl class="searchbox">
+    41:                 <%= search_form_for(@search, url:products_search_path) do |f| %>
+    42:                   <dt><%= f.text_field :product_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+    43:                   <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    44:                 <% end %>
+  
+app/views/layouts/application.html.erb:41:in `_app_views_layouts_application_html_erb___3002413811926974338_70114597232160'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:26:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 749ms (Views: 703.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/user_products" for 10.0.2.2 at 2019-05-18 06:26:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UserProductsController#index as HTML
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/user_products_controller.rb:36:in `find_my_order'
+Started GET "/" for 10.0.2.2 at 2019-05-18 06:26:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 705ms (Views: 660.9ms | ActiveRecord: 1.6ms)
+
+
