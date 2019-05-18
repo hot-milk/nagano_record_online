@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 def new
 	@order = Order.new
 	@shipment = Shipment.new
-	@user = User.find(params[:current_user])
+	@user = User.find(params[:id])
 end
 
 def create
@@ -18,14 +18,18 @@ def create
     end
 end
 
+def show
+	@order = Order.find(params[:id])
+	@user = User.find(params[:id])
+end
+
 def index
 	@order = Order.all
-end
 
 private
 
 def order_params
-	params.require(:order).permit(:payment_method, :ship_status, :toatal_price, :order_ship_last_name, :order_ship_fisrt_name, :order_ship_ruby_last_name, :order_ship_ruby_first_name, :order_ship_postcode, :order_ship_adress)
+	params.require(:order).permit(:payment_method, :ship_status, :total_price, :order_ship_last_name, :order_ship_fisrt_name, :order_ship_ruby_last_name, :order_ship_ruby_first_name, :order_ship_postcode, :order_ship_adress)
 end
 
 def shipment_params
