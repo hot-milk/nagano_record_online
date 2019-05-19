@@ -22,7 +22,7 @@
             <br>
             <br>
         	<h3>返信フォーム</h3><br>
-        	<%= form_for(@contact) do |f| %>
+        	<%= form_for [@user, @contact] do |f| %>
 				<%= f.text_area :responce, autofocus: true, class: "responce" %><br>
     			<%= f.submit "返信", class: "" %>
         	<% end %>
