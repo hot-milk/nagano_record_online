@@ -4,6 +4,7 @@ class ContactsController < ApplicationController
 	end
 
 	def create
+		@user = User.find(params[:user_id])
 		@contact = Contact.new(contact_params)
 		@contact.user_id = current_user.id
 		if @contact.save
@@ -20,10 +21,12 @@ class ContactsController < ApplicationController
 	end
 
 	def show
+		@user = User.find(params[:user_id])
 		@contact = Contact.find(params[:id])
 	end
 # 問い合わせ返信
 	def update
+		@user = User.find(params[:user_id])
 		@contact = Contact.find(params[:id])
 		if @contact.update(contact_params)
 			flash[:success] = '返信しました'

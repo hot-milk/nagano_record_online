@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :contacts, only:[:index,:create,:destroy]
   devise_for :users
   resources :users, except:[:new, :create] do
-    resources :contacts, only:[:show, :update]
+    resources :contacts, only:[:show,:update]
   end
   resources :products do
     resources :recorded_musics, only:[:create,:destroy]
