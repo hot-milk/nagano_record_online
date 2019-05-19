@@ -2,54 +2,68 @@
 <div class="container">
   <div class="row">
      <div class="col-xs-8 col-xs-offset-2">
-   <h2>新規会員登録</h2>
    <%= render "devise/shared/error_messages", resource: resource %>
      </div>
  </div>
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
+      <div class="text-center">
+      <h2>新規会員登録</h2>
+      </div>
     <div class="field">
-      <form class="form-inline">
+      <!-- <form class="form-inline"> -->
         <p> 姓名</p>
+      <div class="row">
+        <div class="col-xs-6">
         <p>姓</p>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name, style: "width:100%;" %>
+        </div>
+        <div class="col-xs-6">
         <p>名</p>
-        <%= f.text_field :first_name %>
-      </form>
+        <%= f.text_field :first_name, style: "width:100%;" %>
+        </div>
+      </div>
+      <!-- </form> -->
     </div>
     <div class="field">
       <p>フリガナ</p>
+      <div class="row">
+        <div class="col-xs-6">
       <p>セイ</p>
-        <%= f.text_field :ruby_last_name %>
+        <%= f.text_field :ruby_last_name, style: "width:100%;" %>
+      </div>
+      <div class="col-xs-6">
       <p>メイ</p>
-        <%= f.text_field :ruby_first_name %>
+        <%= f.text_field :ruby_first_name, style: "width:100%;" %>
+      </div>
+    </div>
     </div>
     <div class="field">
       <p>郵便番号（ハイフンなし）</p>
-        <%= f.text_field :postcode %>
+        <%= f.text_field :postcode, style: "width:100%;" %>
     </div>
     <div class="field">
       <p>住所</p>
-        <%= f.text_field :address %>
+        <%= f.text_field :address, style: "width:100%;" %>
     </div>
     <div class="field">
       <p>電話番号（ハイフンなし）</p>
-        <%= f.text_field :phone %>
+        <%= f.text_field :phone, style: "width:100%;" %>
     </div>
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, style: "width:100%;", autofocus: true, autocomplete: "email" %>
     </div>
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, style: "width:100%;", autocomplete: "new-password" %>
     </div>
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, style: "width:100%;",autocomplete: "new-password" %>
     </div>
     <div class="actions">
       <%= f.submit "登録する" %>
