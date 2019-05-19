@@ -2,7 +2,7 @@
     <div class="row">
         <div class="">
             <h4>店舗への問い合わせ</h4>
-            <%= form_for(contact) do |f| %>
+            <%= form_for [user, contact] do |f| %>
                 <h4>件名</h4><br>
                     <%= f.text_field :title, class: "" %>
                 <h4>内容</h4><br>
@@ -12,4 +12,4 @@
         </div>
     </div>
 </div>
-<%# <%= render 'contacts/list', contact: @contact %>
+<%# <%= render 'contacts/list', contact: @contact, user: @user %>
