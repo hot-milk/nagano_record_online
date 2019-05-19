@@ -1,6 +1,22 @@
   <tr class="nested-fields">
-    <td><%= f.text_field :recorded_music_name, placeholder:"曲名" %></td>
-    <td><%= f.number_field :recorded_disk_number, min: 0, placeholder:"ディスク番号" %></td>
-    <td><%= f.number_field :recorded_music_number, min: 0, placeholder:"曲順" %></td>
-    <td><%= link_to_remove_association "remove music", f %></td>
+    <td>
+    	<div class="col-xs-6">
+    	<%= f.text_field :recorded_music_name, placeholder:"曲名", class: 'form-control input-sm' %>
+        </div>
+    </td>
+    <td>
+    	<div class="col-xs-2">
+    	<%= f.number_field :recorded_disk_number, min: 1, placeholder:"ディスク番号", class: 'form-control input-sm' %>
+        </div>
+    </td>
+    <td>
+    	<div class="col-xs-2">
+    	<%= f.number_field :recorded_music_number, min: 1, placeholder:"曲順", class: 'form-control input-sm' %>
+        </div>
+    </td>
+    <td>
+    	<div class="col-xs-2">
+    	<%= link_to_remove_association "削除", f %>
+        </div>
+    </td>
  </tr>
