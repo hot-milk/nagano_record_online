@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
 	end
 
 	def create
-		@contact = Contact.new(params[:id])
+		@contact = Contact.new(contact_params)
 		@contact.user_id = current_user.id
 		if @contact.save
 			flash[:success] = '送信されました'
@@ -31,6 +31,12 @@ class ContactsController < ApplicationController
 			redirect_to "/contacts"
 		end
 	end
+
+	def destroy
+	    @contact = Contact.find(params[:id])
+	    @contact.destroy
+	    redirect_to '/contacts'
+  	end
 
 
 	private
