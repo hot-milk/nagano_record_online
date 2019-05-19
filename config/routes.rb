@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'products/admin' => 'products#admin'
   get 'products/search' => 'products#search'
   resource :shipment, only:[:create]
-  resources :contacts, only:[:index,:create,:destroy]
+  resources :contacts, only:[:index,:create,:destroy,:update]
   devise_for :users
   resources :users, except:[:new, :create] do
     resources :contacts, only:[:show, :update]
