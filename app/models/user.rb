@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  acts_as_paranoid#論理削除paranoid
+
+  validates :last_name, :first_name, :ruby_last_name, :ruby_first_name,
+   length: { minimum: 1, maximum: 200 }
 
   has_many :orders, dependent: :destroy
   has_many :user_products, dependent: :destroy
