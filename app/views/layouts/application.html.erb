@@ -34,7 +34,7 @@
         </div>
 
         <!-- ここから検索BOXおよびNAVバーの記述 -->
-        <% if current_user.admin? %>
+        <% if current_user && current_user.admin? %>
             <nav class="navbar navbar-default">
               <div class="container">
                 <div class="row">
