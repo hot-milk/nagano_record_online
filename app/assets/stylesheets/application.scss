@@ -45,6 +45,10 @@ a {
 
 body {
 	font-family: 'M PLUS Rounded 1c', sans-serif;
+    a:link {color:#3b4350; text-decoration:none }
+    a:visited { color:#3b4350; text-decoration:none }
+    a:hover { color:#8699b8; text-decoration:none }
+    a:active { color:#3b4350; text-decoration:none }
 }
 
 /*ここからヘッダーの関する記述*/

@@ -2,17 +2,19 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
               <% @products.each do |product| %>
-                <div class="product_container">
-                    <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %>
-                    <br>
-                   <%= link_to product_path(product.id) do %>
-                   <%= product.product_name %>
-                   <% end %>
-                   <br>
-                   <%= product.artist.artist_name %>
-                   <br>
-                   ¥<%= product.price.to_i * 1.08 %>(税込)
-                </div>
+                <% if product.status == "販売中" %>
+                  <div class="product_container">
+                      <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %>
+                      <br>
+                     <%= link_to product_path(product.id) do %>
+                     <%= product.product_name %>
+                     <% end %>
+                     <br>
+                     <%= product.artist.artist_name %>
+                     <br>
+                     ¥<%= product.price.to_i * BigDecimal("1.08").ceil %>(税込)
+                  </div>
+                <% end %>
               <% end %>
 		</div>
 	</div>

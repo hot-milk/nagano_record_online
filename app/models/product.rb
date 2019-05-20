@@ -11,5 +11,4 @@ class Product < ApplicationRecord
 	enum product_category: [:シングル,:アルバム]
 	enum status: [:販売中,:販売停止中]
 	attachment :jacket_image
-
 end
