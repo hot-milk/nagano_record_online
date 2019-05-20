@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    #admin権限付与(仮)
+    user = User.find(5)
+    user.admin = true
+    user.save
     @user = User.find(params[:id])
   end
 
