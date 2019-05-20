@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
@@ -20,11 +21,15 @@
             <div class="top_link">
               <div class="header_link_item_box">
                   <li class="header_link_item">
-                    <%= link_to "ゲスト様", orders_path %>
+                    <% if user_signed_in? %>
+                      <%= link_to current_user.first_name, user_path(current_user) %>様
+                    <% else %>
+                      <%= link_to "ゲスト様", orders_path %>
+                    <% end %>
                   </li>
                   <li class="header_link_item">
-                    <%= link_to "新規登録", new_user_registration_path%>
-                    <%= link_to "/ログイン", new_user_session_path %>
+                    <%= link_to "新規登録", new_user_registration_path%>/
+                    <%= link_to "ログイン", new_user_session_path %>
                   </li>
                   <li class="header_link_item">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -69,7 +74,7 @@
                                 <%= link_to "マイページ", orders_path %>
                               </li>
                               <li>
-                                <%= link_to "カート", user_products_path %>
+                                <%= link_to "カート", user_products_path,class: 'fas fa-shopping-cart' %>
                               </li>
                           </ul>
                       </div>
@@ -101,7 +106,7 @@
                                 <%= link_to "マイページ", orders_path %>
                               </li>
                               <li>
-                                <%= link_to "カート", user_products_path %>
+                                <%= link_to "カート", user_products_path,class: 'fas fa-shopping-cart' %>
                               </li>
                           </ul>
                       </div>
