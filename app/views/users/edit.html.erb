@@ -1,28 +1,43 @@
 <div class="container">
 	<div class="row">
-		<div class="">
-			<h2>ユーザー情報編集</h2>
+		<div class="col-xs-4 col-xs-offset-4"><%# offsetで両端除去 %>
+			<h2 class="text-center">ユーザー情報編集</h2>
 			<%= form_for(@user) do |f| %>
 			<h4><姓名></h4>
-				<p>姓</p><%= f.text_field :last_name, class: "col-xs-" %>
-				<p>名</p><%= f.text_field :first_name, class: "col-xs-" %>
+				<div class="row">
+					<div class="col-xs-6">
+						<p>姓</p><%= f.text_field :last_name, style: "width:100%" %>
+					</div>
+					<div class="col-xs-6">
+						<p>名</p><%= f.text_field :first_name, style: "width:100%" %>
+					</div>
+				</div>
 			<h4><フリガナ></h4>
-				<P>セイ</P><%= f.text_field :ruby_last_name, class: "col-xs-" %>
-				<P>メイ</P><%= f.text_field :ruby_first_name, class: "col-xs-" %>
+				<div class="row">
+					<div class="col-xs-6">
+						<P>セイ</P><%= f.text_field :ruby_last_name, style: "width:100%" %>
+					</div>
+					<div class="col-xs-6">
+						<P>メイ</P><%= f.text_field :ruby_first_name, style: "width:100%" %>
+					</div>
+				</div>
 			<h4><郵便番号(ハイフンなし)></h4>
-				<%= f.text_field :postcode, class: "col-xs-" %>
+				<%= f.text_field :postcode, style: "width:100%" %>
 			<h4><住所></h4>
-				<%= f.text_field :address, class: "col-xs-" %>
+				<%= f.text_field :address, style: "width:100%" %>
 			<h4><電話番号(ハイフンなし)></h4>
-				<%= f.text_field :phone, class: "col-xs-" %>
+				<%= f.text_field :phone, style: "width:100%" %>
 			<h4><メールアドレス></h4>
-				<%= f.text_field :email, class: "col-xs-" %>
+				<%= f.text_field :email, style: "width:100%" %>
+			<%#
 			<h4><パスワード></h4>
-				<%= f.text_field :password, class: "col-xs-" %>
+				<%= f.password_field :password, class: "col-xs-" %>
 			<br>
 			<br>
 			<div class="row">
-				<%= f.submit "更新する", class: "" %>
+				<div class="col-xs-4">
+					<%= f.submit "更新する" %>
+				</div>
 			</div>
 			<% end %>
 		</div>
