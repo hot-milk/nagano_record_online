@@ -40,5 +40,11 @@
 	            </table>
             <% end %>
 		</div>
+		<div class="col-xs-2">
+			<%= form_for (@user_product) do |user_product| %>
+			<%= user_product.text_field :user_product_number, value: "1" %>
+			<%= user_product.submit "カートへ商品を追加", class: 'btn btn-success w-100' %>
+			<% end %>
+		</div>
 	</div>
 </div>

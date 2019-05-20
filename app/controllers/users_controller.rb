@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    #admin権限付与(仮)
+    user = User.find(1)
+    user.admin = true
+    user.save
     @user = User.find(params[:id])
   end
 
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :postcode, :address, :phone, :encrypted_password)
+    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
   end
 
 end
