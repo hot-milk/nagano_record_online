@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     #admin権限付与(仮)
-    user = User.find(5)
+    user = User.find(1)
     user.admin = true
     user.save
     @user = User.find(params[:id])
