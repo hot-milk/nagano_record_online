@@ -1,12 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+
 <h2>ショッピングカート</h2>
 
-<!-- テーブルタグにてカート内容を表示する -->
-<table class="table">
+<% if flash[:notice2] %>
+<div class="flash">
+  <%= flash[:notice2] %>
+</div>
+<% end %>
+
+<table class="table table-hover">
 
 	<tr>
 		<th></th>
 		<th>シングル/アルバム名</th>
-		<th>アーティスト名</th>
+		<th width="120">アーティスト名</th>
 		<th>価格</th>
 		<th>数量</th>
 		<th></th>
@@ -16,15 +25,15 @@
     <% @user_product.each do |user_product| %>
 
 	<tr>
-		<td><%= attachment_image_tag user_product.product_id.jacket_image_id, :cd_image, size: "100x100" %></td><!-- モデルからジャケット画像を取得 -->
-		<td><%= user_product.product_id.product_name %></td><!-- モデルからシングル/アルバム名を取得 -->
-		<td><%= user_product.product_id.artist_id.artist_name %></td><!-- モデルからアーティスト名を取得 -->
-		<td><%= user_product.product_id.price %></td><!-- モデルから価格を取得 -->
+		<td><%= attachment_image_tag user_product.product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %></td>
+		<td><%= user_product.product.product_name %></td>
+		<td><%= user_product.product.artist.artist_name %></td>
+		<td><%= user_product.product.price %></td>
 		<%= form_for(user_product) do |f| %>
-		    <td><%= f.text_field :user_product_number, autofocus:true %></td><!-- フォーム内にモデルから取得した数量を表示させ、値を変更することで数量の変更を可能とする -->
-		<td><%= f.submit "変更" %></td>
+		    <td><%= f.text_field :user_product_number, autofocus:true, class: "product_number_form" %></td>
+		<td><%= f.submit "変更", class: "btn btn-link" %></td>
 		<% end %>
-		<td><%= link_to "削除", user_products_path(user_product), method: :delete %></td>
+		<td><%= link_to "削除", user_product_path(user_product), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-link"  %></td>
 	</tr>
 
 	<% end %>
@@ -33,4 +42,8 @@
 
 <%= @price_total %>
 <%= link_to "購入手続きへ", new_order_path, class: "btn btn-primary" %>
+
+</div>
+</div>
+</div>
 
