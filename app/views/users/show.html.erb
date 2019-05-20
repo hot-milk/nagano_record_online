@@ -45,28 +45,28 @@
 		<section class="col-xs-12">
 			<h3>マイページ</h3>
 			<div class="row">
-				<div class="col-xs-5">
+				<div class="col-xs-7 text-left">
 					<div class="row">
 						<div class="col-xs-3">
 							<p><strong>ユーザー情報</strong></p>
 						</div>
-						<dl class="dl-horizontal col-xs-9"><%# 改行されないリスト  %>
+						<div class="col-xs-9">
 							<%= form_for(@user) do |f| %>
-								<dt>氏名</dt><dd><%= @user.last_name %><%= @user.first_name %></dd>
-								<dt>住所</dt><dd><%= @user.address %></dd>
-								<dt>電話番号</dt><dd><%= @user.phone %></dd>
-								<dt>メール</dt><dd><%= @user.email %></dd>
+								<p style="display:inline;">氏名：</p><%= @user.last_name %><%= @user.first_name %><br>
+								<p style="display:inline;">住所：</p><%= @user.address %><br>
+								<p style="display:inline;">電話番号：</p><%= @user.phone %><br>
+								<p style="display:inline;">メール：</p><%= @user.email %><br>
 							<% end %>
-						</dl>
+						</div>
 					</div>
 				</div>
 
-				<div class="col-xs-7">
+				<div class="col-xs-5 text-right">
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-xs-6">
 							<%= link_to "個人情報の変更はこちら", edit_user_path(@user), class: "" %>
 						</div>
-						<div class="col-xs-5">
+						<div class="col-xs-4">
 							<%= link_to '退会', user_path, method: :delete, "data-confirm" => "退会しますか？", class: "btn-sm destroy_user_#{@user.id}" %>
 						</div>
 					</div>
@@ -74,10 +74,65 @@
 			</div>
 		</section>
 	</div>
-				<p>購入履歴</p>
-				<div class="row">
-				</div>
+<!-- 購入履歴 -->
+	<div class="row">
+		<p><strong>購入履歴</strong></p>
+		<div class="col-xs-10 col-xs-offset-1">
+			<% @orders.each do |order| %>
+				<table>
+					<tr>
+						<th>購入者</th>
+						<th>購入日</th>
+						<th>送付先</th>
+						<th>ステータス</th>
+					</tr>
+					<tr>
+						<td><%= order.user.last_name %><%= order.user.first_name %><td>
+						<td><%= order.created_at %></td>
+						<td><%= order.user.shipment.ship_postcode %>
+							<%= order.user.shipment.ship_address %>
+						</td>
+						<td><%= order.ship_status %></td>
+					</tr>
+				</table>
+				<p><strong>購入内容</strong></p>
+				<% @items.each do |item| %>
+					<table>
+						<tr>
+							<th>シングル/アルバム名</th>
+							<th>購入枚数</th>
+							<th>小計</th>
+						</tr>
+						<tr>
+							<td><%= item.product.product_name %></td>
+							<td><%= item.order_item_number %></td>
+							<td><%= item.order_item_price %></td>
+						</tr>
+						<p style="style:inline;">購入価格総計  </p><% item.order.total_price.to_i * 1.08.floor %>
+					</table>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

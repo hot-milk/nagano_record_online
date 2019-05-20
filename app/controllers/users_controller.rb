@@ -5,11 +5,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    #admin権限付与(仮)
     user = User.find(1)
     user.admin = true
     user.save
     @user = User.find(params[:id])
+    #@userに紐付いているordersをkaminari式で
+    @orders = @user.orders.page(params[:page]).reverse_order
+    #仮
+    @items = @user.orders.orders_items.page(params[:page]).reverse_order
   end
 
   def new
