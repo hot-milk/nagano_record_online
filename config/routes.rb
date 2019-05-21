@@ -7,7 +7,7 @@ namespace :admin do
   get 'products/admin' => 'products#admin'
 end
   get 'products/search' => 'products#search'
-  resource :shipment, only:[:create]
+  resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]
   devise_for :users
   resources :users, only: [:index]
@@ -25,5 +25,6 @@ end
   resources :labels, except:[:show]
   resources :genres, except:[:show]
   resources :artists, except:[:show]
+  resources :order_items, except:[:show,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
