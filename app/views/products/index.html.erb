@@ -1,35 +1,14 @@
 <div class="container-fluid">
 	<div class="row">
     <div class="col-xs-2">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            週間売り上げランキング
-          </div>
-          <div class="panel-body">
-            ○○月○週付
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item">1位リスト項目Ａ</li>
-            <li class="list-group-item">2位リスト項目Ｂ</li>
-            <li class="list-group-item">3位リスト項目Ｃ</li>
-            <li class="list-group-item">4位リスト項目Ａ</li>
-            <li class="list-group-item">5位リスト項目Ｂ</li>
-            <li class="list-group-item">6位リスト項目Ａ</li>
-            <li class="list-group-item">7位リスト項目Ｂ</li>
-            <li class="list-group-item">8位リスト項目Ｃ</li>
-            <li class="list-group-item">9位リスト項目Ａ</li>
-            <li class="list-group-item">10位リスト項目Ｂ</li>
-          </ul>
-        </div>
         <%= render '/contacts/list', contact: @contact %>
     </div>
 		<div class="col-xs-10">
         <% @products.each do |product| %>
             <% if product.status == "販売中" %>
               <div class="product_container">
-                  <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %>
-                  <br>
                   <%= link_to product_path(product.id) do %>
+                  <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %><br>
                   <%= product.product_name %>
                   <% end %>
                   <br>

@@ -1,52 +1,112 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<table class="table table-hover">
-	            <thead>
-	              <tr>
-	                <th>商品名</th>
-	                <th>アーティスト名</th>
-	                <th>税抜価格</th>
-	                <th>在庫数</th>
-	                <th>&nbsp;</th>
-	                <th>&nbsp;</th>
-	              </tr>
-	            </thead>
-	            <tbody>
-	                <tr>
-	                  <td> <%= @product.product_name %></td>
-	                  <td> <%= @product.artist.artist_name %></td>
-	                  <td> ￥<%= @product.price.to_i * 1.08 %></td>
-	                  <td> <%= @product.stock %></td>
-	                  <td> <%= attachment_image_tag @product, :jacket_image, :fill, 100, 100, format: 'jpeg' %></td>
-	                </tr>
-	            </tbody>
-            </table>
-            <h4>この商品のレビュー</h4>
-            <%= link_to '新規登録', new_product_review_path(@product.id), class:"btn btn-default" %>
-            <% @reviews.each do |review| %>
-				<table class="table table-hover">
-		            <tbody>
-		                <tr>
-		                  <td>
-
-		                  	<dt> <%= review.review_content %></dt>
-		                  </td>
-		                  <td> <%= review.created_at %></td>
-		                  <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
-		                  <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
-		                </tr>
-		            </tbody>
-	            </table>
-            <% end %>
-		</div>
-		<div class="col-xs-2">
-			<%= form_for (@user_product) do |user_product| %>
-			<%= user_product.hidden_field :product_id, :value => @product.id %>
-			<%= user_product.hidden_field :user_id, :value => current_user.id %>
-			<%= user_product.text_field :user_product_number, value: "1" %>
-			<%= user_product.submit "カートへ商品を追加", class: 'btn btn-success w-100' %>
-			<% end %>
+    <div class="col-xs-2">
+        <%= render '/contacts/list', contact: @contact %>
+    </div>
+		<div class="col-xs-10">
+			<div class="row">
+				<div class="col-xs-4">
+					<h2><strong><%= @product.product_name %></strong><small> <%= @product.product_category %></small></h2>
+					<h3><%= @product.artist.artist_name %><small> <%= @product.label.label_name %></small></h3>
+					<%= attachment_image_tag @product, :jacket_image, format: 'jpeg', fallback: "no_image.jpg" ,size: '380x380' %>
+					<% if @product.favorited_by?(current_user) %>
+					  <h3>
+					    <%= link_to product_favorite_path(@product), method: :delete do %>
+					      <i class="far fa-thumbs-up" aria-hidden="true" style="color: blue;"></i>
+					    <% end %>
+					    <%= @product.favorites.count %> いいね
+					  </h3>
+					<% else %>
+					  <h3>
+					    <%= link_to product_favorites_path(@product), method: :post do %>
+					      <i class="fas fa-thumbs-up" aria-hidden="true" style="color: grey;"></i>
+					    <% end %>
+					    <%= @product.favorites.count %> いいね
+					  </h3>
+					<% end %>
+				</div>
+				<div class="recorded-music-table col-xs-6">
+				    <% @recorded_musics.each do |key,recorded_musics| %>
+					<table class="table table-hover table-condensed table-striped">
+				        <thead>
+				            <tr>
+				                <th>ディスク<%= key %></th>
+				                <th>曲名</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<% recorded_musics.each do |recorded_music| %>
+				              <tr>
+				              	<td>
+				              	<%= recorded_music.recorded_music_number %>
+				                </td>
+				              	<td>
+				              	<%= recorded_music.recorded_music_name %>
+				                </td>
+				              </tr>
+				            <% end %>
+				        </tbody>
+				    </table>
+				    <% end %>
+				</div>
+				<div class="cart-panel col-xs-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							購入はこちらから
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item">
+								税込価格￥<%= @product.price.to_i * BigDecimal("1.08").ceil %>
+							</li>
+							<li class="list-group-item">
+								在庫状況:
+								<% if @product.stock.to_i == 0 %>
+			                      <i class="fas fa-times my-red"></i>
+			                    <% elsif @product.stock.to_i > 0 && @product.stock.to_i <= 10 %>
+			                      <i class="fas fa-exclamation-triangle my-orange"></i>
+			                    <% else %>
+			                      <i class="far fa-circle my-green"></i>
+			                    <% end %>
+			                </li>
+							<%= form_for (@user_product) do |user_product| %>
+							<li class="list-group-item">
+									<%= user_product.hidden_field :product_id, :value => @product.id %>
+									<%= user_product.hidden_field :user_id, :value => current_user.id %>
+									<div class ="form-froup">
+										<%= user_product.label :user_product_number, "数量",class: "control-label" %>
+										<%= user_product.number_field :user_product_number, value: "1", class: 'form-control' %>
+								    </div>
+							</li>
+							<li class="list-group-item">
+								<% if @product.stock.to_i > 0 %>
+							      <%= user_product.submit "カートに追加", class: 'btn btn-primary' %>
+							    <% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+					<h4>この商品のレビュー　<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %></h4>
+				        <% @reviews.each do |review| %>
+						    <table class="table table-hover">
+						        <tbody>
+						            <tr>
+						                <td>
+						                  	<dt> <%= review.created_at.strftime("%Y-%m-%d") %></dt>
+						                </td>
+						                <td> <%= review.review_content %></td>
+						                <% if current_user.admin? %>
+						                <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
+						                <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+						                <% end %>
+						            </tr>
+						        </tbody>
+					        </table>
+			            <% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
