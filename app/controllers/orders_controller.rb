@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  
 def new
 	@order = Order.new
 	@shipment = Shipment.new
@@ -36,7 +36,7 @@ def order_params
 end
 
 def shipment_params
-	params.require(:shipment).permit(:user_id, :ship_last_name, :ship_first_name, :ship_ruby_last_name, :ship_ruby_first_name, :ship_postcode, :ship_address)
-end
+		params.require(:shipment).permit(:user_id, :ship_last_name, :ship_first_name, :ship_ruby_last_name, :ship_ruby_first_name, :ship_postcode, :ship_address)
+	end
 
 end

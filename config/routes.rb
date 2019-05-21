@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-
+  
   root to: 'products#index'
   get '/about' => 'static_pages#about'
+namespace :admin do
   get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
+end
   get 'products/search' => 'products#search'
   resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]
   devise_for :users
+  resources :users, only: [:index]
   resources :users, except:[:new, :create] do
     resources :contacts, only:[:show,:update]
+
   end
   resources :products do
     resources :recorded_musics, only:[:create,:destroy]
