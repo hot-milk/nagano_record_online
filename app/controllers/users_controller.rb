@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: []
   before_action :admin_user
-  user_signed_in?
+  #before_action :user_signed_in
+  #current_user
+  #user_session #多分いら
 
-  current_user
-  #user_session #多分いらん！
+
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -26,8 +27,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-  @user.save
-  redirect_to user_path(@user.id)
+    @user.save
+    redirect_to user_path(@user.id)
   end
 
   def edit
@@ -53,13 +54,13 @@ class UsersController < ApplicationController
     redirect_to '/users'
   end
 
+
 private
   def user_params
     params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
   end
   def admin_user
-    puts "admin"
-    puts current_user
+    
       redirect_to(root_url) unless current_user.admin?
   end
 
