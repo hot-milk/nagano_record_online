@@ -8,7 +8,11 @@ class UsersController < ApplicationController
 
 
   def index
-     @users = User.page(params[:page]).reverse_order
+    if current_user.admin?#仮if文
+      @users = User.page(params[:page]).reverse_order
+    else
+      redirect_to '/products'
+    end
   end
 
   def show
@@ -19,7 +23,12 @@ class UsersController < ApplicationController
     #@userに紐付いているordersをkaminari式で
     @orders = @user.orders.page(params[:page]).reverse_order
     #仮
-    @items = @user.orders.orders_items.page(params[:page]).reverse_order
+    #@items = @user.orders.orders_items.page(params[:page]).reverse_order
+    #if (current_user.admin?) || (current_user.id == @user.id)#仮if文
+    #  redirect_to users_path(@user.id)
+    #else
+    #  redirect_to '/products'
+    #end
   end
 
   def new
@@ -32,10 +41,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
-  	#if @user.id != current_user.id || @user.id != current_user.admin
-  		#redirect_to user_path(@user.id)
-  	#end
+    @user = User.find(params[:id])
+    if current_user.admin? || current_user.id == @user.id
+      redirect_to user.path(@user.id)
+    else
+      redirect_to '/products'
+    end
   end
 
   def update
@@ -51,7 +62,11 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to '/users'
+    if current_user.admin?
+      redirect_to '/users'
+    else
+      redirect_to new_user_session_path
+    end
   end
 
 

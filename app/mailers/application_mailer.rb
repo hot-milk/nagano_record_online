@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
-  layout 'mailer'
+	default from: "運営局",
+			bcc: "tanaka.taro@example.com"#非表示送信先
+  	layout 'mailer'
 end
