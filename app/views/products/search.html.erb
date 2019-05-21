@@ -7,7 +7,7 @@
                 <th>商品名</th>
                 <th>アーティスト名</th>
                 <th>税込価格</th>
-               <th>在庫数</th>
+               <th>在庫状況</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
 
@@ -18,8 +18,16 @@
                 <tr>
                   <td> <%= product.product_name %></td>
                   <td> <%= product.artist.artist_name %></td>
-                  <td>¥<%= product.price.to_i * 1.08 %></td>
-                  <td> <%= product.stock %></td>
+                  <td>¥<%= product.price.to_i * BigDecimal("1.08").ceil %></td>
+                  <td>
+                    <% if product.stock.to_i == 0 %>
+                      <i class="fas fa-times my-red"></i>
+                    <% elsif product.stock.to_i > 0 && product.stock.to_i <= 10 %>
+                      <i class="fas fa-exclamation-triangle my-orange"></i>
+                    <% else %>
+                      <i class="far fa-circle my-green"></i>
+                    <% end %>
+                   </td>
                   <td> <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg' %></td>
                 </tr>
               <% end %>
