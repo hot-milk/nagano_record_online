@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'products#index'
   get '/about' => 'static_pages#about'
 namespace :admin do

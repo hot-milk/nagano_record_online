@@ -1,8 +1,8 @@
 class UserProductsController < ApplicationController
 	before_action :authenticate_user!
-	user_signed_in?
+	#user_signed_in?
 	before_action :admin_user
-	current_user
+	#current_user
 	# before_action :find_my_order
 
 
