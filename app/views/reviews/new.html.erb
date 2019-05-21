@@ -1,12 +1,18 @@
-<h2>レビュー新規投稿</h2>
-<%= form_for [@product, @review] do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2>レビュー新規投稿</h2>
+			<%= form_for [@product, @review] do |f| %>
 
-  <div class="field">
-    <%= f.label :review_content, "レビュー内容" %>
-    <%= f.text_area :review_content %>
-  </div>
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
+			  <div class="field form-group">
+			    <%= f.label :review_content, "レビュー内容" %>
+			    <%= f.text_area :review_content, class: 'form-control' %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit "登録",class: 'btn btn-default pull-right' %>
+			  </div>
 
-<% end %>
+			<% end %>
+	    </div>
+    </div>
+</div>
