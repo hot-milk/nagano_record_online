@@ -1,6 +1,15 @@
 <h2>購入手続き</h2>
 <p>購入金額合計</p>
 
+<%= form_for(@order_item) do |order_item| %>
+    <% @user_product.each do |user_product| %>
+        <%= order_item.hidden_field :order_id, :value => @order.id %>
+        <%= order_item.hidden_field :product_id, :value => user_product.product_id %>
+        <%= order_item.hidden_field :order_item_number, :value => user_product.user_product_number %>
+        <%= order_item.hidden_field :order_item_price, :value => user_product.product.price %>
+    <% end %>
+<% end %>
+
 <p>支払方法</p>
 <%= form_for(@order) do |f| %>
 <label>
@@ -11,27 +20,22 @@
 	<%= f.radio_button :payment_method, "3" %>代引き</label>
 
 <p>配送先住所</p>
-<label>
-	<input type="radio" name="button1" value="1" />登録先住所へ配送する</label>
-<label>
-	<input type="radio" name="button2" value="2" />新たに配送先を設定する</label>
 
-<% if params[:button1] %>
 
-<% f.text_field :order_ship_last_name, "#{@user.last_name}" %>
-<% f.text_field :order_ship_first_name, "#{@user.first_name}" %>
-<% f.text_field :order_ship_ruby_last_name, "#{@user.ruby_last_name}" %>
-<% f.text_field :order_ship_ruby_first_name, "#{@user.ruby_first_name}" %>
-<% f.text_field :order_ship_postcode, "#{@user.postcode}" %>
-<% f.text_field :order_ship_adress, "#{@user.address}" %>
+<%= f.hidden_field :order_ship_last_name, :value => @user.last_name %>
+<%= f.hidden_field :order_ship_first_name, :value => @user.first_name %>
+<%= f.hidden_field :order_ship_ruby_last_name, :value => @user.ruby_last_name %>
+<%= f.hidden_field :order_ship_ruby_first_name, :value => @user.ruby_first_name %>
+<%= f.hidden_field :order_ship_postcode, :value => @user.postcode %>
+<%= f.hidden_field :order_ship_adress, :value => @user.address %>
 
-<% else params[:button2] %>
+<% else %>
 
 <div class="field">
 <%= f.label :order_ship_last_name, "姓" %>
 <%= f.text_field :order_ship_last_name %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_last_name %>
+    <%= ship.hidden_field :ship_last_name %>
     <% end %>
 </div>
 
@@ -39,7 +43,7 @@
 <%= f.label :order_ship_first_name, "名" %>
 <%= f.text_field :order_ship_first_name %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_first_name %>
+    <%= ship.hidden_field :ship_first_name %>
     <% end %>
 </div>
 
@@ -47,7 +51,7 @@
 <%= f.label :order_ship_ruby_last_name, "セイ" %>
 <%= f.text_field :order_ship_ruby_last_name %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_ruby_last_name %>
+    <%= ship.hidden_field :ship_ruby_last_name %>
     <% end %>
 </div>
 
@@ -55,29 +59,28 @@
 <%= f.label :order_ship_ruby_first_name, "メイ" %>
 <%= f.text_field :order_ship_ruby_first_name %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_ruby_first_name %>
+    <%= ship.hidden_field :ship_ruby_first_name %>
     <% end %>
 </div>
 
 <div class="field">
-<%= f.label :order_hip_postcode, "郵便番号" %>
-<%= f.text_field :order_ship_postcode %>
+<%= f.label :order_ship_post_code, "郵便番号" %>
+<%= f.text_field :order_ship_post_code %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_postcode %>
+    <%= ship.hidden_field :ship_postcode %>
     <% end %>
 </div>
 
 <div class="field">
-<%= f.label :order_ship_adress, "住所" %>
-<%= f.text_field :order_ship_adress %>
+<%= f.label :order_ship_address, "住所" %>
+<%= f.text_field :order_ship_address %>
     <%= fields_for(@shipment) do |ship| %>
-    <%= ship.text_field :ship_adress %>
+    <%= ship.hidden_field :ship_address %>
     <% end %>
-
 </div>
 
 <% end %>
 
 <%= f.submit "購入する"%>
-
 <% end %>
+

@@ -3,13 +3,15 @@ class OrdersController < ApplicationController
 def new
 	@order = Order.new
 	@shipment = Shipment.new
-	@user = User.find(params[:id])
+	@user = User.find(current_user.id)
+	@order_item = OrderItem.new
+	@user_product = UserProduct.where(user_id: current_user.id)
 end
 
 def create
-	order = Oreder.new(order_params)
+	order = Order.new(order_params)
 	shipment = Shipment.new(shipment_params)
-	if oreder.save && shipment.save
+	if order.save && shipment.save
 	flash[:notice] = "購入手続きが完了しました。"
 	redirect_to orders_path
 	else
@@ -25,11 +27,12 @@ end
 
 def index
 	@order = Order.all
+end
 
 private
 
 def order_params
-	params.require(:order).permit(:payment_method, :ship_status, :total_price, :order_ship_last_name, :order_ship_fisrt_name, :order_ship_ruby_last_name, :order_ship_ruby_first_name, :order_ship_postcode, :order_ship_adress)
+	params.require(:order).permit(:payment_method, :ship_status, :total_price, :order_ship_last_name, :order_ship_fisrt_name, :order_ship_ruby_last_name, :order_ship_ruby_first_name, :order_ship_post_code, :order_ship_address)
 end
 
 def shipment_params
