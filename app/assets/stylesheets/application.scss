@@ -34,14 +34,32 @@ a {
 	clear: both;
 }
 
-/*文字色を白に指定する*/
+/*文字色を指定する*/
 .tc-white {
 	color:#ffffff;
+}
+
+.my-orange {
+	color: orange;
+}
+
+.my-red {
+	color: red;
+}
+
+.my-green {
+	color: green;
+}
+
+.my-black {
+	color: #8699b8;
 }
 
 .pr0 {
 	padding-right:0px;
 }
+
+/* リンクタグのStyle*/
 
 body {
 	font-family: 'M PLUS Rounded 1c', sans-serif;

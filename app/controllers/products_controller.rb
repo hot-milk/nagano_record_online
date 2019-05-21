@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page])
+    @contact = Contact.new
   end
 
   def search
