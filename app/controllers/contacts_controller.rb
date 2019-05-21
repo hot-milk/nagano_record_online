@@ -18,41 +18,29 @@ class ContactsController < ApplicationController
 	end
 
 	def index
-		if current_user.admin?#仮if文
-			@users = User.page(params[:page]).reverse_order
-			@contacts = Contact.page(params[:page]).reverse_order
-		else
-			redirect_to '/products'
-		end
+		@contact = Contact.new #あとで削除
+		@users = User.page(params[:page]).reverse_order
+		@contacts = Contact.page(params[:page]).reverse_order
 	end
 
 	def show
-		if current_user.admin?#仮if文
-			@user = User.find(params[:user_id])
-			@contact = Contact.find(params[:id])
-		else
-			redirect_to '/products'
-		end
+		@user = User.find(params[:user_id])
+		@contact = Contact.find(params[:id])
 	end
 # 問い合わせ返信
 	def update
 		user = User.find(params[:user_id])
-		@contact = Contact.find(params[:id])
-		if @contact.update(contact_params)
-			ContactMailer.contact_mail(@contact).deliver#Mailer呼び出し
+		contact = Contact.find(params[:id])
+		if contact.update(contact_params)
 			flash[:success] = '返信しました'
 			redirect_to "/contacts"
 		end
 	end
 
 	def destroy
-		if current_user.admin?#仮if文
-		    contact = Contact.find(params[:id])
-		    contact.destroy
-		    redirect_to '/contacts'
-		else
-			redirect_to '/products'
-		end
+	    contact = Contact.find(params[:id])
+	    contact.destroy
+	    redirect_to '/contacts'
   	end
 
 
