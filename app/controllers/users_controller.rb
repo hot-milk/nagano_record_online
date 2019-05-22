@@ -1,34 +1,31 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: []
-  before_action :admin_user
-  #before_action :user_signed_in
+  #before_action :authenticate_user!, only: [:show]
   #current_user
+  before_action :admin_user, except: [:show]
+  #before_action :user_signed_in
   #user_session #多分いら
 
 
 
   def index
-    if current_user.admin?#仮if文
-      @users = User.page(params[:page]).reverse_order
-    else
-      redirect_to '/products'
-    end
+     @users = User.page(params[:page]).reverse_order
   end
 
   def show
-    user = User.find(1)
-    user.admin = true
-    user.save
+    # user = User.find(1)
+    # user.admin = true
+    # user.save
     @user = User.find(params[:id])
+    unless current_user.admin?
+      if current_user != @user
+        redirect_to root_path
+      end
+    end
+
     #@userに紐付いているordersをkaminari式で
     @orders = @user.orders.page(params[:page]).reverse_order
     #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
-    #if (current_user.admin?) || (current_user.id == @user.id)#仮if文
-    #  redirect_to users_path(@user.id)
-    #else
-    #  redirect_to '/products'
-    #end
   end
 
   def new
@@ -41,12 +38,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    if current_user.admin? || current_user.id == @user.id
-      redirect_to user.path(@user.id)
-    else
-      redirect_to '/products'
-    end
+  	@user = User.find(params[:id])
+  	#if @user.id != current_user.id || @user.id != current_user.admin
+  		#redirect_to user_path(@user.id)
+  	#end
   end
 
   def update
@@ -62,11 +57,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    if current_user.admin?
-      redirect_to '/users'
-    else
-      redirect_to new_user_session_path
-    end
+    redirect_to '/users'
   end
 
 
@@ -75,7 +66,6 @@ private
     params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
   end
   def admin_user
-    
       redirect_to(root_url) unless current_user.admin?
   end
 
