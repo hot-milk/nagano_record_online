@@ -1,11 +1,11 @@
 class UserProductsController < ApplicationController
+
 	before_action :authenticate_user!
 	#user_signed_in?
 	#before_action :admin_user
 	#current_user
 	# before_action :find_my_order
-
-
+  
 def index
 	@user_product = UserProduct.where(user_id: current_user.id)
 	# @price_total = @user_product.sum(:product_id.price)
@@ -27,7 +27,7 @@ def update
 	redirect_to user_products_path
     else
     render "/user_products"
-end
+    end
 end
 
 def destroy
@@ -42,4 +42,14 @@ def user_product_params
 	params.require(:user_product).permit(:product_id, :user_id, :user_product_number)
 end
 
+
+  #def user_params
+    #params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+  #end
+  # def admin_user
+  #   puts "admin"
+  #   puts current_user
+  #     redirect_to(root_url) unless current_user.admin?
+  # end
+  
 end
