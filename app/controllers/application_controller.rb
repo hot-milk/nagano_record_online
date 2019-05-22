@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	before_action :set_search
+	before_action :set_host
 
 
 	def after_sign_out_path_for(resource)
@@ -11,6 +12,9 @@ class ApplicationController < ActionController::Base
 	  @search = Product.ransack(params[:q])
 	  @search_products = @search.result.page(params[:page])
 	end
+	def set_host
+    	Rails.application.routes.default_url_options[:host] = request.host_with_port
+  	end
 
 	protected
 
