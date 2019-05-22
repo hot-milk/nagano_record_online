@@ -14,9 +14,9 @@ end
 def create
 	@user_product = UserProduct.new(user_product_params)
     if @user_product.product.stock.to_i > 0
-      @user_product.save
-      flash[:notice] = "カートに商品が追加されました。"
-    redirect_to user_products_path
+       @user_product.save
+       flash[:notice] = "カートに商品が追加されました。"
+       redirect_to user_products_path
     end
 end
 

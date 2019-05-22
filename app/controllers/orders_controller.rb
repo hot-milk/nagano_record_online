@@ -9,10 +9,15 @@ end
 
 def create
 	order = Order.new(order_params)
-	user_product = UserProduct.where(user_id: current_user.id)
+	user_products = UserProduct.where(user_id: current_user.id)
 	order.user_id = current_user.id
 	order.save
-	user_product.delete_all
+	user_products.each do |user_product|
+	 	product = Product.find(user_product.product.id)
+	 	quantity = product.stock.to_i - user_product.user_product_number.to_i
+	 	product.update(stock: quantity.to_s )
+	end
+	user_products.delete_all
 	flash[:notice] = "購入手続きが完了しました。"
 	redirect_to orders_path
 	# else
