@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 	before_action :authenticate_user!, only: []
-	before_action :admin_user, :only => [:show, :index, :destroy,]
+	before_action :admin_user, :only => [:show, :index, :destroy]
 
 	User2 = Struct.new(:name, :email)
 
@@ -37,14 +37,12 @@ class ContactsController < ApplicationController
 		ContactMailer.contact_mail(user).deliver
 		flash[:success] = '返信しました'
 		redirect_to "/contacts"
-		
 	end
 
 	def destroy
 	    contact = Contact.find(params[:id])
 	    contact.destroy
 	    redirect_to '/contacts'
-		redirect_to '/products'
   	end
 
 

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :admin_user, except: [:index :show]
   def index
     @products = Product.page(params[:page])
     @contact = Contact.new
@@ -63,5 +63,8 @@ class ProductsController < ApplicationController
                                     :stock,
                                     :status,
                                     recorded_musics_attributes: [:id, :product_id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
   end
 end
