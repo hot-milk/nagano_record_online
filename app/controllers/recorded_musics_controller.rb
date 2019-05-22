@@ -1,4 +1,5 @@
 class RecordedMusicsController < ApplicationController
+	before_action :admin_user, #except: [:show]
 
 	def create
 	    product = Product.find(params[:product_id])

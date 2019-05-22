@@ -5,7 +5,6 @@ class UserProductsController < ApplicationController
 	#before_action :admin_user
 	#current_user
 	# before_action :find_my_order
-  
 def index
 	@user_product = UserProduct.where(user_id: current_user.id)
 	# @price_total = @user_product.sum(:product_id.price)
