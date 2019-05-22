@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
@@ -72,7 +73,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password, shipments_attributes: [:user_id, :ship_last_name, :ship_first_name, :ship_ruby_last_name, :ship_ruby_first_name, :ship_postcode, :ship_address])
   end
   def admin_user
     

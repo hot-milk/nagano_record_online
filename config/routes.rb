@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
-
   get 'products/search' => 'products#search'
   resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]
