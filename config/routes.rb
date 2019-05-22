@@ -2,10 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
   get '/about' => 'static_pages#about'
-namespace :admin do
   get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
-end
   get 'products/search' => 'products#search'
   resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]

@@ -4,7 +4,11 @@
         <%= render '/contacts/list', contact: @contact %>
     </div>
     <div class="col-xs-10">
-      <h2>検索結果一覧 <small>"<%= @search_products.count %>件" の商品が見つかりました。<small></h2>
+      <% if @search_products.count > 0 %>
+        <h2>検索結果一覧 <small>"<%= @search_products.count %>件" の商品が見つかりました。<small></h2>
+      <% else %>
+        <h2>お探しの商品は見つかりませんでした。</h2>
+      <% end %>
         <% @search_products.each do |product| %>
             <% if product.status == "販売中" %>
               <div class="product_container">
