@@ -29,27 +29,27 @@
       <p>フリガナ</p>
       <div class="row">
         <div class="col-xs-6">
-      <p>セイ</p>
-        <%= f.text_field :ruby_last_name, style: "width:100%;" %>
+          <p>セイ</p>
+            <%= f.text_field :ruby_last_name, style: "width:100%;" %>
+        </div>
+        <div class="col-xs-6">
+          <p>メイ</p>
+            <%= f.text_field :ruby_first_name, style: "width:100%;" %>
+        </div>
       </div>
-      <div class="col-xs-6">
-      <p>メイ</p>
-        <%= f.text_field :ruby_first_name, style: "width:100%;" %>
-      </div>
-    </div>
-    </div>
-    <div class="field">
-      <p>郵便番号（ハイフンなし）</p>
-        <%= f.text_field :postcode, style: "width:100%;" %>
-    </div>
-    <div class="field">
-      <p>住所</p>
-        <%= f.text_field :address, style: "width:100%;" %>
     </div>
     <div class="field">
       <p>電話番号（ハイフンなし）</p>
         <%= f.text_field :phone, style: "width:100%;" %>
     </div>
+      <div class="field">
+        <p>郵便番号（ハイフンなし）</p>
+          <%= f.text_field :postcode, style: "width:100%;" %>
+      </div>
+      <div class="field">
+        <p>住所</p>
+          <%= f.text_field :address, style: "width:100%;" %>
+      </div>
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, style: "width:100%;", autofocus: true, autocomplete: "email" %>

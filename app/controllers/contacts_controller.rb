@@ -1,6 +1,9 @@
 class ContactsController < ApplicationController
 	before_action :authenticate_user!, only: []
 	before_action :admin_user, :only => [:show, :index, :destroy]
+
+	User2 = Struct.new(:name, :email)
+
 	def new
 		@user = User.find(params[:user_id])
 		@contact = Contact.new
@@ -18,7 +21,6 @@ class ContactsController < ApplicationController
 	end
 
 	def index
-		@contact = Contact.new #あとで削除
 		@users = User.page(params[:page]).reverse_order
 		@contacts = Contact.page(params[:page]).reverse_order
 	end
@@ -29,12 +31,12 @@ class ContactsController < ApplicationController
 	end
 # 問い合わせ返信
 	def update
-		user = User.find(params[:user_id])
-		contact = Contact.find(params[:id])
-		if contact.update(contact_params)
-			flash[:success] = '返信しました'
-			redirect_to "/contacts"
-		end
+		user = User2.new("name", "adtanaka.taro1111@gmail.com")
+		@contact = Contact.new(contact_params)
+		# @contact.update(contact_params)
+		ContactMailer.contact_mail(user).deliver
+		flash[:success] = '返信しました'
+		redirect_to "/contacts"
 	end
 
 	def destroy

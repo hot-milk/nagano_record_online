@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  #before_action :authenticate_user!, only: [:show]
+
+  before_action :authenticate_user!, only: [:show]
+  before_action :admin_user
+  #before_action :user_signed_in
+
   #current_user
   before_action :admin_user, except: [:show]
   #before_action :user_signed_in
@@ -26,9 +30,14 @@ class UsersController < ApplicationController
     @orders = @user.orders.page(params[:page]).reverse_order
     #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
+
+    if current_user.id != @user_id
+      redirect_to '/products'
+    end
   end
 
   def new
+    @user = User.new
   end
 
   def create
@@ -63,7 +72,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password, shipments_attributes: [:user_id, :ship_last_name, :ship_first_name, :ship_ruby_last_name, :ship_ruby_first_name, :ship_postcode, :ship_address])
   end
   def admin_user
       redirect_to(root_url) unless current_user.admin?

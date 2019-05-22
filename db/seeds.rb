@@ -64,6 +64,7 @@ end
         product_category: 'シングル',
         artist_id: Faker::Number.within(1..20),
         genre_id: Faker::Number.within(1..28),
+        label_id: Faker::Number.within(1..20),
         price: Faker::Number.within(1000..5000),
         stock: Faker::Number.within(10..500),
         status: '販売中'
