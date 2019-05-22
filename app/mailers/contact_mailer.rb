@@ -5,8 +5,11 @@ class ContactMailer < ApplicationMailer
   #
   #   en.contact_mailer.contact_mail.subject
   #
-  def contact_mail(contact)
-    @contact = contact
-    mail to: contact.user.email
+  def contact_mail(user)
+    # @user = user
+    # binding.pry
+    mail(to: "adtanaka.taro1111@gmail.com", subject: "お問い合わせありがとうございます。")
+    # mail to: "adtanaka.taro1111@gmail.com",
+    # 	 subject: "お問い合わせありがとうございます。"
   end
 end
