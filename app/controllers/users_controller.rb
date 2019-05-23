@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     # user.admin = true
     # user.save
     @user = User.find(params[:id])
-    unless current_user.admin?
+    #unless current_user.admin?
       if current_user != @user
         redirect_to root_path
       end
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
     #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
 
-    if current_user.id != @user_id
-      redirect_to '/products'
-    end
+    #if current_user.id != @user_id
+      #redirect_to '/products'
+    #end
   end
 
   def new
