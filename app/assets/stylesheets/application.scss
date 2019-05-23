@@ -109,6 +109,10 @@ nav {
 	float: right;
 }
 
+.navbar{
+	margin-bottom: 0;
+}
+
 .nav_link_item {
 	list-style:none;
 }
@@ -124,8 +128,10 @@ footer {
 	text-align:center;
 	background-color:#fdcfa0;
 }
-
 .container {
 	margin-bottom: 50px;
 }
-
+.padi{
+	padding-right: 0;
+	padding-left:  0;
+}
