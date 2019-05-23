@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :admin_user, except: [:show]
-
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -23,10 +21,6 @@ class UsersController < ApplicationController
     @orders = @user.orders.page(params[:page]).reverse_order
     #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
-
-    #if current_user.id != @user_id
-      #redirect_to '/products'
-    #end
   end
 
   # def new
