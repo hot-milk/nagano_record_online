@@ -1,21 +1,14 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">
-        週間売り上げランキング
+        週間いいねランキング
     </div>
     <div class="panel-body">
-        ○○月○週付
+        <%= Date.current %>現在
     </div>
     <ul class="list-group">
-        <li class="list-group-item">1位リスト項目Ａ</li>
-        <li class="list-group-item">2位リスト項目Ｂ</li>
-        <li class="list-group-item">3位リスト項目Ｃ</li>
-        <li class="list-group-item">4位リスト項目Ａ</li>
-        <li class="list-group-item">5位リスト項目Ｂ</li>
-        <li class="list-group-item">6位リスト項目Ａ</li>
-        <li class="list-group-item">7位リスト項目Ｂ</li>
-        <li class="list-group-item">8位リスト項目Ｃ</li>
-        <li class="list-group-item">9位リスト項目Ａ</li>
-        <li class="list-group-item">10位リスト項目Ｂ</li>
+        <% product_ranking.each.with_index(1) do |product, i| %>
+         <li class="list-group-item"><strong><%= i %>位</strong> <%=link_to product.product_name, products_path(product.id) %></li>
+        <% end %>
     </ul>
 </div>
 <div class="panel panel-success">

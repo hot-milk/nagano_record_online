@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
     <div class="col-xs-2">
-        <%= render '/contacts/list', contact: @contact %>
+        <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
     </div>
 		<div class="col-xs-10">
         <% @products.each do |product| %>

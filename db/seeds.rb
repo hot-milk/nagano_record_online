@@ -54,7 +54,7 @@ end
 
 20.times do
 	Label.create(
-		label_name: Faker::Music.band
+		label_name: Faker::Company.name
 		)
 end
 
@@ -69,4 +69,13 @@ end
         stock: Faker::Number.within(10..500),
         status: '販売中'
       )
+end
+
+500.times do
+	RecordedMusic.create(
+		product_id: Faker::Number.within(1..50),
+		recorded_music_name: Faker::Music.album,
+		recorded_disk_number: Faker::Number.within(1..3),
+		recorded_music_number: Faker::Number.within(1..3)
+		)
 end
