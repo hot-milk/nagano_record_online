@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
   get 'products/search' => 'products#search'
-  
+
   resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]
   devise_for :users

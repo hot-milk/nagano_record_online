@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :search]
+
   def index
     @products = Product.page(params[:page])
     @contact = Contact.new

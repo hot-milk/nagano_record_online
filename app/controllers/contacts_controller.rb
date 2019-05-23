@@ -2,8 +2,6 @@ class ContactsController < ApplicationController
 	before_action :authenticate_user!, only: []
 	before_action :admin_user, :only => [:show, :index, :destroy]
 
-	User2 = Struct.new(:name, :email)
-
 	def new
 		@user = User.find(params[:user_id])
 		@contact = Contact.new
@@ -31,10 +29,10 @@ class ContactsController < ApplicationController
 	end
 # 問い合わせ返信
 	def update
-		user = User2.new("name", "adtanaka.taro1111@gmail.com")
+		@user = User.find(params[:user_id])
 		@contact = Contact.new(contact_params)
 		# @contact.update(contact_params)
-		ContactMailer.contact_mail(user).deliver
+		ContactMailer.contact_mail(@user).deliver
 		flash[:success] = '返信しました'
 		redirect_to "/contacts"
 	end
