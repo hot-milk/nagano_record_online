@@ -12,12 +12,15 @@ class ApplicationController < ActionController::Base
 	  @search = Product.ransack(params[:q])
 	  @search_products = @search.result.page(params[:page])
 	end
+
 	def set_host
     	Rails.application.routes.default_url_options[:host] = request.host_with_port
   	end
-  	 def admin_user
+
+  	def admin_user
       redirect_to(root_url) unless current_user.admin?
-     end
+    end
+    
 	protected
 
   	def configure_permitted_parameters

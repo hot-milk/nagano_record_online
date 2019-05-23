@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :search]
+
   def index
     @products = Product.page(params[:page])
     @contact = Contact.new
@@ -49,7 +50,7 @@ class ProductsController < ApplicationController
     product.destroy
     redirect_to products_admin_path
   end
-
+  
   private
 
   def product_params
@@ -63,5 +64,6 @@ class ProductsController < ApplicationController
                                     :stock,
                                     :status,
                                     recorded_musics_attributes: [:id, :product_id, :recorded_music_name, :recorded_music_number, :recorded_disk_number, :_destroy])
+
   end
 end
