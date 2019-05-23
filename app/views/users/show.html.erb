@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %><td>
-						<td><%= order.created_at %></td>
+						<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
 						<td><%= order.order_ship_post_code %>
 							<%= order.order_ship_address %>
 						</td>
@@ -96,6 +96,14 @@
 					</tr>
 				</table>
 				<p><strong>購入内容</strong></p>
+				<% order.order_items.each do |order_item| %>
+				<table>
+					<tr>
+						<td><%= order_item.product.product_name %><td>
+						<td><%= order_item.order_item_number %></td>
+					</tr>
+				</table>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

@@ -12,10 +12,13 @@ class UserProductsController < ApplicationController
 
 	def create
 		@user_product = UserProduct.new(user_product_params)
-	    if @user_product.product.stock.to_i > 0
+	    if @user_product.user_product_number < @user_product.product.stock
 	       @user_product.save
 	       flash[:notice] = "カートに商品が追加されました。"
 	       redirect_to user_products_path
+	   else
+	   	   flash[:notice] = "在庫が不足しております。申し訳ありませんが、数量を変更して再度お試しください。"
+	   	   redirect_to product_path(@user_product.product_id)
 	    end
 	end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_063250) do
+ActiveRecord::Schema.define(version: 2019_05_23_051722) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_063250) do
     t.integer "product_category"
     t.string "product_name"
     t.string "jacket_image_id"
-    t.string "price"
-    t.string "stock"
+    t.integer "price"
+    t.integer "stock"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

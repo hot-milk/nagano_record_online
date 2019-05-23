@@ -36,7 +36,7 @@
 
         <div class="field">
           <%= f.label :price, "税抜き価格" %>
-          <%= f.text_field :price, class: 'form-control input-sm' %>
+          <%= f.number_field :price, value: "1", min: "1", class: 'form-control input-sm' %>
         </div>
 
         <div class="field">
