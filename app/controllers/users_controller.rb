@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
         redirect_to user_path(current_user)
     end
-    @orders = Order.where(user_id: params[:id])
+    @orders = Order.where(user_id: params[:id]).page(params[:page]).per(2).reverse_order
   end
 
   def edit
