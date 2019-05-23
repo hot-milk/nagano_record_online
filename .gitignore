@@ -72,3 +72,6 @@ yarn-debug.log*
 
 # End of https://www.gitignore.io/api/rails
 .DS_Store
+
+# 環境変数ファイル
+.env
