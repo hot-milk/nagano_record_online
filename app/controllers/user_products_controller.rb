@@ -3,6 +3,11 @@ class UserProductsController < ApplicationController
 
 	def index
 		@user_product = UserProduct.where(user_id: current_user.id)
+		@sum = 0
+		@user_product.each do |user_product|
+		sub_total = user_product.product.price.to_i * user_product.user_product_number
+		@sum = @sum + sub_total
+        end
 	end
 
 	def create

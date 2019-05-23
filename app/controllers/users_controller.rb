@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :admin_user, except: [:show]
-
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -10,12 +8,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #unless current_user.admin?
+      if current_user != @user
+        redirect_to root_path
+      end
     if @user.id == current_user.id
     elsif current_user.admin?
     else
         redirect_to user_path(current_user)
     end
-    #@userに紐付いているordersをkaminari式で
     @orders = Order.where(user_id: params[:id])
   end
 

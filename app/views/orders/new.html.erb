@@ -1,5 +1,4 @@
-<h2>購入手続き</h2>
-<p>購入金額合計</p>
+<h3>購入手続き</h3>
 
 <%= form_for @order do |f| %>
   <% @user_products.each do |user_product| %>
@@ -9,6 +8,11 @@
         <%= i.hidden_field :order_item_price, :value => user_product.product.price %>
     <% end %>
   <% end %>
+
+<p>購入金額合計</p>
+
+総計:¥<%= @total %>　※送料含む (1配送につき全国一律500円)
+<%= f.hidden_field :total_price, :value => @total %>
 
 <p>支払方法</p>
 <label>
@@ -20,6 +24,7 @@
 
 <p>配送先住所</p>
 
+<%= f.hidden_field :ship_status, :value => :出荷準備中 %>
 <%= f.hidden_field :order_ship_last_name, :value => @user.last_name %>
 <%= f.hidden_field :order_ship_first_name, :value => @user.first_name %>
 <%= f.hidden_field :order_ship_ruby_last_name, :value => @user.ruby_last_name %>
