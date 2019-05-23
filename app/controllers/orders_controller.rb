@@ -6,6 +6,12 @@ def new
 	@order.order_items.build
 	@user = User.find(current_user.id)
 	@user_products = UserProduct.where(user_id: current_user.id)
+	@sum = 0
+	    @user_products.each do |user_product|
+	    sub_total = user_product.product.price.to_i * user_product.user_product_number
+	    @sum = @sum + sub_total
+        end
+        @total = @sum + 500
 end
 
 def create

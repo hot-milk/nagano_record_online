@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #unless current_user.admin?
+      if current_user != @user
+        redirect_to root_path
+      end
     if @user.id == current_user.id
     elsif current_user.admin?
     else
@@ -15,6 +19,7 @@ class UsersController < ApplicationController
     end
     #@userに紐付いているordersをkaminari式で
     @orders = @user.orders.page(params[:page]).reverse_order
+    #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
   end
 
