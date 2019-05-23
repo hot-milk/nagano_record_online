@@ -45,9 +45,11 @@ class ContactsController < ApplicationController
 
 
 	private
+
 	def contact_params
 		params.require(:contact).permit(:user_id, :title, :contact_content, :responce)
 	end
+	
 	def admin_user
       redirect_to(root_url) unless current_user.admin?
   	end

@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
   before_action :admin_user
+  
   def index
   	@genres = Genre.all
   end
