@@ -87,30 +87,15 @@
 						<th>ステータス</th>
 					</tr>
 					<tr>
-						<td><%= order.user.last_name %><%= order.user.first_name %><td>
+						<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %><td>
 						<td><%= order.created_at %></td>
-						<td><%= order.user.shipment.ship_postcode %>
-							<%= order.user.shipment.ship_address %>
+						<td><%= order.order_ship_post_code %>
+							<%= order.order_ship_address %>
 						</td>
 						<td><%= order.ship_status %></td>
 					</tr>
 				</table>
 				<p><strong>購入内容</strong></p>
-				<% @items.each do |item| %>
-					<table>
-						<tr>
-							<th>シングル/アルバム名</th>
-							<th>購入枚数</th>
-							<th>小計</th>
-						</tr>
-						<tr>
-							<td><%= item.product.product_name %></td>
-							<td><%= item.order_item_number %></td>
-							<td><%= item.order_item_price %></td>
-						</tr>
-						<p style="style:inline;">購入価格総計  </p><% item.order.total_price.to_i * 1.08.floor %>
-					</table>
-				<% end %>
 			<% end %>
 		</div>
 	</div>
