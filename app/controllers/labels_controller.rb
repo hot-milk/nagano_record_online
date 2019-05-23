@@ -1,4 +1,5 @@
 class LabelsController < ApplicationController
+  before_action :admin_user
   def index
   	@labels = Label.all
   end
