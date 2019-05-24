@@ -45,7 +45,9 @@
 		<td><%= @sum %></td>
 		<td></td>
 		<td></td>
+		<% if @user_product.count > 0 %>
 		<td><%= link_to "購入手続き", new_order_path, class: "btn btn-success" %></td>
+		<% end %>
 	</tr>
 
 </table>

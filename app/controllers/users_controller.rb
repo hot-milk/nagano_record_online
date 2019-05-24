@@ -9,9 +9,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #unless current_user.admin?
-      if current_user != @user
-        redirect_to root_path
-      end
     if @user.id == current_user.id
     elsif current_user.admin?
     else
@@ -22,8 +19,10 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
-  	unless current_user.admin? || current_user.id == @user.id
-      redirect_to root_path
+    if @user.id == current_user.id
+    elsif current_user.admin?
+    else
+        redirect_to edit_user_path(current_user)
     end
   end
 
@@ -38,12 +37,15 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to '/users'
+    if current_user.admin?
+      redirect_to users_path
+    else
+      redirect_to root_path
   end
 
 
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password, shipments_attributes: [:user_id, :ship_last_name, :ship_first_name, :ship_ruby_last_name, :ship_ruby_first_name, :ship_postcode, :ship_address])
+    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
   end
 end
