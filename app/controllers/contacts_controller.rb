@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 			flash[:success] = '送信されました'
 			redirect_to "/products"
 		else
-			render "/users/sign_in"
+			render "/products"
 		end
 	end
 
