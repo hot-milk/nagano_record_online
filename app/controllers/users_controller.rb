@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user, except: [:show]
+  before_action :admin_user, except: [:show, :edit, :update]
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -22,9 +22,9 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
-  	#if @user.id != current_user.id || @user.id != current_user.admin
-  		#redirect_to user_path(@user.id)
-  	#end
+  	unless current_user.admin? || current_user.id == @user.id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -32,8 +32,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'You have updated user successfully.'
       redirect_to user_path(@user.id)
-    else
-      render "/users/edit"
     end
   end
 
