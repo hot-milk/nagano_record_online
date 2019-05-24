@@ -7,11 +7,11 @@ class ContactMailer < ApplicationMailer
   #
   def contact_mail(user)
     @user = user
-    # binding.pry
-    mail(to: @user.email,
-      from: "adtanaka.taro1111@gmail.com",
+    @contacts = @user.contacts.order(updated_at: "DESC")#降順,昇順はASC(省略
+    @contact = @contacts.first
+     mail(to: @user.email,
+      from: "NaganoRecord",
       subject: "お問い合わせありがとうございます。")
-    # mail to: "adtanaka.taro1111@gmail.com",
-    # 	 subject: "お問い合わせありがとうございます。"
   end
 end
+#binding.pry

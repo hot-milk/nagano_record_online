@@ -24,7 +24,7 @@
                     <% if user_signed_in? %>
                       <%= link_to current_user.first_name, user_path(current_user) %>様
                     <% else %>
-                      <%= link_to "ゲスト様", orders_path %>
+                      <%= link_to "ゲスト様", new_user_session_path %>
                     <% end %>
                   </li>
                   <li class="header_link_item">
@@ -71,7 +71,7 @@
                                 <%= link_to "このサイトについて", about_path %>
                               </li>
                               <li>
-                                <%= link_to "マイページ", orders_path %>
+                                <%= link_to "マイページ", user_path(current_user) %>
                               </li>
                               <li>
                                 <%= link_to "カート", user_products_path,class: 'fas fa-shopping-cart' %>

@@ -30,11 +30,12 @@ class ContactsController < ApplicationController
 # 問い合わせ返信
 	def update
 		@user = User.find(params[:user_id])
-		@contact = Contact.new(contact_params)
-		# @contact.update(contact_params)
+		@contact = Contact.find(params[:id])
+		if @contact.update(contact_params)
 		ContactMailer.contact_mail(@user).deliver
 		flash[:success] = '返信しました'
 		redirect_to "/contacts"
+		end
 	end
 
 	def destroy
@@ -49,7 +50,7 @@ class ContactsController < ApplicationController
 	def contact_params
 		params.require(:contact).permit(:user_id, :title, :contact_content, :responce)
 	end
-	
+
 	def admin_user
       redirect_to(root_url) unless current_user.admin?
   	end

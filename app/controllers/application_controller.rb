@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_host
-    	Rails.application.routes.default_url_options[:host] = request.host_with_port
+      Rails.application.routes.default_url_options[:host] = request.host_with_port
   	end
 
   	def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-    
+
 	protected
 
   	def configure_permitted_parameters

@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-
-  before_action :authenticate_user!, only: [:show]
-  before_action :admin_user, only: [:index]
-
-
-
+  before_action :authenticate_user!
+  before_action :admin_user, except: [:show]
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -12,24 +8,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-      if current_user != @user
-        redirect_to root_path
-      end
+    if @user.id == current_user.id
+    elsif current_user.admin?
+    else
+        redirect_to user_path(current_user)
+    end
     #@userに紐付いているordersをkaminari式で
     @orders = @user.orders.page(params[:page]).reverse_order
-    #仮
     #@items = @user.orders.orders_items.page(params[:page]).reverse_order
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def create
-    @user = User.new(user_params)
-    @user.save
-    redirect_to user_path(@user.id)
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.save
+  #   redirect_to user_path(@user.id)
+  # end
 
   def edit
   	@user = User.find(params[:id])
