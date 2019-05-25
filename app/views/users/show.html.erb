@@ -92,7 +92,7 @@
 						<td><%= order.order_ship_post_code %>
 							<%= order.order_ship_address %>
 						</td>
-						<td><%= order.ship_status %></td>
+						<td><%= order.select :ship_status, Order.ship_statuses.keys.to_a, {}, class: 'form-control input-sm' %></td>
 					</tr>
 				</table>
 				<p><strong>購入内容</strong></p>
