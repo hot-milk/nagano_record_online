@@ -109,6 +109,8 @@
             </nav>
         <% end %>
       </header>
+      <div class="main">
+        <div class="sample">
       <% if flash[:notice] %>
         <div class="flash alert alert-success">
             <%= flash[:notice] %>
@@ -121,6 +123,9 @@
       <% end %>
       <div style="background-image: url(../img/natu.jpeg);">
         <%= yield %>
+        </div>
+      </div>
+      <!-- </div> -->
 
   <!-- ここからfooterの記述 -->
       <footer>
