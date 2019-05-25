@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user, except: [:show, :edit, :update]
+  before_action :admin_user, except: [:show, :edit, :update, :destroy]
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -46,8 +46,8 @@ class UsersController < ApplicationController
 end
 
 
-private
-  def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
-  end
+  private
+    def user_params
+      params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+    end
 end
