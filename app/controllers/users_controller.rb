@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user, except: [:show, :edit, :update]
+  before_action :admin_user, except: [:show, :edit, :update, :destroy]
 
   def index
      @users = User.page(params[:page]).reverse_order
