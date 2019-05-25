@@ -128,20 +128,26 @@ footer {
 	text-align:center;
 	background-color:#fdcfa0;
 }
-.container {
+/*.container {
 	margin-bottom: 50px;
-}
+}*/
 .padi{
 	padding-right: 0;
 	padding-left:  0;
 }
 .main{
-	background-image: url("/assets/natu.jpeg");
-	background-size: cover;
+	background-image: url("/assets/kiminona.jpg");
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 	/*opacity: 0.4;*/
 }
 .sample{
 	background-size: cover;
 	background: rgba(255,255,255,0.5);
+}
+
+.static_pages .sample {
+	background: rgba(255,255,255,0);
 }
 

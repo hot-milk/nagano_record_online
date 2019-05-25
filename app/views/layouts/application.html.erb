@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class='<%= "#{controller.controller_name}" %>'>
       <header>
         <div class="top_box clearfix">
             <div class="top_image">
@@ -110,27 +110,29 @@
             </nav>
         <% end %>
       </header>
-        <% if flash[:notice] %>
-          <div class="flash alert alert-success">
-              <%= flash[:notice] %>
-              <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
-          </div>
-        <% else %>
-          <div class="error-flash">
-              <%= flash[:danger] %>
-          </div>
-        <% end %>
-      <div style="background-image: url(../img/natu.jpg);">
-        <%= yield %>
+      <div class="main">
+        <div class="sample">
+      <% if flash[:notice] %>
+        <div class="flash alert alert-success">
+            <%= flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
         </div>
+      <% else %>
+        <div class="error-flash">
+            <%= flash[:danger] %>
+        </div>
+      <% end %>
+        <%= yield %>
+      </div>
       </div>
       <!-- </div> -->
 
   <!-- ここからfooterの記述 -->
       <footer>
            <p class="my-black">©︎2019 Hot milk</p>
+
       </footer>
-      </div>
+      
   </body>
 
 </html>
