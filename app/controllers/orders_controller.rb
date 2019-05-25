@@ -6,6 +6,17 @@ def new
 	@order.order_items.build
 	@user = User.find(current_user.id)
 	@user_products = UserProduct.where(user_id: current_user.id)
+	# カートに商品がなければアクセスできないようにする。
+	if @user_products.count == 0
+		flash[:notice] = "商品をカートに追加してください。"
+		redirect_to root_path
+	end
+	@sum = 0
+	    @user_products.each do |user_product|
+	    sub_total = user_product.product.price.to_i * user_product.user_product_number
+	    @sum = @sum + sub_total
+        end
+        @total = @sum + 500
 end
 
 def create
@@ -27,13 +38,14 @@ def create
  #    end
 end
 
-def show
-	@order = Order.find(params[:id])
-	@user = User.find(params[:id])
+def index
+	@orders = Order.all
 end
 
-def index
-	@order = Order.all
+def update
+	order = Order.find(params[:id])
+	order.update(order_params)
+	redirect_to orders_path
 end
 
 private

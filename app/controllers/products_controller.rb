@@ -4,11 +4,17 @@ class ProductsController < ApplicationController
   def index
     @products = Product.page(params[:page])
     @contact = Contact.new
+    product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
+    product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
+    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
   end
 
   def search
     @products = Product.page(params[:page])
     @contact = Contact.new
+    product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
+    product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
+    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
   end
 
   def show
@@ -16,7 +22,10 @@ class ProductsController < ApplicationController
     @reviews = Review.where(product_id: params[:id])
     @user_product = UserProduct.new
     @contact = Contact.new
-    @recorded_musics = RecordedMusic.where(product_id: params[:id]).group_by(&:recorded_disk_number)
+    @recorded_musics = RecordedMusic.where(product_id: params[:id]).order('recorded_disk_number ASC').order('recorded_music_number ASC').group_by(&:recorded_disk_number)
+    product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
+    product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
+    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
   end
 
   def admin
