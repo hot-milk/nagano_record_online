@@ -41,11 +41,12 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       redirect_to root_path
+    end
   end
 
 
-private
-  def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
-  end
+  private
+    def user_params
+      params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+    end
 end
