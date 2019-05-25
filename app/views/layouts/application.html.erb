@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class='<%= "#{controller.controller_name}" %>'>
       <header>
         <div class="top_box clearfix">
             <div class="top_image">
@@ -121,17 +121,17 @@
             <%= flash[:danger] %>
         </div>
       <% end %>
-      <div style="background-image: url(../img/natu.jpeg);">
         <%= yield %>
-        </div>
+      </div>
       </div>
       <!-- </div> -->
 
   <!-- ここからfooterの記述 -->
       <footer>
            <p class="my-black">©︎2019 Hot milk</p>
+
       </footer>
-      </div>
+      
   </body>
 
 </html>
