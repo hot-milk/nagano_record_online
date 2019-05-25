@@ -1,47 +1,5 @@
-<% if current_user.admin? %>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4"><%# offsetで両端除去 %>
-				<h2 class="text-center">ユーザー情報</h2>
-				<br>
-				<%= form_for(@user) do |f| %>
-				<h4><姓名></h4>
-					<%= @user.last_name %> <%= @user.first_name %>
-				<br>
-				<h4><フリガナ></h4>
-					<%= @user.ruby_last_name %> <%= @user.ruby_first_name %>
-				<br>
-				<h4><郵便番号(ハイフンなし)></h4>
-					<%= @user.postcode %>
-				<br>
-				<h4><住所></h4>
-					<%= @user.address %>
-				<br>
-				<h4><電話番号(ハイフンなし)></h4>
-					<%= @user.phone %>
-				<br>
-				<h4><メールアドレス></h4>
-					<%= @user.email %>
-				<br>
-				<%# 仮
-				<h4><パスワード></h4>
-					<%= @user.password %>
-				<br>
-				<br>
-				<br>
-
-				<div class="row">
-					<%= link_to '編集', edit_user_path(@user), class: "btn-lg  edit_user_#{@user.id}" %>
-					<%= link_to '退会', user_path, method: :delete, "data-confirm" => "退会させますか？", class: "btn-lg destroy_user_#{@user.id}" %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-<!-- ユーザー側views -->
-<% else %>
 <div class="container">
-	<div class="row">
+	<div class="row my-page-top">
 		<section class="col-xs-12">
 			<h3>マイページ</h3>
 			<div class="row">
@@ -64,10 +22,10 @@
 				<div class="col-xs-5 text-right">
 					<div class="row">
 						<div class="col-xs-6">
-							<%= link_to "個人情報の変更はこちら", edit_user_path(@user), class: "" %>
+							<%= link_to "ユーザー情報の変更はこちら", edit_user_path(@user), class: "" %>
 						</div>
 						<div class="col-xs-4">
-							<%= link_to '退会', user_path(@user.id), method: :delete, "data-confirm" => "退会しますか？", class: "btn-sm destroy_user_#{@user.id}" %>
+							<%= link_to '退会', user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn-sm destroy_user_#{@user.id}" %>
 						</div>
 					</div>
 				</div>
@@ -76,39 +34,56 @@
 	</div>
 <!-- 購入履歴 -->
 	<div class="row">
-		<p><strong>購入履歴</strong></p>
 		<div class="col-xs-10 col-xs-offset-1">
-			<% @orders.each do |order| %>
-				<table>
-					<tr>
-						<th>購入者</th>
-						<th>購入日</th>
-						<th>送付先</th>
-						<th>ステータス</th>
-					</tr>
-					<tr>
-						<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %><td>
-						<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-						<td><%= order.order_ship_post_code %>
-							<%= order.order_ship_address %>
-						</td>
-						<td><%= order.select :ship_status, Order.ship_statuses.keys.to_a, {}, class: 'form-control input-sm' %></td>
-					</tr>
-				</table>
-				<p><strong>購入内容</strong></p>
-				<% order.order_items.each do |order_item| %>
-				<table>
-					<tr>
-						<td><%= order_item.product.product_name %><td>
-						<td><%= order_item.order_item_number %></td>
-					</tr>
-				</table>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5 class="panel-title"><strong>購入履歴</strong></h5>
+				</div>
+				<% @orders.each do |order| %>
+				<div class="panel panel-default">
+				    <div class="panel-body">
+						<table class="table table-condensed">
+							<thead>
+							<tr>
+								<th>受取人</th>
+								<th>購入日</th>
+								<th>配送先</th>
+							</tr>
+						    </thead>
+						    <tbody>
+							<tr>
+								<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %></td>
+								<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+								<td><%= order.order_ship_post_code %><%= order.order_ship_address %></td>
+							</tr>
+						    </tbody>
+						</table>
+						<table class="table table-condensed table-striped table-hover">
+							<thead>
+							    <tr>
+							    	<th>購入内容</th>
+							    	<th>&nbsp;</th>
+							    </tr>
+							</thead>
+							    <% order.order_items.each do |order_item| %>
+							        <tbody>
+										<tr >
+											<td style="width: 200px;">&nbsp;</td>
+											<td style="width: 300px"><%= order_item.product.product_name %></td>
+											<td ><%= order_item.order_item_number %></td>
+										</tr>
+									</tbody>
+							    <% end %>
+						</table>
+				    </div>
+				</div>
 				<% end %>
-			<% end %>
+			</div>
 		</div>
+		<%= paginate @orders %>
 	</div>
 </div>
-<% end %>
+
 
 
 
