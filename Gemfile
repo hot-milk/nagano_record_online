@@ -46,7 +46,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3', '~> 1.4.1'
 end
 
 group :development do
