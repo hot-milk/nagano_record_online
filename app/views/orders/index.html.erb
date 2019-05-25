@@ -1,41 +1,60 @@
-<h3>購入履歴</h3>
 <div class="container">
-	<div class="row">
-		<p><strong>購入履歴</strong></p>
+<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<% @orders.each do |order| %>
-				<table>
-					<tr>
-						<th>購入者</th>
-						<th>購入日</th>
-						<th>送付先</th>
-						<th>ステータス</th>
-					</tr>
-					<tr>
-						<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %><td>
-						<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-						<td><%= order.order_ship_post_code %>
-							<%= order.order_ship_address %>
-						</td>
-						<td>
-							<%= form_for(order) do |f| %>
-								<%= f.select :ship_status, Order.ship_statuses.keys.to_a, {}, class: 'form-control input-sm' %>
-								<%= f.submit %>
-							<% end %>
-
-						</td>
-					</tr>
-				</table>
-				<p><strong>購入内容</strong></p>
-				<% order.order_items.each do |order_item| %>
-				<table>
-					<tr>
-						<td><%= order_item.product.product_name %><td>
-						<td><%= order_item.order_item_number %></td>
-					</tr>
-				</table>
-			<% end %>
-			<% end %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5 class="panel-title"><strong>購入履歴</strong></h5>
+				</div>
+				<% @orders.each do |order| %>
+				<div class="panel panel-default">
+				    <div class="panel-body">
+						<table class="table table-condensed">
+							<thead>
+							<tr>
+								<th>受取人</th>
+								<th>購入日</th>
+								<th>配送先</th>
+								<th width="150px">ステータス</th>
+							</tr>
+						    </thead>
+						    <tbody>
+							<tr>
+								<td><%= order.order_ship_last_name %><%= order.order_ship_first_name %></td>
+								<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+								<td><%= order.order_ship_post_code %><%= order.order_ship_address %></td>
+								<td class="right"><%= form_for(order) do |f| %>
+								    <%= f.select :ship_status, Order.ship_statuses.keys.to_a, {}, class: 'form-control input-sm' %>
+								    <%= f.submit "更新" %>
+							        <% end %></td>
+							</tr>
+						    </tbody>
+						</table>
+						<table class="table table-condensed table-striped table-hover">
+							<thead>
+							    <tr>
+							    	<th>購入内容</th>
+							    	<th>&nbsp;</th>
+							    </tr>
+							</thead>
+							    <% order.order_items.each do |order_item| %>
+							        <tbody>
+										<tr >
+											<td style="width: 200px;">&nbsp;</td>
+											<td style="width: 300px"><%= order_item.product.product_name %></td>
+											<td ><%= order_item.order_item_number %></td>
+										</tr>
+									</tbody>
+							    <% end %>
+						</table>
+				    </div>
+				</div>
+				<% end %>
+			</div>
 		</div>
+        <%= paginate @orders %>
 	</div>
 </div>
+
+
+
+

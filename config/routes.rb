@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
   get 'products/search' => 'products#search'
+  post '/pay' => 'orders#pay'
 
   resources :shipments, only:[:new,:create]
   resources :contacts, only:[:index,:create,:destroy]
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :user_products, except:[:new,:show,:edit]
 
-  resources :orders, only:[:new,:create,:index, :update] do
+  resources :orders, only:[:new,:create,:index,:update, :show] do
     resources :order_items, except:[:show,:destroy]
   end
 
