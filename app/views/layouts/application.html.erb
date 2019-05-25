@@ -115,8 +115,19 @@
             </nav>
         <% end %>
       </header>
-      <div style="background-image: url(../img/natu.jpeg);">
+      <!-- 後で使うかも -->
+      <!-- <div style='background-image: url("assets/natu.jpeg")'> -->
+      <!-- <style type="text/css" media="screen"> -->
+        <!-- { -->
+          <!-- background-size: cover; -->
+        <!-- } -->
+      <!-- </style>> -->
+      <div class="main">
+        <div class="sample">
         <%= yield %>
+        </div>
+      </div>
+      <!-- </div> -->
 
   <!-- ここからfooterの記述 -->
       <footer>
