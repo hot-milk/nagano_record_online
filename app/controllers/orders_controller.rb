@@ -42,13 +42,14 @@ def create
  #    end
 end
 
-def show
-	@order = Order.find(params[:id])
-	@user = User.find(params[:id])
+def index
+	@orders = Order.all
 end
 
-def index
-	@order = Order.all
+def update
+	order = Order.find(params[:id])
+	order.update(order_params)
+	redirect_to orders_path
 end
 
 private

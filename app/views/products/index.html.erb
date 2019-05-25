@@ -1,9 +1,9 @@
 <div class="container-fluid padi">
-	<div class="row">
+  <div class="row">
     <div class="col-xs-2">
         <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
     </div>
-		<div class="col-xs-10">
+    <div class="col-xs-10">
         <% @products.each do |product| %>
             <% if product.status == "販売中" %>
               <div class="product_container">
@@ -18,11 +18,11 @@
               </div>
             <% end %>
         <% end %>
-		</div>
+    </div>
     <div class= "row">
       <div class= "col-xs-4 col-xs-offset-4">
         <%= paginate @products %>
       </div>
-  	</div>
+    </div>
   </div>
 </div>
