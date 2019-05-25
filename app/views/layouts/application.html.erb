@@ -64,6 +64,7 @@
                                 <li><%= link_to "レーベル管理", labels_path %></li>
                                 <li><%= link_to "ユーザー管理", users_path %></li>
                                 <li><%= link_to "問い合わせ管理", contacts_path %></li>
+                                <li><%= link_to "注文管理", orders_path %></li>
                               </ul>
                               </li>
                               <li>
@@ -109,18 +110,21 @@
             </nav>
         <% end %>
       </header>
-      <% if flash[:notice] %>
-        <div class="flash alert alert-success">
-            <%= flash[:notice] %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
-        </div>
-      <% else %>
-        <div class="error-flash">
-            <%= flash[:danger] %>
-        </div>
-      <% end %>
-      <div style="background-image: url(../img/natu.jpeg);">
+        <% if flash[:notice] %>
+          <div class="flash alert alert-success">
+              <%= flash[:notice] %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+          </div>
+        <% else %>
+          <div class="error-flash">
+              <%= flash[:danger] %>
+          </div>
+        <% end %>
+      <div style="background-image: url(../img/natu.jpg);">
         <%= yield %>
+        </div>
+      </div>
+      <!-- </div> -->
 
   <!-- ここからfooterの記述 -->
       <footer>

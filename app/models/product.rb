@@ -8,6 +8,14 @@ class Product < ApplicationRecord
 	belongs_to :genre
 	belongs_to :label
 
+	validates :product_name, presence: true, length: {maximum: 50}
+    validates :price, presence: true, numericality: true
+	validates :stock, presence: true, numericality: true
+	validates :artist_id, presence: true
+	validates :genre_id, presence: true
+	validates :label_id, presence: true
+	validates :product_category, presence: true
+
 	accepts_nested_attributes_for :recorded_musics, allow_destroy: true
 
 	enum product_category: [:シングル,:アルバム]

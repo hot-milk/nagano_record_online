@@ -12,11 +12,13 @@ def new
 		redirect_to root_path
 	end
 	@sum = 0
-	    @user_products.each do |user_product|
-	    sub_total = user_product.product.price.to_i * user_product.user_product_number
-	    @sum = @sum + sub_total
-        end
-        @total = @sum + 500
+
+	@user_products.each do |user_product|
+	  sub_total = user_product.product.price.to_i * user_product.user_product_number
+	  @sum = @sum + sub_total
+    end
+
+    @total = @sum + 500
 end
 
 def create
@@ -24,11 +26,13 @@ def create
 	user_products = UserProduct.where(user_id: current_user.id)
 	order.user_id = current_user.id
 	order.save
+    #購入時にカートの数量に合わせて在庫を減らす。
 	user_products.each do |user_product|
 	 	product = Product.find(user_product.product.id)
 	 	quantity = product.stock.to_i - user_product.user_product_number.to_i
 	 	product.update(stock: quantity.to_s )
 	end
+
 	user_products.delete_all
 	flash[:notice] = "購入手続きが完了しました。"
 	if order.payment_method == "クレジットカード"
