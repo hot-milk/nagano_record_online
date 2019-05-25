@@ -8,13 +8,13 @@ class ContactsController < ApplicationController
 	end
 
 	def create
-		contact = Contact.new(contact_params)
-		contact.user_id = current_user.id
-		if contact.save
+		@contact = Contact.new(contact_params)
+		@contact.user_id = current_user.id
+		if @contact.save
 			flash[:success] = '送信されました'
 			redirect_to "/products"
 		else
-			render "/products"#仮
+			redirect_to "/products"
 		end
 	end
 
