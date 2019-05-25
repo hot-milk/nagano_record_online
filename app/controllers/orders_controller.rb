@@ -35,21 +35,33 @@ def create
 
 	user_products.delete_all
 	flash[:notice] = "購入手続きが完了しました。"
-	redirect_to orders_path
-	# else
- #    flash[:notice] = "必須項目を入力してください。" #各項目に合わせて後から修正
-	# redirect_to new_order_path
- #    end
+	if order.payment_method == "クレジットカード"
+	redirect_to products_path
+	else
+    redirect_to orders_path
+    end
 end
 
 def index
-	@orders = Order.all
+	@orders = Order.all.page(params[:page]).per(10).reverse_order
 end
 
 def update
 	order = Order.find(params[:id])
 	order.update(order_params)
 	redirect_to orders_path
+end
+
+def show
+end
+
+def pay
+    Payjp.api_key = 'sk_test_1b62936fcf06cb9f154c2453'
+    charge = Payjp::Charge.create(
+    :amount => 3000,
+    :card => params['payjp-token'],
+    :currency => 'jpy',
+)
 end
 
 private
