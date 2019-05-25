@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       redirect_to root_path
+    end
   end
 
 
