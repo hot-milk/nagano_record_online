@@ -8,12 +8,13 @@ class ContactsController < ApplicationController
 	end
 
 	def create
-		@contact = Contact.new(contact_params)
-		@contact.user_id = current_user.id
-		if @contact.save
-			flash[:success] = '送信されました'
+		contact = Contact.new(contact_params)
+		contact.user_id = current_user.id
+		if contact.save
+			flash[:notice] = 'お問い合わせありがとうございます。承りました。'
 			redirect_to "/products"
 		else
+			flash[:danger] = '件名 内容を入力してください。'
 			redirect_to "/products"
 		end
 	end
@@ -33,7 +34,7 @@ class ContactsController < ApplicationController
 		@contact = Contact.find(params[:id])
 		if @contact.update(contact_params)
 		ContactMailer.contact_mail(@user).deliver
-		flash[:success] = '返信しました'
+		flash[:notice] = '返信しました。'
 		redirect_to "/contacts"
 		end
 	end
@@ -41,6 +42,7 @@ class ContactsController < ApplicationController
 	def destroy
 	    contact = Contact.find(params[:id])
 	    contact.destroy
+	    flash[:notice] = '削除しました。'
 	    redirect_to '/contacts'
   	end
 

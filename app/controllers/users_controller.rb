@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = 'You have updated user successfully.'
+      flash[:notice] = '会員情報が更新されました。'
       redirect_to user_path(@user.id)
     end
   end
@@ -40,10 +40,11 @@ class UsersController < ApplicationController
     if current_user.admin?
       redirect_to users_path
     else
+      flash[:notice] = 'ご利用ありがとうございました。'
       redirect_to root_path
     end
   end
-end
+
 
 
   private
