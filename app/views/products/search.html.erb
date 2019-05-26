@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid padi">
   <div class="row">
     <div class="col-xs-2">
         <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
@@ -13,7 +13,7 @@
             <% if product.status == "販売中" %>
               <div class="product_container">
                   <%= link_to product_path(product.id) do %>
-                  <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %><br>
+                  <%= attachment_image_tag product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100',style: 'border-radius: 50%;' %><br>
                   <%= product.product_name %>
                   <% end %>
                   <br>

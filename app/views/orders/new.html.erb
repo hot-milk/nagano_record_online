@@ -1,68 +1,87 @@
-<h3>購入手続き</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h3>購入手続き</h3>
 
-<%= form_for @order do |f| %>
-  <% @user_products.each do |user_product| %>
-     <%= f.fields_for :order_items do |i| %>
-        <%= i.hidden_field :product_id, :value => user_product.product_id %>
-        <%= i.hidden_field :order_item_number, :value => user_product.user_product_number %>
-        <%= i.hidden_field :order_item_price, :value => user_product.product.price %>
-    <% end %>
-  <% end %>
+      <%= form_for @order do |f| %>
+        <% @user_products.each do |user_product| %>
+           <%= f.fields_for :order_items do |i| %>
+              <%= i.hidden_field :product_id, :value => user_product.product_id %>
+              <%= i.hidden_field :order_item_number, :value => user_product.user_product_number %>
+              <%= i.hidden_field :order_item_price, :value => user_product.product.price %>
+          <% end %>
+        <% end %>
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <p>購入金額合計</p>
 
-<p>購入金額合計</p>
+            <h2>¥<%= @total %>　<small>※送料含む (1配送につき全国一律500円)</small></h2>
+            <%= f.hidden_field :total_price, :value => @total %>
+          </div>
+        </div>
 
-総計:¥<%= @total %>　※送料含む (1配送につき全国一律500円)
-<%= f.hidden_field :total_price, :value => @total %>
+        <h4>支払方法</h4>
+        <div class="form-inline">
+          <div class="radio col-xs-3">
+            <label>
+            	<%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>クレジットカード
+            </label>
+          </div>
+          <div class="radio col-xs-3">
+            <label>
+            	<%= f.radio_button :payment_method, :銀行振込 %>銀行振込
+            </label>
+          </div>
+          <div class="radiocol-xs-3">
+            <label>
+            	<%= f.radio_button :payment_method, :代引き %>代引き
+            </label>
+          </div>
+        </div>
 
-<p>支払方法</p>
-<label>
-	<%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>クレジットカード</label>
-<label>
-	<%= f.radio_button :payment_method, :銀行振込 %>銀行振込</label>
-<label>
-	<%= f.radio_button :payment_method, :代引き %>代引き</label>
+        <h4>配送先住所</h4>
 
-<p>配送先住所</p>
+        <%= f.hidden_field :ship_status, :value => :出荷準備中 %>
+        <%= f.hidden_field :order_ship_last_name, :value => @user.last_name %>
+        <%= f.hidden_field :order_ship_first_name, :value => @user.first_name %>
+        <%= f.hidden_field :order_ship_ruby_last_name, :value => @user.ruby_last_name %>
+        <%= f.hidden_field :order_ship_ruby_first_name, :value => @user.ruby_first_name %>
+        <%= f.hidden_field :order_ship_post_code, :value => @user.postcode %>
+        <%= f.hidden_field :order_ship_address, :value => @user.address %>
 
-<%= f.hidden_field :ship_status, :value => :出荷準備中 %>
-<%= f.hidden_field :order_ship_last_name, :value => @user.last_name %>
-<%= f.hidden_field :order_ship_first_name, :value => @user.first_name %>
-<%= f.hidden_field :order_ship_ruby_last_name, :value => @user.ruby_last_name %>
-<%= f.hidden_field :order_ship_ruby_first_name, :value => @user.ruby_first_name %>
-<%= f.hidden_field :order_ship_post_code, :value => @user.postcode %>
-<%= f.hidden_field :order_ship_address, :value => @user.address %>
+        <div class="field">
+          <%= f.label :order_ship_last_name, "姓" %>
+          <%= f.text_field :order_ship_last_name, value: @user.last_name, class: 'form-control' %>
+        </div>
 
-<div class="field">
-<%= f.label :order_ship_last_name, "姓" %>
-<%= f.text_field :order_ship_last_name, value: @user.last_name %>
+        <div class="field">
+          <%= f.label :order_ship_first_name, "名" %>
+          <%= f.text_field :order_ship_first_name, value: @user.first_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :order_ship_ruby_last_name, "セイ" %>
+          <%= f.text_field :order_ship_ruby_last_name, value: @user.ruby_last_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :order_ship_ruby_first_name, "メイ" %>
+          <%= f.text_field :order_ship_ruby_first_name, value: @user.ruby_first_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :order_ship_post_code, "郵便番号" %>
+          <%= f.text_field :order_ship_post_code, value: @user.postcode, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :order_ship_address, "住所" %>
+          <%= f.text_field :order_ship_address, value: @user.address, class: 'form-control' %>
+        </div>
+
+        <%= f.submit "購入する", class: 'btn btn-primary pull-right'%>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<div class="field">
-<%= f.label :order_ship_first_name, "名" %>
-<%= f.text_field :order_ship_first_name, value: @user.first_name %>
-</div>
-
-<div class="field">
-<%= f.label :order_ship_ruby_last_name, "セイ" %>
-<%= f.text_field :order_ship_ruby_last_name, value: @user.ruby_last_name %>
-</div>
-
-<div class="field">
-<%= f.label :order_ship_ruby_first_name, "メイ" %>
-<%= f.text_field :order_ship_ruby_first_name, value: @user.ruby_first_name %>
-</div>
-
-<div class="field">
-<%= f.label :order_ship_post_code, "郵便番号" %>
-<%= f.text_field :order_ship_post_code, value: @user.postcode %>
-</div>
-
-<div class="field">
-<%= f.label :order_ship_address, "住所" %>
-<%= f.text_field :order_ship_address, value: @user.address %>
-</div>
-
-<%= f.submit "購入する"%>
-<% end %>
-
 

@@ -1,10 +1,7 @@
 <div class="container">
 <div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h5 class="panel-title"><strong>購入履歴</strong></h5>
-				</div>
+					<h1><strong>購入履歴</strong></h1>
 				<% @orders.each do |order| %>
 				<div class="panel panel-default">
 				    <div class="panel-body">
@@ -24,7 +21,7 @@
 								<td><%= order.order_ship_post_code %><%= order.order_ship_address %></td>
 								<td class="right"><%= form_for(order) do |f| %>
 								    <%= f.select :ship_status, Order.ship_statuses.keys.to_a, {}, class: 'form-control input-sm' %>
-								    <%= f.submit "更新" %>
+								    <%= f.submit "ステータス更新",class: 'btn btn-success' %>
 							        <% end %></td>
 							</tr>
 						    </tbody>
