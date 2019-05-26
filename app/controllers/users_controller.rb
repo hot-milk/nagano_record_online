@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user, except: [:show, :edit, :update]
+  before_action :admin_user, except: [:show, :edit, :update, :destroy]
 
   def index
      @users = User.page(params[:page]).reverse_order
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = 'You have updated user successfully.'
+      flash[:notice] = '会員情報が更新されました。'
       redirect_to user_path(@user.id)
     end
   end
@@ -40,13 +40,15 @@ class UsersController < ApplicationController
     if current_user.admin?
       redirect_to users_path
     else
+      flash[:notice] = 'ご利用ありがとうございました。'
       redirect_to root_path
     end
   end
 
 
-private
-  def user_params
-    params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
-  end
+
+  private
+    def user_params
+      params.require(:user).permit(:last_name, :first_name, :ruby_last_name, :ruby_first_name, :email, :postcode, :address, :phone, :encrypted_password)
+    end
 end

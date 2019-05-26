@@ -101,18 +101,6 @@ ActiveRecord::Schema.define(version: 2019_05_23_051722) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shipments", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "ship_last_name"
-    t.string "ship_first_name"
-    t.string "ship_ruby_last_name"
-    t.string "ship_ruby_first_name"
-    t.string "ship_postcode"
-    t.string "ship_address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "user_id"
