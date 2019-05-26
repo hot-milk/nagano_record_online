@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def admin
-    @products = Product.all
+    @products = Product.page(params[:page])
   end
 
   def edit
@@ -39,8 +39,13 @@ class ProductsController < ApplicationController
 
   def update
     product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to products_admin_path
+    if product.update(product_params)
+      flash[:notice] = "商品情報を更新しました。"
+      redirect_to products_admin_path
+    else
+      flash[:notice] = "商品情報の更新に失敗しました。もう一度登録内容を確認してください。"
+      render :edit
+    end
   end
 
   def new
@@ -50,13 +55,19 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    product.save
-    redirect_to products_admin_path
+    if product.save
+      flash[:notice] = "商品を登録しました。"
+      redirect_to products_admin_path
+    else
+      flash[:notice] = "商品の登録に失敗しました。もう一度登録内容を確認してください。"
+      render :new
+    end
   end
 
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    flash[:notice] = "商品を削除しました。"
     redirect_to products_admin_path
   end
   

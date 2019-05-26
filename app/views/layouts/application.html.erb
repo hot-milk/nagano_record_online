@@ -13,7 +13,7 @@
 
   <body class='<%= "#{controller.controller_name}" %>'>
       <header>
-        <div class="top_box clearfix">
+        <div class="top_box">
             <div class="top_image">
                <%= link_to image_tag('2.png', { :border => '0', :alt => 'トップページ', :size => '100x100'}), root_path %>
             </div>
@@ -109,20 +109,20 @@
             </nav>
         <% end %>
       </header>
-      <div class="main">
+      <div class="main clearfix">
         <div class="sample">
-      <% if flash[:notice] %>
-        <div class="flash alert alert-success">
-            <%= flash[:notice] %>
+          <% if flash[:notice] %>
+            <div class="flash alert alert-success">
+              <%= flash[:notice] %>
             <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+            </div>
+          <% else %>
+            <div class="error-flash">
+              <%= flash[:danger] %>
+            </div>
+          <% end %>
+          <%= yield %>
         </div>
-      <% else %>
-        <div class="error-flash">
-            <%= flash[:danger] %>
-        </div>
-      <% end %>
-        <%= yield %>
-      </div>
       </div>
       <!-- </div> -->
 

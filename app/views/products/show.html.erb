@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid padi">
 	<div class="row">
-    <div class="col-xs-2">
-        <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
-    </div>
+	    <div class="col-xs-2">
+	        <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
+	    </div>
 		<div class="col-xs-10">
 			<div class="row">
 				<div class="col-xs-4">
@@ -29,21 +29,21 @@
 				</div>
 				<div class="recorded-music-table col-xs-6">
 				    <% @recorded_musics.each do |key,recorded_musics| %>
-					<table class="table table-hover table-condensed table-striped">
+					<table class="table table-hover table-condensed">
 				        <thead>
-				            <tr>
-				                <th><h4><strong>ディスク<%= key %></strong></h4></th>
+				            <tr class="info">
+				                <th><strong>ディスク<%= key %></strong></th>
 				                <th>&nbsp;</th>
 				            </tr>
 				        </thead>
 				        <tbody>
 				        	<% recorded_musics.each do |recorded_music| %>
-				              <tr>
+				              <tr class="active">
 				              	<td>
 				              	<%= recorded_music.recorded_music_number %>
 				                </td>
 				              	<td>
-				              	<%= recorded_music.recorded_music_name %>
+				              	<strong><%= recorded_music.recorded_music_name %></strong>
 				                </td>
 				              </tr>
 				            <% end %>
@@ -92,20 +92,22 @@
 				</div>
 			</div>
 			<div class="row">
-					<h4>この商品のレビュー　<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %></h4>
+					<h4>この商品のレビュー　
+                        <% if user_signed_in? %>
+						<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %>
+						<% end %>
+						</h4>
 				        <% @reviews.each do |review| %>
 						    <table class="table table-hover">
 						        <tbody>
-						            <tr>
+						            <tr class="active">
 						                <td>
 						                  	<dt> <%= review.created_at.strftime("%Y-%m-%d") %></dt>
 						                </td>
 						                <td> <%= review.review_content %></td>
-						                <% if user_signed_in? %>
-							                <% if current_user.admin? %>
+						                <% if user_signed_in? || current_user.admin? %>
 							                <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
 							                <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
-							                <% end %>
 						                <% end %>
 						            </tr>
 						        </tbody>

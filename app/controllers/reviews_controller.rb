@@ -9,8 +9,13 @@ class ReviewsController < ApplicationController
 	  product = Product.find(params[:product_id])
 	  review = Review.new(review_params)
 	  review.product_id = product.id
-	  review.save
-	  redirect_to product_path(product)
+	  if review.save
+	  	flash[:notice] = "レビューを投稿しました。"
+	    redirect_to product_path(product)
+	  else
+	  	flash[:notice] = "レビューの投稿に失敗しました。もう一度内容を確認してください。"
+	  	render :new
+	  end
 	end
 
 	def edit
@@ -21,8 +26,12 @@ class ReviewsController < ApplicationController
 	def update
 	  product = Product.find(params[:product_id])
 	  review = Review.find(params[:id])
-	  review.update(review_params)
-	  redirect_to product_path(product)
+	  if review.update(review_params)
+	  	flash[:notice] = "レビュー内容を更新しました。"
+	    redirect_to product_path(product)
+	  else
+        flash[:notice] = "レビュー内容の更新に失敗しました。もう一度更新内容を確認してください。"
+        render :edit
 	end
 
 	def destroy

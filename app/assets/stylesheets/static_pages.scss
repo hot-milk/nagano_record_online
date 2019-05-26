@@ -10,14 +10,14 @@
 .box
 {
     postion: relative;
-    height: 500px;
+    height: 800px;
 }
 
 .box div.text
 {
-    position: absolute; 
-    left: 10px; 
-    top: 10px; 
+    position: absolute;
+    left: 10px;
+    top: 10px;
     font-size: 30px;
 }
 /*.container-fluid{
@@ -31,3 +31,9 @@
 	/*height: 800px;*/
 	/*opacity: 0.4;*/
 /*}*/
+
+.sample{
+    height: 800px;
+	background-size: cover;
+	background: rgba(255,255,255,0);
+}
