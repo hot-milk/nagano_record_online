@@ -5,8 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   acts_as_paranoid#論理削除paranoid
 
-  #validates :last_name, :first_name, :ruby_last_name, :ruby_first_name,
-   #length: { minimum: 1, maximum: 200 }
+  validates :last_name, :first_name, :ruby_last_name, :ruby_first_name,
+    length: { in: 1..200 }
+  validates :postcode,
+    length: { is: 7 }
+  validates :address,
+    length: { in: 5..300 }
+  validates :phone,
+    length: { in: 5..20 }
 
   has_many :orders, dependent: :destroy
   has_many :user_products, dependent: :destroy
