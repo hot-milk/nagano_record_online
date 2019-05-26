@@ -117,9 +117,10 @@
             <%= flash[:notice] %>
             <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
         </div>
-      <% else %>
-        <div class="error-flash">
+      <% elsif flash[:danger]%>
+        <div class="flash alert alert-danger">
             <%= flash[:danger] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
         </div>
       <% end %>
         <%= yield %>

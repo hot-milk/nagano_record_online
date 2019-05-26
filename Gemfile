@@ -62,6 +62,10 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'mysql2', '>= 0.5.2'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -80,5 +84,4 @@ gem 'cocoon'
 gem 'dotenv-rails'
 gem 'payjp'
 gem 'json'
-gem 'mysql2', '>= 0.5.2'
 gem 'listen', '>= 3.0.5', '< 3.2'

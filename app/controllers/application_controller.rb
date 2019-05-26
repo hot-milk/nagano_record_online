@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 	before_action :set_search
 	before_action :set_host
 
-
 	def after_sign_out_path_for(resource)
  		new_user_session_path
 	end
@@ -17,7 +16,7 @@ class ApplicationController < ActionController::Base
       Rails.application.routes.default_url_options[:host] = request.host_with_port
   	end
 
-  	def admin_user
+    def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
 

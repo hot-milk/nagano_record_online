@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     if current_user.admin?
       redirect_to users_path
     else
-      flash[:notice] = 'ご利用ありがとうございました。'
+      flash[:notice] = '退会しました。ご利用ありがとうございました。'
       redirect_to root_path
     end
   end
