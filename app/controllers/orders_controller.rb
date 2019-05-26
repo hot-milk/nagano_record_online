@@ -43,7 +43,7 @@ def create
 end
 
 def index
-	@orders = Order.all.page(params[:page]).per(10).reverse_order
+	@orders = Order.page(params[:page]).per(10).reverse_order
 end
 
 def update

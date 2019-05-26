@@ -7,7 +7,13 @@
     </div>
     <ul class="list-group">
         <% product_ranking.each.with_index(1) do |product, i| %>
-         <li class="list-group-item"><strong><%= i %>位</strong> <%=link_to product.product_name, products_path(product.id) %></li>
+         <li class="list-group-item">
+            <strong><%= i %>位</strong><br> 
+            <%=link_to products_path(product.id) do %>  
+            <%= product.product_name %>
+            <%= attachment_image_tag product, :jacket_image, :fill, 25, 25, format: 'jpeg', fallback: "no_image.jpg" ,size: '25x25',style: 'border-radius: 50%;' %>
+            <% end %>
+        </li>
         <% end %>
     </ul>
 </div>
