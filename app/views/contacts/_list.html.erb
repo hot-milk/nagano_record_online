@@ -17,6 +17,8 @@
         <% end %>
     </ul>
 </div>
+
+<% if user_signed_in? %>
 <div class="panel panel-success">
     <div class="panel-heading">
         <h6>店舗への問い合わせ</h6>
@@ -29,3 +31,4 @@
         <% end %>
     </div>
 </div>
+<% end %>

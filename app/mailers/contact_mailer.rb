@@ -13,5 +13,12 @@ class ContactMailer < ApplicationMailer
       from: "NaganoRecord",
       subject: "お問い合わせありがとうございます。")
   end
+  
+  def create_mail(user)
+    @user = user
+    mail(to: @user.email,
+      from: "NaganoRecord",
+      subject: "お問い合わせありがとうございます。")
+  end
 end
 #binding.pry
