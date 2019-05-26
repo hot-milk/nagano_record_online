@@ -28,10 +28,10 @@ a {
 	text-decoration: none;
 }
 
-.clearfix {
-	content: "";
-	display: block;
-	clear: both;
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 /*文字色を指定する*/
@@ -63,10 +63,10 @@ a {
 
 body {
 	font-family: 'M PLUS Rounded 1c', sans-serif;
-    a:link {color:#3b4350; text-decoration:none }
-    a:visited { color:#3b4350; text-decoration:none }
-    a:hover { color:#8699b8; text-decoration:none }
-    a:active { color:#3b4350; text-decoration:none }
+    a:link {color:#3b4350; text-decoration:none; }
+    a:visited { color:#3b4350; text-decoration:none; }
+    a:hover { color:#8699b8; text-decoration:none; }
+    a:active { color:#3b4350; text-decoration:none; }
 }
 
 /*ここからヘッダーの関する記述*/
@@ -129,9 +129,11 @@ footer {
 	background-color:#fdcfa0;
 }
 /*.container {
+    padding-top: 50px;
 	margin-bottom: 50px;
 }*/
 .padi{
+    padding-top: 50px;
 	padding-right: 0;
 	padding-left:  0;
 }
@@ -143,6 +145,7 @@ footer {
 	/*opacity: 0.4;*/
 }
 .sample{
+    height: 100%;
 	background-size: cover;
 	background: rgba(255,255,255,0.5);
 }
