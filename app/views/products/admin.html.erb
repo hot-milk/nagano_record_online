@@ -11,7 +11,7 @@
 		<div class="col-xs-10 col-xs-offset-1">
 			<table class="table table-hover">
             <thead>
-              <tr>
+              <tr class="info">
                 <th>商品名</th>
                 <th>アーティスト名</th>
                 <th>税抜価格</th>
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
               <% @products.each do |product| %>
-                <tr>
+                <tr class="active">
                   <td> <%= product.product_name %></td>
                   <td> <%= product.artist.artist_name %></td>
                   <td>¥<%= product.price %></td>

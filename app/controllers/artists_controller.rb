@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   before_action :admin_user
   
   def index
-  	@artists = Artist.page(params[:page])
+  	@artists = Artist.page(params[:page]).per(10)
   end
 
   def new

@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def admin
-    @products = Product.page(params[:page])
+    @products = Product.page(params[:page]).per(10)
   end
 
   def edit

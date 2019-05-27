@@ -18,7 +18,6 @@ def new
 	  @sum = @sum + sub_total
     end
 
-    @total = @sum + 500
 end
 
 def create
