@@ -2,7 +2,7 @@ class LabelsController < ApplicationController
   before_action :admin_user
   
   def index
-  	@labels = Label.page(params[:page])
+  	@labels = Label.page(params[:page]).per(10)
   end
 
   def new

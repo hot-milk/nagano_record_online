@@ -11,7 +11,7 @@
 		<div class="col-xs-6 col-xs-offset-3">
 			<table class="table table-hover">
             <thead>
-              <tr>
+              <tr class="info">
                 <th>ジャンル名</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
@@ -19,7 +19,7 @@
             </thead>
             <tbody>
               <% @genres.each do |genre| %>
-                <tr>
+                <tr class="active">
                   <td> <%= genre.genre_name %></td>
                   <td> <%= link_to "編集", edit_genre_path(genre.id), class: "btn-sm" %>
                   </td>

@@ -34,7 +34,7 @@
 						<%= user_product.product.artist.artist_name %>
 					</td>
 					<td>
-						<%= user_product.product.price %>
+						<%= (BigDecimal(user_product.product.price) * BigDecimal("1.08")).ceil %>(税込)
 					</td>
 					<%= form_for(user_product) do |f| %>
 					<td><%= f.text_field :user_product_number, autofocus:true, class: "product_number_form" %></td>
@@ -47,7 +47,7 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>小計:¥</td>
-					<td><%= @sum %></td>
+					<td><%= (BigDecimal(@sum) * BigDecimal("1.08")).ceil %>(税込)</td>
 					<td colspan="2"><%= link_to "商品一覧へ戻る", products_path, class: "btn btn-primary" %></td>
 					<td>
 						<% if @user_product.count > 0 %>

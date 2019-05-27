@@ -11,16 +11,16 @@
 		<div class="col-xs-6 col-xs-offset-3">
 			<table class="table table-hover">
             <thead>
-              <tr>
+              <tr class="info">
                 <th>id</th>
-                <th>name</th>
+                <th>レーベル名</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
               <% @labels.each do |label| %>
-                <tr>
+                <tr class="active">
                   <td> <%= label.id %></td>
                   <td> <%= label.label_name %></td>
                   <td> <%= link_to "編集", edit_label_path(label.id) %>
