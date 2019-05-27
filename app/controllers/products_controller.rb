@@ -54,8 +54,8 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    if product.save
+    @product = Product.new(product_params)
+    if @product.save
       flash[:notice] = "商品を登録しました。"
       redirect_to products_admin_path
     else
