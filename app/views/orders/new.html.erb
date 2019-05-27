@@ -15,8 +15,8 @@
           <div class="panel-body">
             <p>購入金額合計</p>
 
-            <h2>¥<%= @total %>　<small>※送料含む (1配送につき全国一律500円)</small></h2>
-            <%= f.hidden_field :total_price, :value => @total %>
+            <h2>¥<%= (BigDecimal(@sum) * BigDecimal("1.08")).ceil + 500 %>　<small>※送料含む (1配送につき全国一律500円)</small></h2>
+            <%= f.hidden_field :total_price, :value => (BigDecimal(@sum) * BigDecimal("1.08")).ceil + 500 %>
           </div>
         </div>
 
