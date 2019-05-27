@@ -25,21 +25,25 @@ def create
 	order = Order.new(order_params)
 	user_products = UserProduct.where(user_id: current_user.id)
 	order.user_id = current_user.id
-	order.save
+	if order.save
     #購入時にカートの数量に合わせて在庫を減らす。
 	user_products.each do |user_product|
 	 	product = Product.find(user_product.product.id)
 	 	quantity = product.stock.to_i - user_product.user_product_number.to_i
 	 	product.update(stock: quantity.to_s )
-	end
-
-	user_products.delete_all
-	if order.payment_method == "クレジットカード"
-	redirect_to order_path(order)
-	else
-	flash[:notice] = "購入手続きが完了しました。"
-    redirect_to products_path
+	 end
+	 user_products.delete_all
+		if order.payment_method == "クレジットカード"
+	    redirect_to order_path(order)
+	    else
+		flash[:notice] = "購入手続きが完了しました。"
+		redirect_to products_path
+		end
+    else
+      flash[:notice] = "入力した内容に不備があります。もう一度記載してください。"
+      redirect_to new_order_path
     end
+
 end
 
 def index
