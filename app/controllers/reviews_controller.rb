@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
 	  else
         flash[:notice] = "レビュー内容の更新に失敗しました。もう一度更新内容を確認してください。"
         render :edit
+      end
 	end
 
 	def destroy
