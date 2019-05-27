@@ -10,8 +10,8 @@ class LabelsController < ApplicationController
   end
 
   def create
-  	label = Label.new(label_params)
-    if label.save
+  	@label = Label.new(label_params)
+    if @label.save
       flash[:notice] = "レーベルを登録しました。"
   	　redirect_to labels_path
     else
@@ -25,8 +25,8 @@ class LabelsController < ApplicationController
   end
 
   def update
-    label = Label.find(params[:id])
-    if label.update(label_params)
+    @label = Label.find(params[:id])
+    if @label.update(label_params)
       flash[:notice] = "レーベル情報を更新しました。"
       redirect_to labels_path
     else

@@ -14,7 +14,7 @@
                   <br>
                   <%= product.artist.artist_name %>
                   <br>
-                  ¥<%= product.price.to_i * BigDecimal("1.08").ceil %>(税込)
+                  ¥<%= (BigDecimal(product.price) * BigDecimal("1.08")).ceil %>(税込)
               </div>
             <% end %>
         <% end %>
