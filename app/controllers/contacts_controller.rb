@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
 
 	def index
 		@users = User.page(params[:page]).reverse_order
-		@contacts = Contact.page(params[:page]).reverse_order
+		@contacts = Contact.page(params[:page]).per(10).reverse_order
 	end
 
 	def show

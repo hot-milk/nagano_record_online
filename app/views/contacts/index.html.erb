@@ -1,9 +1,10 @@
-<div class="container">
+<div class="container contacts">
     <div class="row">
         <div class="">
             <h2>問い合わせ一覧</h2>
-            <table class="table">
-                <tr>
+            <table class="table table-hover">
+                <thead>
+                <tr class="info">
                     <th>投稿日時</th>
                     <th>ユーザー名</th>
                     <th>件名</th>
@@ -11,8 +12,10 @@
                     <th></th>
                     <th></th>
                 </tr>
+                </thead>
                 <% @contacts.each do |contact| %>
-                <tr>
+                <tbody>
+                <tr class="active">
                     <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
                     <td><%= contact.title %></td>
@@ -25,9 +28,10 @@
                         <%= link_to '削除', contact_path(contact), method: :delete, "data-confirm" => "削除しますか？", class: "destroy_contact_#{contact.id}" %>
                     </td>
                 </tr>
+                </tbody>
                 <% end %>
             </table>
+            <%= paginate @contacts %>
         </div>
-        <%= paginate @contacts, class: "paginate" %>
     </div>
 </div>
