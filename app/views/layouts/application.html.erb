@@ -30,11 +30,11 @@
                     <%= link_to "新規登録", new_user_registration_path%>/
                     <%= link_to "ログイン", new_user_session_path %>
                   </li>
-                  <li class="header_link_item">
-                    <% if user_signed_in? %>
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                    <% end %>
-                  </li>
+                  <% if user_signed_in? %>
+                    <li class="header_link_item">
+                        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    </li>
+                  <% end %>
               </div>
             </div>
         </div>
