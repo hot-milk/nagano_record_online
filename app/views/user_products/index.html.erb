@@ -48,8 +48,7 @@
 					<td>&nbsp;</td>
 					<td class="right">小計:¥</td>
 					<td><%= @sum %></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td colspan="2"><%= link_to "商品一覧へ戻る", products_path, class: "btn btn-primary" %></td>
 					<td>
 						<% if @user_product.count > 0 %>
 						<%= link_to "購入手続き", new_order_path, class: "btn btn-success" %>
