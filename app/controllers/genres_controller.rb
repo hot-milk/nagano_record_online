@@ -2,7 +2,7 @@ class GenresController < ApplicationController
   before_action :admin_user
   
   def index
-  	@genres = Genre.page(params[:page])
+  	@genres = Genre.page(params[:page]).per(10)
   end
 
   def new
