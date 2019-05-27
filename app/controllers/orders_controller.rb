@@ -38,7 +38,7 @@ def create
 	redirect_to order_path(order)
 	else
 	flash[:notice] = "購入手続きが完了しました。"
-    redirect_to pruducts_path
+    redirect_to products_path
     end
 end
 

@@ -1,13 +1,14 @@
-<h2>レーベル編集</h2>
-
-<%= form_for(@label) do |f| %>
-
-  <div class="field">
-    <%= f.label :label_name, "レーベル名" %>
-    <%= f.text_field :label_name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
+<div class="container label_new">
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3">
+			<h2>レーベル編集</h2>
+			<%= form_for(@label) do |f| %>
+				<h4>アーティスト名</h4><br>
+				<%= f.text_field :label_name, class: "form-control" %>
+	            <div class="pull-right">
+				<%= f.submit '更新',class: 'btn btn-default' %>
+			    </div>
+			<% end %>
+		</div>
+	</div>
+</div>
