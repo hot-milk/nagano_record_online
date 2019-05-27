@@ -12,6 +12,7 @@
             <%=link_to product_path(product.id) do %>
             <%= product.product_name %>
             <%= attachment_image_tag product, :jacket_image, :fill, 25, 25, format: 'jpeg', fallback: "no_image.jpg" ,size: '25x25',style: 'border-radius: 50%;' %>
+
             <% end %>
         </li>
         <% end %>
