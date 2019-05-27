@@ -1,7 +1,21 @@
+<div class="container back pt50">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
 
-ご請求金額：¥<%= @order.total_price %>
+        <div class="panel panel-info">
+            <div class="panel-body">
+            <p>ご請求金額(クレジットカード決済)</p>
+                <div class="clearfix">
+                <div class="width"><h2>¥<%= @order.total_price %></h2></div>
+                    <div class="right width">
+                    <%= form_tag(action: :pay, method: :post) do %>
+                    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_6ffc2b5f8a963dbbb4a4ebca"></script>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<%= form_tag(action: :pay, method: :post) do %>
-   <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_6ffc2b5f8a963dbbb4a4ebca"></script>
-
-<% end %>
+     </div>
+   </div>
+</div>
