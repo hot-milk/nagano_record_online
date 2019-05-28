@@ -28,7 +28,7 @@ class UserProductsController < ApplicationController
 			flash[:notice2] = "数量を変更しました。"
 		redirect_to user_products_path
 	    else
-	    render "/user_products"
+	    	render "/user_products"
 	    end
 	end
 
