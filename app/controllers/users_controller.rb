@@ -31,6 +31,9 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = '会員情報が更新されました。'
       redirect_to user_path(@user.id)
+    else
+        flash[:danger] = '必要項目を入力してください。'
+        render :edit
     end
   end
 
