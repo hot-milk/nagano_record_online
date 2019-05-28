@@ -98,8 +98,8 @@
 						<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %>
 						<% end %>
 						</h4>
-				        <% @reviews.each do |review| %>
 						    <table class="table table-hover reviews">
+                              <% @reviews.each do |review| %>
 						        <tbody>
 						            <tr class="active">
 						                <td>
@@ -112,8 +112,9 @@
 						                <% end %>
 						            </tr>
 						        </tbody>
-					        </table>
-			            <% end %>
+                              <% end %>
+					      </table>
+					    <%= paginate @reviews %>
 			        </div>
 				</div>
 			</div>
