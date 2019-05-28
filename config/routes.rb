@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
   get '/about' => 'static_pages#about'
-  get '/admin' => 'static_pages#admin'
   get 'products/admin' => 'products#admin'
   get 'products/search' => 'products#search'
   post '/pay' => 'orders#pay'

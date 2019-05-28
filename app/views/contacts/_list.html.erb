@@ -11,7 +11,7 @@
             <strong><%= i %>位</strong><br> 
             <%=link_to product_path(product.id) do %>
             <%= product.product_name %>
-            <%= attachment_image_tag product, :jacket_image, :fill, 25, 25, format: 'jpeg', fallback: "no_image.jpg" ,size: '25x25',style: 'border-radius: 50%;' %>
+            <%= attachment_image_tag product, :jacket_image, :fill, 25, 25, fallback: "no_image.jpg" ,size: '25x25',style: 'border-radius: 50%;' %>
 
             <% end %>
         </li>
@@ -27,7 +27,7 @@
     <div class="panel-body">
         <%= form_for contact do |f| %>
             <%= f.text_field :title, placeholder:"件名", class: "form-control input-sm" %>
-            <%= f.text_area :contact_content, placeholder:"内容", class: "form-control input-sm" %>
+            <%= f.text_area :contact_content,required: true, placeholder:"内容", class: "form-control input-sm" %>
             <%= f.submit '送信', class: "btn btn-default input-sm" %>
         <% end %>
     </div>

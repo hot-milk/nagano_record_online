@@ -42,14 +42,14 @@
         </div>
 
         <!-- ここから検索BOXおよびNAVバーの記述 -->
-        <% if current_user && current_user.admin? %>
+        <% if current_user && current_user.admin == true %>
             <nav class="navbar navbar-default">
               <div class="container">
                 <div class="row">
                   <div class="col-xs-6">
                       <%= search_form_for @search, url: products_search_path do |f| %>
                         <div class="input-group">
-                            <%= f.text_field :product_name_cont ,placeholder: '商品名を入力...', class: 'form-control' %>
+                            <%= f.text_field :product_name_cont ,required: true,placeholder: '商品名を入力...', class: 'form-control' %>
                             <span class="input-group-btn">
                             <%= f.submit ("検索") , class: 'btn btn-default'%>
                             </span>
@@ -86,14 +86,46 @@
                  </div>
               </div>
             </nav>
-        <% else %>
+        <% elsif  current_user && current_user.admin == false %>
             <nav class="navbar navbar-default">
               <div class="container">
                 <div class="row">
                   <div class="col-xs-6">
                       <%= search_form_for @search, url: products_search_path do |f| %>
                         <div class="input-group">
-                            <%= f.text_field :product_name_cont ,placeholder: '商品名を入力...', class: 'form-control' %>
+                            <%= f.text_field :product_name_cont ,required: true,placeholder: '商品名を入力...', class: 'form-control' %>
+                            <span class="input-group-btn">
+                            <%= f.submit ("検索") , class: 'btn btn-default'%>
+                            </span>
+                        </div>
+                      <% end %>
+                  </div>
+                  <div class="col-xs-6">
+                      <div class="collapse navbar-collapse pr0" id="navbarEexample1">
+                          <ul class="nav navbar-nav">
+                              <li>
+                                <%= link_to "このサイトについて", about_path %>
+                              </li>
+                              <li>
+                                <%= link_to "マイページ", user_path(current_user) %>
+                              </li>
+                              <li>
+                                <%= link_to "カート", user_products_path,class: 'fas fa-shopping-cart' %>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                 </div>
+              </div>
+            </nav>
+            <% else %>
+            <nav class="navbar navbar-default">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-6">
+                      <%= search_form_for @search, url: products_search_path do |f| %>
+                        <div class="input-group">
+                            <%= f.text_field :product_name_cont ,required: true,placeholder: '商品名を入力...', class: 'form-control' %>
                             <span class="input-group-btn">
                             <%= f.submit ("検索") , class: 'btn btn-default'%>
                             </span>

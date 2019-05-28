@@ -24,11 +24,11 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
-	  product = Product.find(params[:product_id])
-	  review = Review.find(params[:id])
-	  if review.update(review_params)
+	  @product = Product.find(params[:product_id])
+	  @review = Review.find(params[:id])
+	  if @review.update(review_params)
 	  	flash[:notice] = "レビュー内容を更新しました。"
-	    redirect_to product_path(product)
+	    redirect_to product_path(@product)
 	  else
         flash[:notice] = "レビュー内容の更新に失敗しました。もう一度更新内容を確認してください。"
         render :edit
