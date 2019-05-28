@@ -12,7 +12,7 @@ class UserProductsController < ApplicationController
 
 	def create
 		@user_product = UserProduct.new(user_product_params)
-	    if @user_product.user_product_number < @user_product.product.stock
+	    if @user_product.user_product_number <= @user_product.product.stock
 	       @user_product.save
 	       flash[:notice] = "カートに商品が追加されました。"
 	       redirect_to user_products_path
