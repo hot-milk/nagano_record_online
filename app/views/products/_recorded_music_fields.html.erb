@@ -4,10 +4,10 @@
     	<%= f.text_field :recorded_music_name, placeholder:"曲名", class: 'form-control input-sm' %>
         </div>
     	<div class="field col-xs-3">
-    	<%= f.number_field :recorded_disk_number, min: 1, placeholder:"ディスク", class: 'form-control input-sm' %>
+    	<%= f.number_field :recorded_disk_number, min: 1,required: true, placeholder:"ディスク", class: 'form-control input-sm' %>
         </div>
     	<div class="field col-xs-2">
-    	<%= f.number_field :recorded_music_number, min: 1, placeholder:"曲順", class: 'form-control input-sm' %>
+    	<%= f.number_field :recorded_music_number, min: 1,required: true, placeholder:"曲順", class: 'form-control input-sm' %>
         </div>
     	<div class="field col-xs-2">
     	<%= link_to_remove_association "削除", f, class: "btn btn-danger" %>

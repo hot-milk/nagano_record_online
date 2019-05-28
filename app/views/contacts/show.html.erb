@@ -28,7 +28,7 @@
         <table class="table contact">
             <thead>
                 <tr class="info">
-                    <th>返信内容</th>                        
+                    <th>返信内容</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
         <div class="col-xs-6 col-xs-offset-3">
         	<h3>返信フォーム</h3><br>
         	<%= form_for [@user, @contact] do |f| %>
-        		<%= f.text_area :responce, autofocus: true, :size=>"60x10" %><br>
+        		<%= f.text_area :responce, autofocus: true,required: true, :size=>"60x10" %><br>
         		<%= f.submit "返信", class: "" %>
         	<% end %>
     	</div>
