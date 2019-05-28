@@ -10,7 +10,7 @@
 .box
 {
     postion: relative;
-    height: 800px;
+    min-height: 800px;
 }
 
 .box div.text
@@ -33,7 +33,7 @@
 /*}*/
 
 .sample{
-    height: 800px;
+    min-height: 800px;
 	background-size: cover;
 	background: rgba(255,255,255,0);
 }

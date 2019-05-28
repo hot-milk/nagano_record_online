@@ -9,8 +9,9 @@
                     <th>ユーザー名</th>
                     <th>件名</th>
                     <th>内容</th>
-                    <th></th>
-                    <th></th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <% @contacts.each do |contact| %>
@@ -20,6 +21,13 @@
                     <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
                     <td><%= contact.title %></td>
                     <td><%= contact.contact_content %></td>
+                    <td>
+                        <% if contact.responce == nil %>
+                          <i class="fas fa-info-circle my-orange"></i>
+                        <% else %>
+                          <i class="fas fa-check my-green"></i>
+                        <% end %>
+                    </td>
                     <td>
                         <%= link_to '詳細', user_contact_path(contact.user,contact.id) %>
 
