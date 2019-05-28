@@ -12,8 +12,8 @@
 							<%= form_for(@user) do |f| %>
 								<h4 style="display:inline;">氏名：</h4><%= @user.last_name %><%= @user.first_name %><br>
 								<h4 style="display:inline;">住所：</h4><%= @user.address %><br>
-								<h4 style="display:inline;">電話番号：</4><%= @user.phone %><br>
-								<h4 style="display:inline;">メール：</4><%= @user.email %><br>
+								<h4 style="display:inline;">電話番号：</h4><%= @user.phone %><br>
+								<h4 style="display:inline;">メール：</h4><%= @user.email %><br>
 							<% end %>
 						</div>
 					</div>
@@ -23,11 +23,11 @@
 					<div class="row">
 						<div class="col-xs-6">
 							<br>
-							<%= link_to "ユーザー情報の変更はこちら", edit_user_path(@user), class: "btn" %>
+							<%= link_to "ユーザー情報の変更はこちら", edit_user_path(@user), class: "btn btn-success" %>
 						</div>
 						<div class="col-xs-4">
 							<br>
-							<%= link_to '退会', user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn" %>
+							<%= link_to '退会', user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-warning" %>
 						</div>
 					</div>
 				</div>
