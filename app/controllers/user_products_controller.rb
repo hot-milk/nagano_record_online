@@ -24,11 +24,14 @@ class UserProductsController < ApplicationController
 
 	def update
 		user_product = UserProduct.find(params[:id])
-		if user_product.update(user_product_params)
-			flash[:notice2] = "数量を変更しました。"
-		redirect_to user_products_path
+		user_product.assign_attributes(user_product_params)
+		if user_product.user_product_number <= user_product.product.stock
+		  user_product.update(user_product_params)
+		  flash[:notice] = "数量を変更しました。"
+		  redirect_to user_products_path
 	    else
-	    	render "/user_products"
+	      flash[:notice] = "在庫が不足しております。申し訳ありませんが、数量を変更して再度お試しください。"
+	      redirect_to user_products_path
 	    end
 	end
 
