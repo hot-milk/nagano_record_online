@@ -8,13 +8,15 @@ class Product < ApplicationRecord
 	belongs_to :genre
 	belongs_to :label
 
-
-
 	accepts_nested_attributes_for :recorded_musics, allow_destroy: true
 
 	enum product_category: [:シングル,:アルバム]
 	enum status: [:販売中,:販売停止中]
 	attachment :jacket_image
+
+    validates :product_name, presence: true, length: { maximum: 76}
+    validates :price, presence: true
+    validates :stock, presence: true
 
     def favorited_by?(user)
         favorites.where(user_id: user.id).exists?
