@@ -24,6 +24,9 @@ a {
 	height: 200px;
 	margin: 0 auto;
 	float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .edit_product_box {

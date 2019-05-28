@@ -62,9 +62,9 @@
 							</li>
 							<li class="list-group-item">
 								在庫状況:
-								<% if @product.stock.to_i == 0 %>
+								<% if @product.stock == 0 %>
 			                      <i class="fas fa-times my-red"></i>
-			                    <% elsif @product.stock.to_i > 0 && @product.stock.to_i <= 10 %>
+			                    <% elsif @product.stock > 0 && @product.stock <= 10 %>
 			                      <i class="fas fa-exclamation-triangle my-orange"></i>
 			                    <% else %>
 			                      <i class="far fa-circle my-green"></i>
@@ -81,7 +81,7 @@
 									    </div>
 								</li>
 								<li class="list-group-item">
-									<% if @product.stock.to_i > 0 %>
+									<% if @product.stock > 0 %>
 								      <%= user_product.submit "カートに追加", class: 'btn btn-primary' %>
 								    <% end %>
 								</li>
@@ -106,17 +106,19 @@
 						                  	<dt> <%= review.created_at.strftime("%Y-%m-%d") %></dt>
 						                </td>
 						                <td> <%= review.review_content %></td>
-						                <% if user_signed_in? || current_user.admin? %>
-							                <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
-							                <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
-						                <% end %>
+							            <% if current_user && current_user.admin == true || review.user_id == current_user.id %>
+								                <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
+								                <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+								        <% else %>
+								                <td>&nbsp;</td>
+								                <td>&nbsp;</td>
+							            <% end %>
 						            </tr>
 						        </tbody>
                               <% end %>
 					      </table>
-					    <%= paginate @reviews %>
-			        </div>
-				</div>
+					<%= paginate @reviews %>
+			    </div>
 			</div>
 		</div>
 	</div>
