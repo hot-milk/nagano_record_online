@@ -19,13 +19,14 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @reviews = Review.where(product_id: params[:id])
+    # @reviews = Review.where(product_id: params[:id]).reverse_order
     @user_product = UserProduct.new
     @contact = Contact.new
     @recorded_musics = RecordedMusic.where(product_id: params[:id]).order('recorded_disk_number ASC').order('recorded_music_number ASC').group_by(&:recorded_disk_number)
     product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
     product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
     @product_ranking= Product.where(id: product_favorited_ids).limit(10)
+    @reviews = Review.where(product_id: params[:id]).reverse_order.page(params[:page]).per(5)
   end
 
   def admin

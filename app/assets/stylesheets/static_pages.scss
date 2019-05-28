@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .static_pages{
-	background-image: url("/assets/kiminona.jpg");
+	/*background-image: url("/assets/kiminona.jpg");*/
 	background-position: left top;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -10,7 +10,7 @@
 .box
 {
     postion: relative;
-    min-height: 800px;
+    height: 800px;
 }
 
 .box div.text
@@ -33,7 +33,7 @@
 /*}*/
 
 .sample{
-    min-height: 800px;
+    height: 800px;
 	background-size: cover;
 	background: rgba(255,255,255,0);
 }

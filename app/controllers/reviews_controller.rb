@@ -6,12 +6,12 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-	  product = Product.find(params[:product_id])
-	  review = Review.new(review_params)
-	  review.product_id = product.id
-	  if review.save
+	  @product = Product.find(params[:product_id])
+	  @review = Review.new(review_params)
+	  @review.product_id = @product.id
+	  if @review.save
 	  	flash[:notice] = "レビューを投稿しました。"
-	    redirect_to product_path(product)
+	    redirect_to product_path(@product)
 	  else
 	  	flash[:notice] = "レビューの投稿に失敗しました。もう一度内容を確認してください。"
 	  	render :new
