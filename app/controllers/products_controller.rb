@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @reviews = Review.where(product_id: params[:id]).reverse_order
+    @reviews = Review.where(product_id: params[:id]).reverse_order.page(params[:page]).per(5)
     @user_product = UserProduct.new
     @contact = Contact.new
     @recorded_musics = RecordedMusic.where(product_id: params[:id]).order('recorded_disk_number ASC').order('recorded_music_number ASC').group_by(&:recorded_disk_number)
