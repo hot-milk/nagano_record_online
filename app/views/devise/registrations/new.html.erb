@@ -16,11 +16,11 @@
           <div class="row">
             <div class="col-xs-6">
               <p>姓</p>
-                <%= f.text_field :last_name, style: "width:100%;",class: 'form-control' %>
+                <%= f.text_field :last_name,required: true, style: "width:100%;",class: 'form-control' %>
             </div>
             <div class="col-xs-6">
               <p>名</p>
-                <%= f.text_field :first_name, style: "width:100%;",class: 'form-control' %>
+                <%= f.text_field :first_name,required: true, style: "width:100%;",class: 'form-control' %>
             </div>
           </div>
       <!-- </form> -->
@@ -30,40 +30,40 @@
           <div class="row">
             <div class="col-xs-6">
             <p>セイ</p>
-            <%= f.text_field :ruby_last_name, style: "width:100%;",class: 'form-control' %>
+            <%= f.text_field :ruby_last_name,required: true, style: "width:100%;",class: 'form-control' %>
             </div>
             <div class="col-xs-6">
             <p>メイ</p>
-              <%= f.text_field :ruby_first_name, style: "width:100%;",class: 'form-control' %>
+              <%= f.text_field :ruby_first_name,required: true, style: "width:100%;",class: 'form-control' %>
             </div>
           </div>
         </div>
         <div class="field">
           <p>電話番号（ハイフンなし）</p>
-          <%= f.text_field :phone, style: "width:100%;",class: 'form-control' %>
+          <%= f.text_field :phone,required: true, style: "width:100%;",class: 'form-control' %>
         </div>
         <div class="field">
         <p>郵便番号（ハイフンなし）</p>
-          <%= f.text_field :postcode, style: "width:100%;",class: 'form-control' %>
+          <%= f.text_field :postcode,required: true, style: "width:100%;",class: 'form-control' %>
         </div>
         <div class="field">
           <p>住所</p>
-            <%= f.text_field :address, style: "width:100%;",class: 'form-control' %>
+            <%= f.text_field :address,required: true, style: "width:100%;",class: 'form-control' %>
         </div>
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, style: "width:100%;", autofocus: true, autocomplete: "email",class: 'form-control' %>
+          <%= f.email_field :email,required: true, style: "width:100%;", autofocus: true, autocomplete: "email",class: 'form-control' %>
         </div>
         <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, style: "width:100%;", autocomplete: "new-password",class: 'form-control' %>
+          <%= f.password_field :password,required: true, style: "width:100%;", autocomplete: "new-password",class: 'form-control' %>
         </div>
         <div class="field">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, style: "width:100%;",autocomplete: "new-password",class: 'form-control' %>
+          <%= f.password_field :password_confirmation,required: true, style: "width:100%;",autocomplete: "new-password",class: 'form-control' %>
         </div>
         <div class="actions">
           <%= f.submit "登録する", class: 'btn btn-default' %>

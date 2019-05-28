@@ -6,7 +6,7 @@
 
 			  <div class="field form-group">
 			    <%= f.label :review_content, "レビュー内容" %>
-			    <%= f.text_area :review_content, class: 'form-control' %>
+			    <%= f.text_area :review_content,required: true, class: 'form-control' %>
 			  </div>
 			  <div class="actions">
 			    <%= f.submit "投稿",class: 'btn btn-default pull-right' %>
