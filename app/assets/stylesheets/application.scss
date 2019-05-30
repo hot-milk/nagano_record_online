@@ -55,9 +55,6 @@ a {
 	color: #8699b8;
 }
 
-.pr0 {
-	padding-right:0px;
-}
 
 /* リンクタグのStyle*/
 
@@ -67,6 +64,7 @@ body {
     a:visited { color:#3b4350; text-decoration:none; }
     a:hover { color:#8699b8; text-decoration:none; }
     a:active { color:#3b4350; text-decoration:none; }
+    min-width: 1024px;
 }
 
 /*ここからヘッダーの関する記述*/
@@ -137,8 +135,6 @@ footer {
 }*/
 .padi{
     padding-top: 50px;
-	padding-right: 0;
-	padding-left:  0;
 }
 .main{
 	background-image: url("/assets/rale2.jpg");
@@ -167,4 +163,7 @@ footer {
 }
 .words{
 	min-height: 800px;
+}
+.wrap {
+	overflow: hidden;
 }
