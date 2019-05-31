@@ -28,10 +28,10 @@ a {
 	text-decoration: none;
 }
 
-.clearfix {
-	content: "";
-	display: block;
-	clear: both;
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 /*文字色を指定する*/
@@ -55,18 +55,16 @@ a {
 	color: #8699b8;
 }
 
-.pr0 {
-	padding-right:0px;
-}
 
 /* リンクタグのStyle*/
 
 body {
 	font-family: 'M PLUS Rounded 1c', sans-serif;
-    a:link {color:#3b4350; text-decoration:none }
-    a:visited { color:#3b4350; text-decoration:none }
-    a:hover { color:#8699b8; text-decoration:none }
-    a:active { color:#3b4350; text-decoration:none }
+    a:link {color:#3b4350; text-decoration:none; }
+    a:visited { color:#3b4350; text-decoration:none; }
+    a:hover { color:#8699b8; text-decoration:none; }
+    a:active { color:#3b4350; text-decoration:none; }
+    min-width: 1024px;
 }
 
 /*ここからヘッダーの関する記述*/
@@ -128,10 +126,45 @@ footer {
 	text-align:center;
 	background-color:#fdcfa0;
 }
-.container {
-	margin-bottom: 50px;
+.my-black {
+	margin: 0;
 }
+/*.container {
+    padding-top: 50px;
+	margin-bottom: 50px;
+}*/
 .padi{
-	padding-right: 0;
-	padding-left:  0;
+    padding-top: 50px;
+}
+.main{
+	background-image: url("/images/rale2.jpg");
+
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	/*opacity: 0.4;*/
+}
+.sample{
+    height: 100%;
+	background-size: cover;
+	background: rgba(255,255,255,0.5);
+}
+
+.static_pages .sample {
+	background: rgba(255,255,255,0);
+}
+
+.pass{
+	margin-top: 200px;
+	/*text-align:center;*/
+}
+
+.login{
+	min-height: 800px;
+}
+.words{
+	min-height: 800px;
+}
+.wrap {
+	overflow: hidden;
 }

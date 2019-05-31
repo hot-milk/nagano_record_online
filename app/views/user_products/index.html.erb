@@ -1,59 +1,63 @@
-<div class="container">
+<div class="container cart">
+	<% if flash[:notice2] %>
+	  <div class="flash">
+		<%= flash[:notice2] %>
+	  </div>
+	<% end %>
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 
-<h3>ショッピングカート</h3>
+			<h3>ショッピングカート</h3>
 
-<% if flash[:notice2] %>
-<div class="flash">
-  <%= flash[:notice2] %>
-</div>
-<% end %>
-
-<table class="table table-hover">
-
-	<tr>
-		<th></th>
-		<th>シングル/アルバム名</th>
-		<th width="120">アーティスト名</th>
-		<th width="90">価格</th>
-		<th>数量</th>
-		<th></th>
-		<th></th>
-	</tr>
-
-    <% @user_product.each do |user_product| %>
-
-	<tr>
-		<td><%= attachment_image_tag user_product.product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %></td>
-		<td><%= user_product.product.product_name %></td>
-		<td><%= user_product.product.artist.artist_name %></td>
-		<td><%= user_product.product.price %></td>
-		<%= form_for(user_product) do |f| %>
-		    <td><%= f.text_field :user_product_number, autofocus:true, class: "product_number_form" %></td>
-		<td><%= f.submit "数量変更", class: "btn btn-link" %></td>
-		<% end %>
-		<td><%= link_to "削除", user_product_path(user_product), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-link"  %></td>
-	</tr>
-
-	<% end %>
-
-	<tr>
-		<td></td>
-		<td></td>
-		<td class="right">小計:¥</td>
-		<td><%= @sum %></td>
-		<td></td>
-		<td></td>
-		<% if @user_product.count > 0 %>
-		<td><%= link_to "購入手続き", new_order_path, class: "btn btn-success" %></td>
-		<% end %>
-	</tr>
-
-</table>
-
-
-</div>
-</div>
+			<table class="table">
+			  <thead>
+				<tr class="success">
+					<th></th>
+					<th>シングル/アルバム名</th>
+					<th width="120">アーティスト名</th>
+					<th width="90">価格</th>
+					<th>数量</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			  </thead>
+			  <tbody>
+			    <% @user_product.each do |user_product| %>
+				<tr class="active">
+					<td>
+						<%= attachment_image_tag user_product.product, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %>
+					</td>
+					<td>
+						<%= user_product.product.product_name %>
+					</td>
+					<td>
+						<%= user_product.product.artist.artist_name %>
+					</td>
+					<td>
+						<%= (BigDecimal(user_product.product.price) * BigDecimal("1.08")).ceil %>(税込)
+					</td>
+					<%= form_for(user_product) do |f| %>
+					<td><%= f.text_field :user_product_number, autofocus:true, class: "product_number_form" %></td>
+					<td><%= f.submit "数量変更", class: "btn btn-link" %></td>
+					<% end %>
+					<td><%= link_to "削除", user_product_path(user_product), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-link"  %></td>
+				</tr>
+				<% end %>
+				<tr class="success">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>小計:¥</td>
+					<td><%= (BigDecimal(@sum) * BigDecimal("1.08")).ceil %>(税込)</td>
+					<td colspan="2"><%= link_to "商品一覧へ戻る", products_path, class: "btn btn-primary" %></td>
+					<td>
+						<% if @user_product.count > 0 %>
+						<%= link_to "購入手続き", new_order_path, class: "btn btn-success" %>
+						<% end %>
+				    </td>
+				</tr>
+			   </tbody>
+			</table>
+		</div>
+	</div>
 </div>
 

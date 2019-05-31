@@ -1,14 +1,14 @@
-<div class="container-fluid">
+<div class="container-fluid padi">
 	<div class="row">
-    <div class="col-xs-2">
-        <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
-    </div>
+	    <div class="col-xs-2">
+	        <%= render '/contacts/list', contact: @contact, product_ranking: @product_ranking %>
+	    </div>
 		<div class="col-xs-10">
 			<div class="row">
 				<div class="col-xs-4">
 					<h2><strong><%= @product.product_name %></strong><small> <%= @product.product_category %></small></h2>
 					<h3><%= @product.artist.artist_name %><small> <%= @product.label.label_name %></small></h3>
-					<%= attachment_image_tag @product, :jacket_image, format: 'jpeg', fallback: "no_image.jpg" ,size: '380x380' %>
+					<%= attachment_image_tag @product, :jacket_image, format: 'jpeg', fallback: "no_image.jpg" ,size: '380x380',class: 'img-responsive img-rounded' %>
 					 <% if user_signed_in? %>
 						<% if @product.favorited_by?(current_user) %>
 						  <h3>
@@ -29,21 +29,21 @@
 				</div>
 				<div class="recorded-music-table col-xs-6">
 				    <% @recorded_musics.each do |key,recorded_musics| %>
-					<table class="table table-hover table-condensed table-striped">
+					<table class="table table-hover table-condensed">
 				        <thead>
-				            <tr>
-				                <th><h4><strong>ディスク<%= key %></strong></h4></th>
+				            <tr class="info">
+				                <th><strong>ディスク<%= key %></strong></th>
 				                <th>&nbsp;</th>
 				            </tr>
 				        </thead>
 				        <tbody>
 				        	<% recorded_musics.each do |recorded_music| %>
-				              <tr>
+				              <tr class="active">
 				              	<td>
 				              	<%= recorded_music.recorded_music_number %>
 				                </td>
 				              	<td>
-				              	<%= recorded_music.recorded_music_name %>
+				              	<strong><%= recorded_music.recorded_music_name %></strong>
 				                </td>
 				              </tr>
 				            <% end %>
@@ -58,7 +58,7 @@
 						</div>
 						<ul class="list-group">
 							<li class="list-group-item">
-								税込価格￥<%= @product.price.to_i * BigDecimal("1.08").ceil %>
+								￥<%= (BigDecimal(@product.price) * BigDecimal("1.08")).ceil %>(税込)
 							</li>
 							<li class="list-group-item">
 								在庫状況:
@@ -77,7 +77,7 @@
 										<%= user_product.hidden_field :user_id, :value => current_user.id %>
 										<div class ="form-froup">
 											<%= user_product.label :user_product_number, "数量",class: "control-label" %>
-											<%= user_product.number_field :user_product_number, value: "1", min: "1", class: 'form-control' %>
+											<%= user_product.number_field :user_product_number, value: "1", min: "1",required: true, class: 'form-control' %>
 									    </div>
 								</li>
 								<li class="list-group-item">
@@ -92,25 +92,30 @@
 				</div>
 			</div>
 			<div class="row">
-					<h4>この商品のレビュー　<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %></h4>
-				        <% @reviews.each do |review| %>
-						    <table class="table table-hover">
+				<div class="col-xs-10 col-xs-offset-1">
+					<h4>この商品のレビュー
+                        <% if user_signed_in? %>
+						<%= link_to 'レビューを投稿する', new_product_review_path(@product.id), class:"btn btn-default" %>
+						<% end %>
+						</h4>
+						    <table class="table table-hover reviews">
+                              <% @reviews.each do |review| %>
 						        <tbody>
-						            <tr>
+						            <tr class="active">
 						                <td>
 						                  	<dt> <%= review.created_at.strftime("%Y-%m-%d") %></dt>
 						                </td>
 						                <td> <%= review.review_content %></td>
-						                <% if user_signed_in? %>
-							                <% if current_user.admin? %>
+						                <% if user_signed_in? || current_user.admin? %>
 							                <td> <%= link_to "編集", edit_product_review_path(review.product,review.id) %></td>
 							                <td> <%= link_to '削除', product_review_path(review.product,review.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
-							                <% end %>
 						                <% end %>
 						            </tr>
 						        </tbody>
-					        </table>
-			            <% end %>
+                              <% end %>
+					      </table>
+					    <%= paginate @reviews %>
+			        </div>
 				</div>
 			</div>
 		</div>

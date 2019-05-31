@@ -36,23 +36,21 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
+group :development do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
-end
-
-group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+# Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+
+#gem 'listen', '>= 3.0.5', '< 3.2'
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'spring'
+gem 'spring-watcher-listen', '~> 2.0.0'
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
@@ -77,3 +75,7 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'cocoon'
 gem 'dotenv-rails'
+gem 'rails-i18n', '~> 5.1'
+gem 'json'
+gem 'mysql2'
+gem 'listen', '>= 3.0.5', '< 3.2'

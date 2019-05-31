@@ -2,7 +2,7 @@ class LabelsController < ApplicationController
   before_action :admin_user
   
   def index
-  	@labels = Label.all
+  	@labels = Label.page(params[:page]).per(10).reverse_order
   end
 
   def new
@@ -10,9 +10,14 @@ class LabelsController < ApplicationController
   end
 
   def create
-  	label = Label.new(label_params)
-  	label.save
-  	redirect_to labels_path
+  	@label = Label.new(label_params)
+    if @label.save
+      flash[:notice] = "レーベルを登録しました。"
+  	　redirect_to labels_path
+    else
+      flash[:notice] = "レーベルの登録に失敗しました。もう一度登録内容を確認してください。"
+      render :new
+    end
   end
 
   def edit
@@ -20,9 +25,14 @@ class LabelsController < ApplicationController
   end
 
   def update
-    label = Label.find(params[:id])
-    label.update(label_params)
-    redirect_to labels_path
+    @label = Label.find(params[:id])
+    if @label.update(label_params)
+      flash[:notice] = "レーベル情報を更新しました。"
+      redirect_to labels_path
+    else
+      flash[:notice] = "レーベル情報の更新に失敗しました。もう一度更新内容を確認してください。"
+      render :edit
+    end
   end
 
   def destroy

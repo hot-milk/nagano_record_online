@@ -3,5 +3,5 @@ class Contact < ApplicationRecord
 	validates :title,
 		length: {minium:1, maximum: 50}
 	validates :contact_content,
-		presence: true, length: {maximum: 200}
+		presence: true, length: {maximum: 1000}
 end

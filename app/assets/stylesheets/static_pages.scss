@@ -1,15 +1,39 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.static_pages{
+	/*background-image: url("/assets/kiminona.jpg");*/
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
 .box
 {
     postion: relative;
+    height: 800px;
 }
 
 .box div.text
 {
-    position: absolute; 
-    left: 10px; 
-    top: 10px; 
+    position: absolute;
+    left: 10px;
+    top: 10px;
     font-size: 30px;
+}
+/*.container-fluid{
+	padding-right: 0;
+	padding-left:  0;
+}*/
+/*.main{
+	background-image: url("/assets/kiminona.jpeg");
+	background-size: cover;
+	/*width: 1065px;*/
+	/*height: 800px;*/
+	/*opacity: 0.4;*/
+/*}*/
+
+.sample{
+    height: 800px;
+	background-size: cover;
+	background: rgba(255,255,255,0);
 }

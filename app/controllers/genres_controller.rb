@@ -2,7 +2,7 @@ class GenresController < ApplicationController
   before_action :admin_user
   
   def index
-  	@genres = Genre.all
+  	@genres = Genre.page(params[:page]).per(10).reverse_order
   end
 
   def new
@@ -10,9 +10,14 @@ class GenresController < ApplicationController
   end
 
   def create
-  	genre = Genre.new(genre_params)
-  	genre.save
-  	redirect_to genres_path
+  	@genre = Genre.new(genre_params)
+  	if @genre.save
+      flash[:notice] = "ジャンルを登録しました。"
+  	  redirect_to genres_path
+    else
+      flash[:notice] = "ジャンルの登録に失敗しました。もう一度登録内容を確認してください。"
+      render :new
+    end
   end
 
   def edit
@@ -20,9 +25,14 @@ class GenresController < ApplicationController
   end
 
   def update
-    genre = Genre.find(params[:id])
-    genre.update(genre_params)
-    redirect_to genres_path
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      flash[:notice] = "ジャンル情報を更新しました。"
+      redirect_to genres_path
+    else
+      flash[:notice] = "ジャンル情報の更新に失敗しました。もう一度更新内容を確認してください。"
+      render :edit
+    end
   end
 
   def destroy

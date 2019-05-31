@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   before_action :admin_user
   
   def index
-  	@artists = Artist.all
+  	@artists = Artist.page(params[:page]).per(10).reverse_order
   end
 
   def new
@@ -11,8 +11,13 @@ class ArtistsController < ApplicationController
 
   def create
   	artist = Artist.new(artist_params)
-  	artist.save
-  	redirect_to artists_path
+  	if artist.save
+      flash[:notice] = "アーティストを登録しました。"
+  	  redirect_to artists_path
+    else
+      flash[:notice] = "アーティストの登録に失敗しました。もう一度登録内容を確認してください。"
+      render :new
+    end
   end
 
   def edit
@@ -21,8 +26,13 @@ class ArtistsController < ApplicationController
 
   def update
     artist = Artist.find(params[:id])
-    artist.update(artist_params)
-    redirect_to artists_path
+    if artist.update(artist_params)
+      flash[:notice] = "アーティスト情報を更新しました。"
+      redirect_to artists_path
+    else
+      flash[:notice] = "アーティスト情報の更新に失敗しました。もう一度更新内容を確認してください。"
+      render :edit
+    end
   end
 
   def destroy

@@ -5,11 +5,20 @@ class ContactMailer < ApplicationMailer
   #
   #   en.contact_mailer.contact_mail.subject
   #
+  default from: 'no-replay@gmail.com'
+
   def contact_mail(user)
     @user = user
     @contacts = @user.contacts.order(updated_at: "DESC")#降順,昇順はASC(省略
     @contact = @contacts.first
      mail(to: @user.email,
+      from: "NaganoRecord",
+      subject: "お問い合わせありがとうございます。")
+  end
+  
+  def create_mail(user)
+    @user = user
+    mail(to: @user.email,
       from: "NaganoRecord",
       subject: "お問い合わせありがとうございます。")
   end

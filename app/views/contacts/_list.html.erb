@@ -7,10 +7,19 @@
     </div>
     <ul class="list-group">
         <% product_ranking.each.with_index(1) do |product, i| %>
-         <li class="list-group-item"><strong><%= i %>位</strong> <%=link_to product.product_name, products_path(product.id) %></li>
+         <li class="list-group-item">
+            <strong><%= i %>位</strong><br> 
+            <%=link_to product_path(product.id) do %>
+            <%= product.product_name %>
+            <%= attachment_image_tag product, :jacket_image, :fill, 25, 25, fallback: "no_image.jpg" ,size: '25x25',style: 'border-radius: 50%;' %>
+
+            <% end %>
+        </li>
         <% end %>
     </ul>
 </div>
+
+<% if user_signed_in? %>
 <div class="panel panel-success">
     <div class="panel-heading">
         <h6>店舗への問い合わせ</h6>
@@ -18,8 +27,9 @@
     <div class="panel-body">
         <%= form_for contact do |f| %>
             <%= f.text_field :title, placeholder:"件名", class: "form-control input-sm" %>
-            <%= f.text_area :contact_content, placeholder:"内容", class: "form-control input-sm" %>
+            <%= f.text_area :contact_content,required: true, placeholder:"内容", class: "form-control input-sm" %>
             <%= f.submit '送信', class: "btn btn-default input-sm" %>
         <% end %>
     </div>
 </div>
+<% end %>

@@ -2,34 +2,34 @@ class ProductsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :search]
 
   def index
-    @products = Product.page(params[:page])
+    @products = Product.page(params[:page]).reverse_order
     @contact = Contact.new
     product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
     product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
-    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
+    @product_ranking= Product.where(id: product_favorited_ids).sort_by{|o| product_favorited_ids.index(o.id)}[0..9]
   end
 
   def search
-    @products = Product.page(params[:page])
+    @products = Product.page(params[:page]).reverse_order
     @contact = Contact.new
     product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
     product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
-    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
+    @product_ranking= Product.where(id: product_favorited_ids).sort_by{|o| product_favorited_ids.index(o.id)}[0..9]
   end
 
   def show
     @product = Product.find(params[:id])
-    @reviews = Review.where(product_id: params[:id])
+    @reviews = Review.where(product_id: params[:id]).reverse_order.page(params[:page]).per(5)
     @user_product = UserProduct.new
     @contact = Contact.new
     @recorded_musics = RecordedMusic.where(product_id: params[:id]).order('recorded_disk_number ASC').order('recorded_music_number ASC').group_by(&:recorded_disk_number)
     product_favorite_count = Product.joins(:favorites).where(created_at: 1.weeks.ago..Time.now).group(:product_id).count
     product_favorited_ids = Hash[product_favorite_count.sort_by{ |_, v| -v }].keys
-    @product_ranking= Product.where(id: product_favorited_ids).limit(10)
+    @product_ranking= Product.where(id: product_favorited_ids).sort_by{|o| product_favorited_ids.index(o.id)}[0..9]
   end
 
   def admin
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10).reverse_order
   end
 
   def edit
@@ -38,9 +38,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to products_admin_path
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "商品情報を更新しました。"
+      redirect_to products_admin_path
+    else
+      flash[:notice] = "商品情報の更新に失敗しました。もう一度登録内容を確認してください。"
+      render :edit
+    end
   end
 
   def new
@@ -49,14 +54,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to products_admin_path
+    @product = Product.new(product_params)
+    if @product.save
+      flash[:notice] = "商品を登録しました。"
+      redirect_to products_admin_path
+    else
+      flash[:notice] = "商品の登録に失敗しました。もう一度登録内容を確認してください。"
+      render :new
+    end
   end
 
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    flash[:notice] = "商品を削除しました。"
     redirect_to products_admin_path
   end
   

@@ -1,22 +1,32 @@
-<div class="container">
+<div class="container contacts">
     <div class="row">
-        <div class="">
             <h2>問い合わせ一覧</h2>
-            <table class="table">
-                <tr>
-                    <th>投稿日時</th>
+            <table class="table table-hover">
+                <thead>
+                <tr class="info">
+                    <th width="15%">投稿日時</th>
                     <th>ユーザー名</th>
                     <th>件名</th>
-                    <th>内容</th>
-                    <th></th>
-                    <th></th>
+                    <th width="50%">内容</th>
+                    <th>&nbsp;</th>
+                    <th width="5%">&nbsp;</th>
+                    <th width="5%">&nbsp;</th>
                 </tr>
+                </thead>
                 <% @contacts.each do |contact| %>
-                <tr>
+                <tbody>
+                <tr class="active">
                     <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= contact.user.last_name %><%= contact.user.first_name %></td>
                     <td><%= contact.title %></td>
                     <td><%= contact.contact_content %></td>
+                    <td>
+                        <% if contact.responce == nil %>
+                          <i class="fas fa-info-circle my-orange"></i>
+                        <% else %>
+                          <i class="fas fa-check my-green"></i>
+                        <% end %>
+                    </td>
                     <td>
                         <%= link_to '詳細', user_contact_path(contact.user,contact.id) %>
 
@@ -25,9 +35,9 @@
                         <%= link_to '削除', contact_path(contact), method: :delete, "data-confirm" => "削除しますか？", class: "destroy_contact_#{contact.id}" %>
                     </td>
                 </tr>
+                </tbody>
                 <% end %>
             </table>
-        </div>
-        <%= paginate @contacts, class: "paginate" %>
+            <%= paginate @contacts %>
     </div>
 </div>

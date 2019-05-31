@@ -1,26 +1,24 @@
 class ContactsController < ApplicationController
-	before_action :authenticate_user!, only: []
+	before_action :authenticate_user!
 	before_action :admin_user, :only => [:show, :index, :destroy]
-
-	def new
-		@user = User.find(params[:user_id])
-		@contact = Contact.new
-	end
 
 	def create
 		contact = Contact.new(contact_params)
 		contact.user_id = current_user.id
 		if contact.save
-			flash[:success] = '送信されました'
+			@user = contact.user
+			ContactMailer.create_mail(@user).deliver
+			flash[:notice] = 'お問い合わせありがとうございます。承りました。'
 			redirect_to "/products"
 		else
-			render "/products"#仮
+			flash[:danger] = '件名 内容を入力してください。'
+			redirect_to "/products"
 		end
 	end
 
 	def index
 		@users = User.page(params[:page]).reverse_order
-		@contacts = Contact.page(params[:page]).reverse_order
+		@contacts = Contact.page(params[:page]).per(10).reverse_order
 	end
 
 	def show
@@ -32,15 +30,16 @@ class ContactsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@contact = Contact.find(params[:id])
 		if @contact.update(contact_params)
-		ContactMailer.contact_mail(@user).deliver
-		flash[:success] = '返信しました'
-		redirect_to "/contacts"
+			ContactMailer.contact_mail(@user).deliver
+			flash[:notice] = '返信しました。'
+			redirect_to "/contacts"
 		end
 	end
 
 	def destroy
 	    contact = Contact.find(params[:id])
 	    contact.destroy
+	    flash[:notice] = '削除しました。'
 	    redirect_to '/contacts'
   	end
 

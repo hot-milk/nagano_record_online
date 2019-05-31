@@ -1,31 +1,54 @@
-<div class="container">
+<div class="container contacts">
     <div class="row">
-        <div class="">
+        <div class="col-xs-10 col-xs-offset-1">
         	<h2>問い合わせ詳細</h2>
-
-        	<table class="table">
-        		<tr>
-        			<th>投稿日時</th>
+        	<table class="table table-hover contact">
+        	    <thead>
+        		<tr class="info">
+        			<th width="10%">投稿日時</th>
         			<th>ユーザー名</th>
         			<th>件名</th>
-        			<th>内容</th>
+        			<th width="60%">内容</th>
         		</tr>
-        		<tr>
+        		</thead>
+        		<tbody>
+        		<tr class="active">
         			<td><%= @contact.created_at %></td>
         			<td><%= @contact.user.last_name %><%= @contact.user.first_name %></td>
         			<td><%= @contact.title %></td>
         			<td><%= @contact.contact_content %></td>
         		</tr>
+        		</tbody>
         	</table>
-
-            <%= @contact.responce %>
-            <br>
-            <br>
-        	<h3>返信フォーム</h3><br>
+        </div>
+    </div>
+    <% if @contact.responce? %>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <table class="table contact">
+            <thead>
+                <tr class="info">
+                    <th>返信内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="active">
+                    <td><%= @contact.responce %></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <% end %>
+    <br>
+    <br>
+    <div class="row pb-50">
+        <div class="col-xs-10 col-xs-offset-1">
+        	<h3>返信フォーム</h3>
         	<%= form_for [@user, @contact] do |f| %>
-				<%= f.text_area :responce, autofocus: true, class: "responce" %><br>
-    			<%= f.submit "返信", class: "" %>
+        		<%= f.text_area :responce, autofocus: true,required: true, :size=>"60x10" %><br>
+        		<%= f.submit "返信", class: "btn btn-default" %>
         	<% end %>
-		</div>
+    	</div>
 	</div>
 </div>

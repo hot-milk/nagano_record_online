@@ -64,7 +64,7 @@
 		<div class="col-xs-6">
 			    <table class="table table-hover">
 			        <thead>
-			            <tr>
+			            <tr class="info">
 			                <th>ディスク番号</th>
 			                <th>曲順</th>
 			                <th>曲名</th>
@@ -73,7 +73,7 @@
 			        </thead>
 			        <tbody>
 			            <% @recorded_musics.each do |recorded_music| %>
-			              <tr>
+			              <tr class="active">
 			                  <td> <%= recorded_music.recorded_disk_number %></td>
 			                  <td> <%= recorded_music.recorded_music_number %></td>
 			                  <td> <%= recorded_music.recorded_music_name %></td>
